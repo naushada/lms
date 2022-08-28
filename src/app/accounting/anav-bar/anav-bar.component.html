@@ -1,0 +1,8 @@
+
+<clr-vertical-nav style="height:100%; width:100%; cursor: pointer;">
+    <a class = "nav-link nav-text" [class.active] = "navItemSelected === 'createAccount'" (click)="onSipmentItemSelect('createAccount')" ><clr-icon shape="new" class="is-solid" clrVerticalNavIcon></clr-icon><b>Create Account</b></a>
+    <a class = "nav-link nav-text" [class.active] = "navItemSelected === 'updateAccount'" (click)="onSipmentItemSelect('updateAccount')"><clr-icon shape="attachment" clrVerticalNavIcon></clr-icon><b>Update Account</b></a>
+    <a class = "nav-link nav-text" [class.active] = "navItemSelected === 'listAccount'" (click)="onSipmentItemSelect('listAccount')"><clr-icon shape="attachment" clrVerticalNavIcon></clr-icon><b>List Account</b></a>
+</clr-vertical-nav>
+  
+  

@@ -1,0 +1,396 @@
+<form clrForm clrLayout="horizontal" clrLabelSize="4">
+    <div class="clr-row">
+        <div class="clr-col">
+            <clr-checkbox-wrapper>
+                <input type="checkbox" clrCheckbox name="awbNo" value="">
+                <label for="">Autogenerate AWB Number</label>
+            </clr-checkbox-wrapper>
+        </div>
+    </div>
+    <div class="clr-row">
+        <div class="clr-col">
+            <clr-input-container >
+                <label>AWB No.</label>
+                <input clrInput name="awbno" />
+            </clr-input-container>
+                    
+        </div>
+        <div class="clr-col">
+            <clr-input-container >
+                <label>Alternate Reference No.</label>
+                <input clrInput name="altRefNo" />
+            </clr-input-container>
+                    
+        </div>
+        <div class="clr-col">
+
+        </div>
+        <div class="clr-col">
+
+        </div>
+    </div>
+    
+    
+</form>
+<form clrLayout="horizontal" clrLabelSize="4">
+    <div class="clr-row">
+        <div class="clr-col">
+            <clr-input-container >
+            <label for=""><u><i>Sender Information</i></u></label>
+            </clr-input-container>
+        </div>
+    </div>
+    <div class="clr-row">
+        <div class="clr-col">
+            <clr-input-container >
+                <label>Account No.</label>
+                <input clrInput name="accountNo" />
+            </clr-input-container>
+            <button class="btn">Retrieve</button>
+        </div>
+
+        <div class="clr-col">
+            
+            <clr-input-container >
+                <label>Reference No.</label>
+                <input clrInput name="referenceNo" disabled class="disabled" />
+            </clr-input-container>
+            
+        </div>
+
+        <div class="clr-col">
+            
+            <clr-input-container >
+                <label>Name</label>
+                <input clrInput name="name" class="mandatory" />
+            </clr-input-container>
+            
+        </div>
+
+        <div class="clr-col">
+            
+            <clr-input-container >
+                <label>Company (Corporate) Name</label>
+                <input clrInput name="companyName" class="mandatory"/>
+            </clr-input-container>
+            
+        </div>
+
+    </div>
+
+    <div class="clr-row">
+        <div class="clr-col">
+            <clr-input-container >
+                <label>Country</label>
+                <input clrInput name="country" disabled class="disabled"/>
+            </clr-input-container>
+            
+        </div>
+
+        <div class="clr-col">
+            
+            <clr-input-container >
+                <label>City</label>
+                <input clrInput name="city" disabled class="disabled"/>
+            </clr-input-container>
+            
+        </div>
+
+        <div class="clr-col">
+            
+            <clr-input-container >
+                <label>State</label>
+                <input clrInput name="state" disabled class="disabled" />
+            </clr-input-container>
+            
+        </div>
+
+        <div class="clr-col">
+            <clr-textarea-container>
+                <label>Address</label>
+                <textarea clrTextarea name="address" required disabled class="disabled" ></textarea>
+                <!--<clr-control-helper>You can't modify this </clr-control-helper>-->
+            </clr-textarea-container>
+        </div>
+
+    </div>
+
+
+    <div class="clr-row">
+        <div class="clr-col">
+            <clr-input-container >
+                <label>Postal Code</label>
+                <input clrInput name="postalCode" disabled class="disabled" />
+            </clr-input-container>
+            
+        </div>
+
+        <div class="clr-col">
+            
+            <clr-input-container >
+                <label>Contact</label>
+                <input clrInput name="contact" disabled class="disabled" />
+            </clr-input-container>
+            
+        </div>
+
+        <div class="clr-col">
+            
+            <clr-input-container >
+                <label>Phone Number</label>
+                <input clrInput name="phoneNumber" disabled class="disabled" />
+            </clr-input-container>
+            
+        </div>
+
+        <div class="clr-col">
+            <clr-input-container >
+                <label>E-Mail</label>
+                <input clrInput name="email" disabled class="disabled" />
+            </clr-input-container>
+        </div>
+
+    </div>
+
+    <div class="clr-row">
+        <div class="clr-col">
+            <clr-input-container >
+                <label>Receiving Tax ID</label>
+                <input clrInput name="receivingTaxId" disabled class="disabled" />
+            </clr-input-container>
+            
+        </div>
+    </div>
+
+    <div class="clr-row">
+        <div class="clr-col">
+            <clr-input-container >
+            <label for=""><u><i>Shipment Information</i></u></label>
+            </clr-input-container>
+        </div>
+    </div>
+    <div class="clr-row">
+        <div class="clr-col">
+            <clr-input-container >
+                <label>SKU No.</label>
+                <input clrInput name="skuNo" />
+            </clr-input-container>
+            
+        </div>
+
+        <div class="clr-col">
+            <clr-select-container>
+                <label>Service</label>
+                <select clrSelect name="service" >
+                    <option value="one">One</option>
+                    <option value="two">Two</option>
+                    <option value="three">Three</option>
+                </select>
+            </clr-select-container>
+        </div>
+
+        <div class="clr-col">
+            
+            <clr-input-container >
+                <label>Number Of Items</label>
+                <input clrInput name="numberOfItems" class="mandatory" />
+            </clr-input-container>
+            
+        </div>
+
+        <div class="clr-col">
+            
+            <clr-input-container >
+                <label>Goods Description</label>
+                <input clrInput name="goodsDescription" />
+            </clr-input-container>
+            
+        </div>
+
+    </div>
+
+    <div class="clr-row">
+        <div class="clr-col">
+            <clr-input-container >
+                <label>Goods Value</label>
+                <input clrInput name="goodsValue" />
+            </clr-input-container>
+            
+        </div>
+
+        <div class="clr-col">
+            
+            <clr-input-container >
+                <label>Customs Value</label>
+                <input clrInput name="customsValue" />
+            </clr-input-container>
+            
+        </div>
+
+        <div class="clr-col">
+            
+            <clr-input-container >
+                <label>COD Ammount</label>
+                <input clrInput name="codAmount" />
+            </clr-input-container>
+            
+        </div>
+
+        <div class="clr-col">
+            
+            <clr-input-container >
+                <label>VAT</label>
+                <input clrInput name="vat" />
+            </clr-input-container>
+            
+        </div>
+
+    </div>
+
+
+    <div class="clr-row">
+        <div class="clr-col">
+            <clr-select-container>
+                <label>Currency</label>
+                <select clrSelect name="currency" >
+                    <option value="one">One</option>
+                    <option value="two">Two</option>
+                    <option value="three">Three</option>
+                </select>
+            </clr-select-container>
+
+        </div>
+
+        <div class="clr-col">
+            
+            <clr-input-container >
+                <label class="required">Weight</label>
+                <input clrInput name="weight" />
+            </clr-input-container>
+            
+        </div>
+
+        <div class="clr-col">
+            <clr-select-container>
+                <label >Weight Units</label>
+                <select clrSelect name="weightUnits" >
+                    <option value="kg">KG</option>
+                    <option value="two">Two</option>
+                    <option value="three">Three</option>
+                </select>
+            </clr-select-container>
+            
+        </div>
+
+        <div class="clr-col">
+            <clr-input-container >
+                <label>Cubic Weight (LxBxH)</label>
+                <input clrInput name="cubicWeight" />
+            </clr-input-container>
+        </div>
+
+    </div>
+
+    <div class="clr-row">
+        <div class="clr-col">
+            <clr-input-container >
+            <label for=""><u><i>Receiver Information</i></u></label>
+            </clr-input-container>
+        </div>
+    </div>
+    <div class="clr-row">
+        <div class="clr-col">
+            
+            <clr-input-container >
+                <label>Name</label>
+                <input clrInput name="name" />
+            </clr-input-container>
+            
+        </div>
+
+        <div class="clr-col">
+            <clr-input-container >
+                <label>Country</label>
+                <input clrInput name="country" />
+            </clr-input-container>
+            
+        </div>
+
+        <div class="clr-col">
+            
+            <clr-input-container >
+                <label>City</label>
+                <input clrInput name="city" />
+            </clr-input-container>
+            
+        </div>
+
+        <div class="clr-col">
+            
+            <clr-input-container >
+                <label>State</label>
+                <input clrInput name="state" />
+            </clr-input-container>
+            
+        </div>
+
+    </div>
+
+    <div class="clr-row">
+        <div class="clr-col">
+            <clr-input-container >
+                <label>Postal Code</label>
+                <input clrInput name="postalCode" />
+            </clr-input-container>
+            
+        </div>
+
+        <div class="clr-col">
+            
+            <clr-input-container >
+                <label>Contact</label>
+                <input clrInput name="contact" />
+            </clr-input-container>
+            
+        </div>
+
+        
+
+        <div class="clr-col">
+            <clr-textarea-container>
+                <label>Address</label>
+                <textarea clrTextarea name="address" required ></textarea>
+                <!--<clr-control-helper>You can't modify this </clr-control-helper>-->
+            </clr-textarea-container>
+        </div>
+
+        <div class="clr-col">
+            
+            <clr-input-container >
+                <label>Phone</label>
+                <input clrInput name="phone" />
+            </clr-input-container>
+            
+        </div>
+    </div>
+
+
+    <div class="clr-row">
+        
+
+        <div class="clr-col">
+            <clr-input-container >
+                <label>E-Mail</label>
+                <input clrInput name="email" />
+            </clr-input-container>
+        </div>
+
+    </div>
+
+    <div class="clr-row">
+        <div class="clr-col">
+            <button class="btn btn-primary">Update Shipment</button>
+        </div>
+    </div>
+    
+</form>

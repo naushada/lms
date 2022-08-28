@@ -1,0 +1,28 @@
+<!--
+<ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active" href="javascript://" aria-current="page">
+        Dashboard
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="javascript://">Management</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="javascript://">Cloud</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="javascript://">Tenants</a>
+    </li>
+  </ul>
+-->
+<clr-vertical-nav style="height:100%; width:100%; cursor: pointer;">
+  <a class = "nav-link nav-text" [class.active] = "navItemSelected === 'singleShipment'" (click)="onSipmentItemSelect('singleShipment')" ><clr-icon shape="new" class="is-solid" clrVerticalNavIcon></clr-icon><b>Create Single Shipment</b></a>
+  <a class = "nav-link nav-text" [class.active] = "navItemSelected === 'bulkShipment'" (click)="onSipmentItemSelect('bulkShipment')"><clr-icon shape="attachment" clrVerticalNavIcon></clr-icon><b>Create Bulk Shipment</b></a>
+  <a class = "nav-link nav-text" [class.active] = "navItemSelected === 'thirdPartyShipment'" (click)="onSipmentItemSelect('thirdPartyShipment')"><clr-icon shape="new" class="is-solid" clrVerticalNavIcon></clr-icon><b>Create Third Party Shipment</b></a>
+  <a class = "nav-link nav-text" [class.active] = "navItemSelected === 'updateShipment'" (click)="onSipmentItemSelect('updateShipment')"><clr-icon shape="highlighter" clrVerticalNavIcon></clr-icon><b>Update Shipment</b></a>
+  <a class = "nav-link nav-text" [class.active] = "navItemSelected === 'listShipment'" (click)="onSipmentItemSelect('listShipment')"><clr-icon shape="view-list" clrVerticalNavIcon></clr-icon><b>Shipment List</b></a>
+  <div class="nav-divider"></div>
+  <a class = "nav-link nav-text" [class.active] = "navItemSelected === 'apiIntegration'" (click)="onSipmentItemSelect('apiIntegration')"><clr-icon shape="code" clrVerticalNavIcon></clr-icon><b>API Integration</b></a>
+</clr-vertical-nav>
+
