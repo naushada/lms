@@ -1,6 +1,12 @@
 <form action="" clrForm clrLayout="horizontal" clrLabelSize="4">
     <div class="clr-row">
-        <div class="clr-col">
+        <div class="clr-col-3">
+            <clr-textarea-container>
+                <label for="shipmentNo">Connote</label>
+                <textarea clrTextarea name="shipmentNo" placeholder="Notes"></textarea>
+            </clr-textarea-container>
+        </div>
+        <div class="clr-col-2">
             <clr-select-container>
                 <label>Event</label>
                 <select clrSelect name="options" >
@@ -10,35 +16,30 @@
                 </select>
               </clr-select-container>
         </div>
-        <div class="clr-col">
+        <div class="clr-col-3">
             <clr-date-container>
                 <label>Current Date</label>
                 <input type="date" clrDate name="demo" >
             </clr-date-container>
         </div>
-        <div class="clr-col">
+        <div class="clr-col-2">
             <cds-time>
                 <label>Current Time</label>
                 <input type="time" />
-                <cds-control-message>message text</cds-control-message>
               </cds-time>
 
         </div>
-        <div class="clr-col">
+        <div class="clr-col-2">
             <clr-textarea-container>
                 <label for="shipmentNo">Notes</label>
-                <textarea clrTextarea name="shipmentNo" placeholder="Noates"></textarea>
+                <textarea clrTextarea name="shipmentNo" placeholder="Notes"></textarea>
             </clr-textarea-container>
         </div>
+        
+        
     </div>
     <div class="clr-row">
-        <div class="clr-col">
-            <clr-textarea-container>
-                <label for="shipmentNo">Connote</label>
-                <textarea clrTextarea name="shipmentNo" placeholder="Noates"></textarea>
-            </clr-textarea-container>
-        </div>
-        <div class="clr-col">
+        <div class="clr-col-3">
             <clr-select-container>
                 <label>Event Location</label>
                 <select clrSelect name="options" >
@@ -48,31 +49,26 @@
                 </select>
               </clr-select-container>
         </div>
-        <div class="clr-col">
+        <div class="clr-col-3">
             <clr-input-container>
                 <label>Manual Event Location</label>
                 <input type="text" clrInput name="cTime" >
             </clr-input-container>
         </div>
-        <div class="clr-col">
+        <div class="clr-col-2">
             <clr-input-container>
                 <label>Driver Name</label>
                 <input type="text" clrInput name="cTime" >
             </clr-input-container>
         </div>
-    </div>
-    <div class="clr-row">
-        <div class="clr-col">
+        <div class="clr-col-2">
             <clr-input-container>
                 <label>Updated By</label>
                 <input type="text" clrInput name="cTime" >
             </clr-input-container>
         </div>
-        <div class="clr-col">
-
-        </div>
-        
     </div>
+    
     <div class="clr-row">
         <button class="btn btn-primary">Submit</button>
     </div>
