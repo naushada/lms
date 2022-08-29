@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import '@cds/core/time/register.js';
 
 @Component({
   selector: 'app-update-shipment',

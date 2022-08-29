@@ -15,24 +15,598 @@
 
         </div>
         <div class="clr-col">
+            <clr-radio-container clrInline>
+                <label>Last Mile Delivery Service Vendor</label>
+                <clr-radio-wrapper>
+                    <input type="radio" clrRadio name="options" required value="option1"  />
+                    <label>Self</label>
+                  </clr-radio-wrapper>
+                <clr-radio-wrapper>
+                  <input type="radio" clrRadio name="options" required value="option1"  />
+                  <label>Sipsy</label>
+                </clr-radio-wrapper>
+                <clr-radio-wrapper>
+                  <input type="radio" clrRadio name="options" required value="option2"  />
+                  <label>Ajoul</label>
+                </clr-radio-wrapper>
+                <clr-radio-wrapper>
+                    <input type="radio" clrRadio name="options" required value="option2"  />
+                    <label>DHL Express</label>
+                  </clr-radio-wrapper>
+                  <clr-radio-wrapper>
+                    <input type="radio" clrRadio name="options" required value="option2"  />
+                    <label>Blue Dart Express</label>
+                  </clr-radio-wrapper>
+                  <clr-radio-wrapper>
+                    <input type="radio" clrRadio name="options" required value="option2"  />
+                    <label>Vendor 1</label>
+                  </clr-radio-wrapper>
 
+              </clr-radio-container>
         </div>
     </div>
     <div class="clr-row">
+            
+            </div>
+       
+
+
+    <div class="clr-row" >
         <div class="clr-col">
             <button class="btn btn-primary">Submit</button>
         </div>
     </div>
 </form>
 
-<div class="clr-row">
-    <div class="clr-col">
-        <clr-input-container>
-            <label for=""><b>Connote#:</b></label>
-        </clr-input-container>
-        <div class="clr-col">
-            <span>value1</span>
+<div clrLayout="horizontal" clrLabelSize="4">
+    <div class="clr-row">
+        <div class="clr-col-4">
+            <div class="clr-row">
+                <div class="clr-col-5">
+                    <clr-input-container>
+                        <label for=""><b>Connote#:</b></label>
+                    </clr-input-container>
+                </div>
+                <div class="clr-col">
+                    <clr-input-container>
+                        <label for="">Value</label>
+                    </clr-input-container>
+                </div>
+            </div>
+            <div class="clr-row">
+                <div class="clr-col-5">
+                    <clr-input-container>
+                        <label for=""><b>Alternate Reference No:</b></label>
+                    </clr-input-container>
+                </div>
+                <div class="clr-col">
+                    <clr-input-container>
+                        <label for="">Value</label>
+                    </clr-input-container>
+                </div>
+            </div>
+            <div class="clr-row">
+                <div class="clr-col-5">
+                    <clr-input-container>
+                        <label for=""><b>Service Type:</b></label>
+                    </clr-input-container>
+                </div>
+                <div class="clr-col">
+                    <clr-input-container>
+                        <label for="">Value</label>
+                    </clr-input-container>
+                </div>
+            </div>
+            <div class="clr-row">
+                <div class="clr-col-5">
+                    <clr-input-container>
+                        <label for=""><b>Shipped On:</b></label>
+                    </clr-input-container>
+                </div>
+                <div class="clr-col">
+                    <clr-input-container>
+                        <label for="">Value</label>
+                    </clr-input-container>
+                </div>
+            </div>
+            <div class="clr-row">
+                <div class="clr-col-5">
+                    <clr-input-container>
+                        <label for=""><b>Destination:</b></label>
+                    </clr-input-container>
+                </div>
+                <div class="clr-col">
+                    <clr-input-container>
+                        <label for="">Value</label>
+                    </clr-input-container>
+                </div>
+            </div>
+            <div class="clr-row">
+                <div class="clr-col-5">
+                    <clr-input-container>
+                        <label for=""><b>Status:</b></label>
+                    </clr-input-container>
+                </div>
+                <div class="clr-col">
+                    <clr-input-container>
+                        <label for="">Value</label>
+                    </clr-input-container>
+                </div>
+            </div>
+            <div class="clr-row">
+                <div class="clr-col-5">
+                    <clr-input-container>
+                        <label for=""><b>Job #:</b></label>
+                    </clr-input-container>
+                </div>
+                <div class="clr-col">
+                    <clr-input-container>
+                        <label for="">Value is my actual value</label>
+                    </clr-input-container>
+                </div>
+            </div>
         </div>
-    </div>
+        <!--Timeline -->
+        <div class="clr-col">
+            <ul class="clr-timeline">
+                
+                <li class="clr-timeline-step disabled">
+                  <div class="clr-timeline-step-header">11:59 am</div>
+                  <clr-icon shape="circle" aria-label="Not started"></clr-icon>
+                  <div class="clr-timeline-step-body">
+                    <span class="clr-timeline-step-title">Add KMS</span>
+                    <span class="clr-timeline-step-description">Root CA certificate requested.</span>
+                  </div>
+                </li>
+                
+                
+                <li class="clr-timeline-step">
+                  <div class="clr-timeline-step-header">11:59 am</div>
+                  <clr-icon shape="dot-circle" aria-current="true" aria-label="Current"></clr-icon>
+                  <div class="clr-timeline-step-body">
+                    <span class="clr-timeline-step-title">Add KMS</span>
+                    <span class="clr-timeline-step-description">
+                  Root CA certificate requested. Upload it to the KMS to complete the connection.
+                  <button class="btn btn-sm">Action</button>
+                </span>
+                  </div>
+                </li>
+                <li class="clr-timeline-step">
+                  <div class="clr-timeline-step-header">11:59 am</div>
+                  <clr-spinner clrMedium aria-label="In progress">Fetching data</clr-spinner>
+                  <div class="clr-timeline-step-body">
+                    <span class="clr-timeline-step-title">Make vCenter trust KMS</span>
+                    <span class="clr-timeline-step-description">
+                  Root CA certificate requested. Upload it to the KMS to complete the connection. Third sentence is very long
+                  and very long.
+                </span>
+                  </div>
+                </li>
+                <li class="clr-timeline-step">
+                  <div class="clr-timeline-step-header">11:59 am</div>
+                  <clr-icon shape="success-standard" aria-label="Completed"></clr-icon>
+                  <div class="clr-timeline-step-body">
+                    <span class="clr-timeline-step-title">Make KMS trust vCenter</span>
+                    <span class="clr-timeline-step-description">Upload it to the KMS to complete the connection. Third
+                  sentence.
+                  <button class="btn btn-sm btn-link">Action</button>
+                </span>
+                  </div>
+                </li>
+                <li class="clr-timeline-step">
+                  <div class="clr-timeline-step-header">11:59 am</div>
+                  <clr-icon shape="error-standard" aria-label="Error"></clr-icon>
+                  <div class="clr-timeline-step-body">
+                    <span class="clr-timeline-step-title">Connected</span>
+                    <span class="clr-timeline-step-description">No. It's not connected.</span>
+                  </div>
+                </li>
+      </ul>      
+        </div>
     
 </div>
+
+
+<clr-datagrid>
+    <clr-dg-column>Date</clr-dg-column>
+    <clr-dg-column>Time</clr-dg-column>
+    <clr-dg-column>Location</clr-dg-column>
+    <clr-dg-column>Activity</clr-dg-column>
+    <clr-dg-column>Notes</clr-dg-column>
+    <clr-dg-column>Entered By</clr-dg-column>
+    <clr-dg-column>Received (UTC)</clr-dg-column>
+    <clr-dg-column>Sent (UTC)</clr-dg-column>
+
+    <clr-dg-row>
+        <clr-dg-cell></clr-dg-cell>
+        <clr-dg-cell></clr-dg-cell>
+        <clr-dg-cell></clr-dg-cell>
+        <clr-dg-cell></clr-dg-cell>
+        <clr-dg-cell></clr-dg-cell>
+        <clr-dg-cell></clr-dg-cell>
+        <clr-dg-cell></clr-dg-cell>
+        <clr-dg-cell></clr-dg-cell>
+    </clr-dg-row>
+</clr-datagrid>
+
+<div class="clr-row">
+        <!-- Card Info -->
+        <div class="clr-col">
+            <div class="card">
+                <h3 class="card-header">Sender Information</h3>
+                <div class="card-block">
+                    <!--<h4 class="card-title">Block</h4>-->
+                    <div class="card-text">
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Name:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Company Name:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value abd a21344 buleward new delhi pin-410048</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Address:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value abd a21344 buleward new delhi pin-410048</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">City:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value abd a21344 buleward new delhi pin-410048</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Country:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value abd a21344 buleward new delhi pin-410048</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Contact:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value abd a21344 buleward new delhi pin-410048</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Sender Reference Number:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value abd a21344 buleward new delhi pin-410048</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Account Code:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value abd a21344 buleward new delhi pin-410048</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Phone:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value abd a21344 buleward new delhi pin-410048</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-sm btn-link">Footer Action 1</button>
+                    <button class="btn btn-sm btn-link">Footer Action 2</button>
+                </div>
+            </div>
+        </div>
+        <div class="clr-col">
+            <div class="card">
+                <h3 class="card-header">Receiver Information</h3>
+                <div class="card-block">
+                    <!--<h4 class="card-title">Block</h4>-->
+                    <div class="card-text">
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Name:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Address:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value abd a21344 buleward new delhi pin-410048</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Contact No:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value abd a21344 buleward new delhi pin-410048</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Phone No:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value abd a21344 buleward new delhi pin-410048</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">City:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value abd a21344 buleward new delhi pin-410048</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">State:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value abd a21344 buleward new delhi pin-410048</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Country:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value abd a21344 buleward new delhi pin-410048</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Email:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value abd a21344 buleward new delhi pin-410048</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-sm btn-link">Footer Action 1</button>
+                    <button class="btn btn-sm btn-link">Footer Action 2</button>
+                </div>
+            </div>
+        </div>
+        <div class="clr-col">
+            <div class="card">
+                <h3 class="card-header">Shipment Information</h3>
+                <div class="card-block">
+                    <!--<h4 class="card-title">Block</h4>-->
+                    <div class="card-text">
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">SKU:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Service Type:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Non Document</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Number Of Items:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Goods Description:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Goods Value:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Customs Value:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Weight:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Weight Unit:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Cubic Weight:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">COD Amount:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col">
+                                <clr-input-container>
+                                    <label for="">Currency:</label>
+                                </clr-input-container>
+                            </div>
+                            <div class="clr-col-6">
+                                <clr-input-container>
+                                    <label for="">Value</label>
+                                </clr-input-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-sm btn-link">Footer Action 1</button>
+                    <button class="btn btn-sm btn-link">Footer Action 2</button>
+                </div>
+            </div>
+        </div>
+    </div>

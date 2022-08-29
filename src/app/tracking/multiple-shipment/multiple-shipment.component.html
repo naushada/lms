@@ -1,1 +1,100 @@
-<p>multiple-shipment works!</p>
+
+<form clrForm clrLayout="horizontal" clrLabelSize="4">
+    <div class="clr-row">
+        <div class="clr-col">
+            <clr-textarea-container>
+                <label for="shipmentNo">AWB OR Alternate Reference No</label>
+                <textarea clrTextarea name="shipmentNo" placeholder="AWB or Alternate Reference Number"></textarea>
+            </clr-textarea-container>
+
+        </div>
+        <div class="clr-col">
+            <clr-textarea-container>
+                <label for="altRefNo">Sender Reference No</label>
+                <textarea clrTextarea name="altRefNo"></textarea>
+            </clr-textarea-container>
+
+        </div>
+        <div class="clr-col">
+            <clr-radio-container clrInline>
+                <label>Last Mile Delivery Service Vendor</label>
+                <clr-radio-wrapper>
+                    <input type="radio" clrRadio name="options" required value="option1"  />
+                    <label>Self</label>
+                  </clr-radio-wrapper>
+                <clr-radio-wrapper>
+                  <input type="radio" clrRadio name="options" required value="option1"  />
+                  <label>Sipsy</label>
+                </clr-radio-wrapper>
+                <clr-radio-wrapper>
+                  <input type="radio" clrRadio name="options" required value="option2"  />
+                  <label>Ajoul</label>
+                </clr-radio-wrapper>
+                <clr-radio-wrapper>
+                    <input type="radio" clrRadio name="options" required value="option2"  />
+                    <label>DHL Express</label>
+                  </clr-radio-wrapper>
+                  <clr-radio-wrapper>
+                    <input type="radio" clrRadio name="options" required value="option2"  />
+                    <label>Blue Dart Express</label>
+                  </clr-radio-wrapper>
+                  <clr-radio-wrapper>
+                    <input type="radio" clrRadio name="options" required value="option2"  />
+                    <label>Vendor 1</label>
+                  </clr-radio-wrapper>
+
+              </clr-radio-container>
+        </div>
+    </div>
+
+
+    <div class="clr-row" >
+        <div class="clr-col">
+            <button class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+
+<div class="btn-group">
+    <button class="btn">
+        <clr-icon shape="printer" aria-label="print"></clr-icon>A2
+    </button>
+    <button class="btn">
+        <clr-icon shape="printer"></clr-icon>A4
+    </button>
+    <button class="btn">
+        <clr-icon shape="printer"></clr-icon>A6
+    </button>
+</div>
+
+<clr-datagrid>
+    <clr-dg-column>Tracking Number</clr-dg-column>
+    <clr-dg-column>Status</clr-dg-column>
+    <clr-dg-column>Delivery Information</clr-dg-column>
+    <clr-dg-column>Details</clr-dg-column>
+    
+    <clr-dg-row>
+        <clr-dg-cell></clr-dg-cell>
+        <clr-dg-cell></clr-dg-cell>
+        <clr-dg-cell></clr-dg-cell>
+        <clr-dg-cell><button class="btn">View</button></clr-dg-cell>
+    
+    </clr-dg-row>
+
+    <clr-dg-row>
+        <clr-dg-cell></clr-dg-cell>
+        <clr-dg-cell></clr-dg-cell>
+        <clr-dg-cell></clr-dg-cell>
+        <clr-dg-cell><button class="btn">View</button></clr-dg-cell>
+    
+    </clr-dg-row>
+
+    <clr-dg-footer>
+		<clr-dg-pagination #pagination [clrDgPageSize]="10">
+			<clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Shipment per page</clr-dg-page-size>
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+        of {{pagination.totalItems}} shipments
+    </clr-dg-pagination>
+</clr-dg-footer>
+</clr-datagrid>
+
