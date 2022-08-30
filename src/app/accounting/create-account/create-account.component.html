@@ -1,1 +1,153 @@
-<p>create-account works!</p>
+
+<form action="" clrForm clrLayout="horizontal" clrLabelSize="4">
+    <div class="clr-row">
+        <div class="clr-col-2">
+            <div class="clr-row">
+                <div class="clr-col">
+                    <clr-checkbox-wrapper>
+                        <input type="checkbox" clrCheckbox name="isAccountCodeAutoGen" value="">
+                        <label for="">Autogenerate Account Code</label>
+                    </clr-checkbox-wrapper>
+                </div>
+                <div class="clr-col">
+                    <clr-input-container>
+                        <label for="accountCode">Account Code</label>
+                        <input clrInput name="accountCode">
+                    </clr-input-container>
+                </div>
+            </div>
+        </div>
+        
+        <div class="clr-col-2">
+            <clr-input-container>
+                <label for="accountPassword">Account Password</label>
+                <input clrInput name="startDate">
+            </clr-input-container>
+        </div>
+
+        <div class="clr-col-2">
+            <clr-input-container>
+                <label for="companyName">Company Name</label>
+                <input clrInput name="companyName">
+            </clr-input-container>
+        </div>
+
+        <div class="clr-col-2">
+            <clr-select-container>
+                <label>Role</label>
+                <select clrSelect name="role" >
+                  <option value="one">Employee</option>
+                  <option value="two">Customer</option>
+                  <option value="three">Driver</option>
+                </select>
+              </clr-select-container>
+        </div>
+        
+        <div class="clr-col">
+            <clr-input-container>
+                <label for="name">Name</label>
+                <input clrInput name="name">
+            </clr-input-container>
+        </div>
+        
+
+        <div class="clr-col">
+            <clr-input-container>
+                <label for="city">City</label>
+                <input clrInput name="city">
+            </clr-input-container>
+        </div>
+        <div class="clr-row">
+            <div class="clr-col">
+                <clr-textarea-container>
+                    <label for="address">Address</label>
+                    <textarea clrTextarea name="address" placeholder="Address"></textarea>
+                </clr-textarea-container>
+            </div>
+
+            <div class="clr-col">
+                <clr-input-container>
+                    <label for="postalCode">Postal Code</label>
+                    <input clrInput name="postalCode">
+                </clr-input-container>
+            </div>
+
+            <div class="clr-col">
+                <clr-input-container>
+                    <label for="state">State</label>
+                    <input clrInput name="state">
+                </clr-input-container>
+            </div>
+
+            <div class="clr-col">
+                <clr-select-container>
+                    <label>Event Location</label>
+                    <select clrSelect name="eventLocation" >
+                        <option value="one">Saudi Arabia</option>
+                        <option value="two">Customer</option>
+                        <option value="three">Driver</option>
+                    </select>
+                </clr-select-container>
+            </div>
+        
+            <div class="clr-col">
+                <clr-input-container>
+                    <label for="state">Contact</label>
+                    <input clrInput name="contact">
+                </clr-input-container>
+            </div>
+            <div class="clr-col">
+                <clr-input-container>
+                    <label for="email">E-mail</label>
+                    <input clrInput name="email">
+                </clr-input-container>
+            </div>
+        </div>
+        <div class="clr-col">
+            <clr-input-container>
+                <label for="quotedAmount">Quoted Amount</label>
+                <input clrInput name="quotedAmount">
+            </clr-input-container>
+        </div>
+
+        <div class="clr-col">
+            <clr-input-container>
+                <label for="tradingLicense">Trading License</label>
+                <input clrInput name="tradingLicense">
+            </clr-input-container>
+        </div>
+        <div class="clr-col">
+            <clr-input-container>
+                <label for="vat">VAT</label>
+                <input clrInput name="vat">
+            </clr-input-container>
+        </div>
+        <div class="clr-col">
+            <clr-select-container>
+                <label>Currency</label>
+                <select clrSelect name="currency" >
+                  <option value="one">Saudi Arabia Rayal</option>
+                  <option value="two">Customer</option>
+                  <option value="three">Driver</option>
+                </select>
+              </clr-select-container>
+        </div>
+        <div class="clr-col">
+            <clr-input-container>
+                <label for="vat">Bank Account Number</label>
+                <input clrInput name="bankAccountNumber">
+            </clr-input-container>
+        </div>
+        <div class="clr-col">
+            <clr-input-container>
+                <label for="vat">IBAN</label>
+                <input clrInput name="iban">
+            </clr-input-container>
+        </div>
+    </div>
+    
+    
+    <div class="clr-row">
+        <button class="btn btn-primary">Submit</button>
+    </div>
+</form>
