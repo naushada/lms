@@ -1,1 +1,67 @@
-<p>find-inventory works!</p>
+
+<form clrForm clrLayout="horizontal" clrLabelSize="4">
+    <div class="clr-row">
+        <div class="clr-col-8">
+            <div class="clr-row">
+                <div class="clr-col-4">
+                    <clr-input-container >
+                        <label>SKU or Product ID</label>
+                        <input clrInput name="sku" />
+                    </clr-input-container>
+                </div>
+                
+                <div class="clr-col-4">
+                    <clr-select-container>
+                        <label>Account Code</label>
+                        <select clrSelect name="accountCode" >
+                            <option value="one">One</option>
+                            <option value="two">Two</option>
+                            <option value="three">Three</option>
+                        </select>
+                    </clr-select-container>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clr-row">
+        <div class="clr-col">
+            <button class="btn btn-primary">Submit</button>
+            <button class="btn btn-primary">Export To Excel</button>
+        </div>
+    </div>
+</form>
+
+
+<clr-datagrid>
+    <clr-dg-column>SKU or Product ID</clr-dg-column>
+    <clr-dg-column>Description</clr-dg-column>
+    <clr-dg-column>Quantity</clr-dg-column>
+    <clr-dg-column>Shelf</clr-dg-column>
+    <clr-dg-column>Row Number</clr-dg-column>
+    <clr-dg-column>Updated At</clr-dg-column>
+    <clr-dg-column>Updated On</clr-dg-column>
+    <clr-dg-column>Account Code</clr-dg-column>
+    <clr-dg-column>Created By</clr-dg-column>
+    
+    <clr-dg-row>
+        <clr-dg-cell>1</clr-dg-cell>
+        <clr-dg-cell>2</clr-dg-cell>
+        <clr-dg-cell>3</clr-dg-cell>
+        <clr-dg-cell>4</clr-dg-cell>
+        <clr-dg-cell>5</clr-dg-cell>
+        <clr-dg-cell>6</clr-dg-cell>
+        <clr-dg-cell>7</clr-dg-cell>
+        <clr-dg-cell>8</clr-dg-cell>
+        <clr-dg-cell>9</clr-dg-cell>
+    
+    </clr-dg-row>
+
+    <clr-dg-footer>
+		<clr-dg-pagination #pagination [clrDgPageSize]="10">
+			<clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">SKU or Product ID per page</clr-dg-page-size>
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+        of {{pagination.totalItems}} SKU or Product ID
+    </clr-dg-pagination>
+    </clr-dg-footer>
+</clr-datagrid>

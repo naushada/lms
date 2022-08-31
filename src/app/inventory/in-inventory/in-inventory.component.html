@@ -1,1 +1,85 @@
-<p>in-inventory works!</p>
+<form action="" clrForm clrLayout="horizontal" clrLabelSize="4">
+    <div class="clr-row">
+        <div class="clr-col">
+            <clr-input-container>
+                <label>SKU or Product ID</label>
+                <input type="text" clrInput name="sku" >
+            </clr-input-container>
+        </div>
+
+        <div class="clr-col">
+            <clr-input-container>
+                <label>Product Description</label>
+                <input type="text" clrInput name="productDescription" >
+            </clr-input-container>
+        </div>
+        
+
+        <div class="clr-col">
+            <clr-input-container>
+                <label>Quantity</label>
+                <input type="text" clrInput name="qty" >
+            </clr-input-container>
+        </div>
+
+        <div class="clr-col">
+            <clr-date-container>
+                <label>Current Date</label>
+                <input type="date" clrDate name="currentDate" >
+            </clr-date-container>
+        </div>
+    </div>
+    <div class="clr-row">
+        <div class="clr-col">
+            <cds-time>
+                <label>Current Time</label>
+                <input type="time" name="currentTime" />
+              </cds-time>
+
+        </div>
+
+        <div class="clr-col">
+            <clr-input-container>
+                <label>Shelf</label>
+                <input type="text" clrInput name="shelf" >
+            </clr-input-container>
+        </div>
+
+        <div class="clr-col">
+            <clr-input-container>
+                <label>Row Number</label>
+                <input type="text" clrInput name="rowNumber" >
+            </clr-input-container>
+        </div>
+
+        <div class="clr-col">
+            <clr-input-container>
+                <label>Created By</label>
+                <input type="text" clrInput name="createdBy" >
+            </clr-input-container>
+        </div>
+    </div>
+    <div class="clr-row">
+        <div class="clr-col">
+            <div class="clr-row">
+                <div class="clr-col-4">
+            <clr-select-container>
+                <label>Account Code</label>
+                <select clrSelect name="accountCode" >
+                  <option value="one">One</option>
+                  <option value="two">Two</option>
+                  <option value="three">Three</option>
+                </select>
+              </clr-select-container>
+            </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="clr-row">
+        <div class="clr-col">
+            <button class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>

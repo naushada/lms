@@ -86,7 +86,7 @@
         <app-inav-bar (evt)="onReceiveEvt($event)"></app-inav-bar>
         <div class="content-area">
           <app-create-manifest *ngIf="selectedNavItem === 'createManifest'"></app-create-manifest>
-          <app-detailed-report *ngIf="selectedNavItem === 'detailedReport'"></app-detailed-report>
+          <app-inventory-report *ngIf="selectedNavItem === 'detailedReport'"></app-inventory-report>
           <app-find-inventory *ngIf="selectedNavItem === 'findInventory'"></app-find-inventory>
           <app-in-inventory *ngIf="selectedNavItem === 'inInventory'"></app-in-inventory>
           <app-out-inventory *ngIf="selectedNavItem === 'outInventory'"></app-out-inventory>

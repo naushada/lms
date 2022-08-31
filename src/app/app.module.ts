@@ -35,6 +35,7 @@ import { UpdateInventoryComponent } from './inventory/update-inventory/update-in
 import { CreateManifestComponent } from './inventory/create-manifest/create-manifest.component';
 import { FindInventoryComponent } from './inventory/find-inventory/find-inventory.component';
 import { InavBarComponent } from './inventory/inav-bar/inav-bar.component';
+import { InventoryReportComponent } from './inventory-report/inventory-report.component';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import { InavBarComponent } from './inventory/inav-bar/inav-bar.component';
     CreateManifestComponent,
     FindInventoryComponent,
     InavBarComponent,
+    InventoryReportComponent,
     
   ],
   imports: [
