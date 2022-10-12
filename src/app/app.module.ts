@@ -36,6 +36,7 @@ import { CreateManifestComponent } from './inventory/create-manifest/create-mani
 import { FindInventoryComponent } from './inventory/find-inventory/find-inventory.component';
 import { InavBarComponent } from './inventory/inav-bar/inav-bar.component';
 import { InventoryReportComponent } from './inventory-report/inventory-report.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -68,6 +69,7 @@ import { InventoryReportComponent } from './inventory-report/inventory-report.co
     FindInventoryComponent,
     InavBarComponent,
     InventoryReportComponent,
+    DashboardComponent,
     
   ],
   imports: [

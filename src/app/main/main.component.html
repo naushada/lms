@@ -2,8 +2,9 @@
     <clr-header>
         <div class="branding">
             <img src="assets/ajoul.svg"  width="100px" />
-            <a href='javascript:;' class="nav-link nav-text"><span class="title">Dashboard</span></a>
-            
+            <a class = "nav-link nav-text"  (click)="onMenuSelect('dashboard')" style="cursor: pointer">
+              <span class="title">Dashboard</span>
+            </a>
         </div>
       <form class="search">
         <label for="search_input">
@@ -40,6 +41,9 @@
     
 
     <div class="content-container">
+      <ng-container *ngIf="selectedMenuItem === 'dashboard'">
+        <app-dashboard></app-dashboard>
+      </ng-container>
       <ng-container *ngIf="selectedMenuItem === 'shipping'">
         <app-submenu (evt)="onReceiveEvt($event)"></app-submenu>
         <div class="content-area">
