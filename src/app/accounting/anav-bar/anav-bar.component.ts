@@ -18,7 +18,7 @@ export class AnavBarComponent implements OnInit {
   }
 
   
-  onSipmentItemSelect(opt:string) : void {
+  onItemSelect(opt:string) : void {
     this.navItemSelected = opt;
     this.evt.emit(this.navItemSelected);
   }

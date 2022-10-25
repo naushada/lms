@@ -37,6 +37,7 @@ import { FindInventoryComponent } from './inventory/find-inventory/find-inventor
 import { InavBarComponent } from './inventory/inav-bar/inav-bar.component';
 import { InventoryReportComponent } from './inventory-report/inventory-report.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EmailComponent } from './tracking/email/email.component';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     InavBarComponent,
     InventoryReportComponent,
     DashboardComponent,
+    EmailComponent,
     
   ],
   imports: [

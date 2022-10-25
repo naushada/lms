@@ -16,14 +16,20 @@
             </clr-select-container>
             -->
             <clr-input-container>
+                <label class="clr-sr-only">Corporate name</label>
+                <input type="text" name="corporatename" clrInput placeholder="Corporate name" formControlName="corporatename" />
+                <clr-control-error>Corporate name (Organization name) is required!</clr-control-error>
+            </clr-input-container>
+
+            <clr-input-container>
                 <label class="clr-sr-only">Username</label>
                 <input type="text" name="username" clrInput placeholder="Username" formControlName="username" />
-                <clr-control-error>This field is required!</clr-control-error>
+                <clr-control-error>Username is required!</clr-control-error>
             </clr-input-container>
             <clr-password-container>
                 <label class="clr-sr-only">Password</label>
                 <input type="password" name="password" clrPassword placeholder="Password" formControlName="password"/>
-                <clr-control-error>This field is required!</clr-control-error>
+                <clr-control-error>Password is required!</clr-control-error>
             </clr-password-container>
             
             <button [clrLoading]="validateBtnState" type="submit" class="btn btn-primary">Login</button>

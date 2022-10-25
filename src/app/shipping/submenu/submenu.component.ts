@@ -18,7 +18,7 @@ export class SubmenuComponent implements OnInit {
   }
 
   
-  onSipmentItemSelect(opt:string) : void {
+  onItemSelect(opt:string) : void {
     //alert(opt);
     this.navItemSelected = opt;
     this.evt.emit(this.navItemSelected);
