@@ -1,9 +1,9 @@
-<form clrForm clrLayout="horizontal" clrLabelSize="4">
+<form clrForm clrLayout="horizontal" clrLabelSize="4" [formGroup]="genericForm">
     <div class="clr-row">
         <div class="clr-col-2">
             <clr-checkbox-wrapper>
-                <input type="checkbox" clrCheckbox name="awbNo" value="">
-                <label for="">Autogenerate AWB Number</label>
+                <input type="checkbox" clrCheckbox name="isAutoGenerate" value="" checked="true">
+                <label for="isAutoGenerate">Autogenerate AWB Number</label>
             </clr-checkbox-wrapper>
         </div>
     </div>
@@ -15,7 +15,7 @@
             </clr-input-container>
                     
         </div>
-        <div class="clr-col-4">
+        <div class="clr-col-5">
             <clr-input-container >
                 <label>Alternate Reference No.</label>
                 <input clrInput name="altRefNo" />
@@ -25,7 +25,8 @@
     </div>
     
 </form>
-<form clrLayout="horizontal" clrLabelSize="4">
+<form clrLayout="horizontal" clrLabelSize="4" [formGroup]="shipmentForm" (ngSubmit)="onShipmentCreate()">
+
     <div class="clr-row">
         <div class="clr-col">
             <clr-input-container >
@@ -164,13 +165,13 @@
             
         </div>
 
-        <div class="clr-col-1">
+        <div class="clr-col-2">
             <clr-select-container>
                 <label>Service</label>
                 <select clrSelect name="service" >
-                    <option value="one">One</option>
-                    <option value="two">Two</option>
-                    <option value="three">Three</option>
+                    <option *ngFor="let svc of this.defValue?.ServiceType" [value]="svc">
+                        {{svc}}
+                      </option>
                 </select>
             </clr-select-container>
         </div>
@@ -231,13 +232,13 @@
             </clr-input-container>
             
         </div>
-        <div class="clr-col-1">
+        <div class="clr-col-2">
             <clr-select-container>
                 <label>Currency</label>
                 <select clrSelect name="currency" >
-                    <option value="one">One</option>
-                    <option value="two">Two</option>
-                    <option value="three">Three</option>
+                    <option *ngFor="let currency of this.defValue?.Currency" [value]="currency">
+                        {{currency}}
+                    </option>
                 </select>
             </clr-select-container>
 
@@ -257,8 +258,7 @@
                 <label >Weight Units</label>
                 <select clrSelect name="weightUnits" >
                     <option value="kg">KG</option>
-                    <option value="two">Two</option>
-                    <option value="three">Three</option>
+                    <option value="gram">Gram</option>
                 </select>
             </clr-select-container>
             
@@ -291,10 +291,14 @@
         </div>
 
         <div class="clr-col-2">
-            <clr-input-container >
+            <clr-select-container >
                 <label>Country</label>
-                <input clrInput name="country" />
-            </clr-input-container>
+                <select clrSelect name="country">
+                    <option *ngFor="let cuntry of this.defValue?.CountryName" [value]="cuntry">
+                        {{cuntry}}
+                    </option>
+                </select>
+            </clr-select-container>
             
         </div>
 
@@ -363,7 +367,7 @@
 
     <div class="clr-row">
         <div class="clr-col-2">
-            <button class="btn btn-primary">Update Shipment</button>
+            <button class="btn btn-primary">Create Shipment</button>
         </div>
     </div>
     
