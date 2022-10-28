@@ -162,3 +162,21 @@ export const AppGlobalsDefault: AppGlobals = {
     
 
 }
+
+interface senderInformation {
+
+}
+
+interface shipmentInformation {
+
+}
+
+interface receiverInformation {
+
+}
+
+export interface Shipment {
+    senderInfo: senderInformation;
+    shipmentInfo: shipmentInformation;
+    receiverInfo: receiverInformation;
+}
