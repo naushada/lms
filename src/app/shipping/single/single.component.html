@@ -38,7 +38,7 @@
         <div class="clr-col-2">
             <clr-input-container >
                 <label>Account No.</label>
-                <input clrInput name="accountNo" />
+                <input clrInput name="accountNo" formControlName="accountNo" />
             </clr-input-container>
             <button class="btn">Retrieve</button>
         </div>
@@ -47,7 +47,7 @@
             
             <clr-input-container >
                 <label>Reference No.</label>
-                <input clrInput name="referenceNo" disabled />
+                <input clrInput name="referenceNo" formControlName="referenceNo" />
             </clr-input-container>
             
         </div>
@@ -56,7 +56,7 @@
             
             <clr-input-container >
                 <label>Name</label>
-                <input clrInput name="name" />
+                <input clrInput name="name" formControlName="name" />
             </clr-input-container>
             
         </div>
@@ -65,14 +65,14 @@
             
             <clr-input-container >
                 <label>Company (Corporate) Name</label>
-                <input clrInput name="companyName" />
+                <input clrInput name="companyName" formControlName="companyName" />
             </clr-input-container>
             
         </div>
         <div class="clr-col-2">
             <clr-input-container >
                 <label>Country</label>
-                <input clrInput name="country" disabled />
+                <input clrInput name="country"  formControlName="country"/>
             </clr-input-container>
             
         </div>
@@ -81,7 +81,7 @@
             
             <clr-input-container >
                 <label>City</label>
-                <input clrInput name="city" disabled />
+                <input clrInput name="city" formControlName="city"  />
             </clr-input-container>
             
         </div>
@@ -93,7 +93,7 @@
             
             <clr-input-container >
                 <label>State</label>
-                <input clrInput name="state" disabled />
+                <input clrInput name="state" formControlName="state" />
             </clr-input-container>
             
         </div>
@@ -101,14 +101,14 @@
         <div class="clr-col-2">
             <clr-textarea-container>
                 <label>Address</label>
-                <textarea clrTextarea name="address" required disabled ></textarea>
-                <clr-control-helper>You can't modify this </clr-control-helper>
+                <textarea clrTextarea name="address" required formControlName="address" ></textarea>
+                <!--<clr-control-helper>You can't modify this </clr-control-helper>-->
             </clr-textarea-container>
         </div>
         <div class="clr-col-2">
             <clr-input-container >
                 <label>Postal Code</label>
-                <input clrInput name="postalCode" disabled/>
+                <input clrInput name="postalCode" formControlName="postalCode" />
             </clr-input-container>
             
         </div>
@@ -117,7 +117,7 @@
             
             <clr-input-container >
                 <label>Contact</label>
-                <input clrInput name="contact" disabled />
+                <input clrInput name="contact" formControlName="contact" />
             </clr-input-container>
             
         </div>
@@ -125,7 +125,7 @@
             
             <clr-input-container >
                 <label>Phone Number</label>
-                <input clrInput name="phoneNumber" disabled />
+                <input clrInput name="phoneNumber" formControlName="phoneNumber" />
             </clr-input-container>
             
         </div>
@@ -133,7 +133,7 @@
         <div class="clr-col-2">
             <clr-input-container >
                 <label>E-Mail</label>
-                <input clrInput name="email" disabled />
+                <input clrInput name="email" formControlName="email" />
             </clr-input-container>
         </div>
 
@@ -143,7 +143,7 @@
         <div class="clr-col-2">
             <clr-input-container >
                 <label>Receiving Tax ID</label>
-                <input clrInput name="receivingTaxId" disabled />
+                <input clrInput name="receivingTaxId" formControlName="receivingTaxId" />
             </clr-input-container>
             
         </div>

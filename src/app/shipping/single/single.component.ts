@@ -27,7 +27,6 @@ export class SingleComponent implements OnInit {
     });
 
     this.senderInformationForm = this.fb.group({
-        
           accountNo: '',
           referenceNo: '',
           name:'',
@@ -77,6 +76,13 @@ export class SingleComponent implements OnInit {
       console.log(this.senderInformationForm.value);
       console.log(this.receiverInformationForm.value);
       console.log(this.shipmentInformationForm.value);
+      const jjson = {"shipment": {"senderInformation": { ...this.senderInformationForm.value},
+                                  "shipmentInformation": { ...this.shipmentInformationForm.value},
+                                  "receiverInformation": { ...this.receiverInformationForm.value}
+                                },
+                    };
+      console.log(jjson);
+      alert(jjson);
   }
 
   ngOnInit(): void {
