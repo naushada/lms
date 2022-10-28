@@ -11,25 +11,25 @@
         <div class="clr-col-3">
             <clr-input-container >
                 <label>AWB No.</label>
-                <input clrInput name="awbno" />
+                <input clrInput name="awbno" formControlName="awbno" />
             </clr-input-container>
                     
         </div>
         <div class="clr-col-5">
             <clr-input-container >
                 <label>Alternate Reference No.</label>
-                <input clrInput name="altRefNo" />
+                <input clrInput name="altRefNo" formControlName="altRefNo">
             </clr-input-container>
                     
         </div>
     </div>
     
 </form>
-<form clrLayout="horizontal" clrLabelSize="4" [formGroup]="shipmentForm" (ngSubmit)="onShipmentCreate()">
+<form clrLayout="horizontal" clrLabelSize="4" [formGroup]="senderInformationForm">
 
     <div class="clr-row">
         <div class="clr-col">
-            <clr-input-container >
+            <clr-input-container>
             <label for=""><u><i>Sender Information</i></u></label>
             </clr-input-container>
         </div>
@@ -47,7 +47,7 @@
             
             <clr-input-container >
                 <label>Reference No.</label>
-                <input clrInput name="referenceNo" disabled class="disabled" />
+                <input clrInput name="referenceNo" disabled />
             </clr-input-container>
             
         </div>
@@ -56,7 +56,7 @@
             
             <clr-input-container >
                 <label>Name</label>
-                <input clrInput name="name" class="mandatory" />
+                <input clrInput name="name" />
             </clr-input-container>
             
         </div>
@@ -65,14 +65,14 @@
             
             <clr-input-container >
                 <label>Company (Corporate) Name</label>
-                <input clrInput name="companyName" class="mandatory"/>
+                <input clrInput name="companyName" />
             </clr-input-container>
             
         </div>
         <div class="clr-col-2">
             <clr-input-container >
                 <label>Country</label>
-                <input clrInput name="country" disabled class="disabled"/>
+                <input clrInput name="country" disabled />
             </clr-input-container>
             
         </div>
@@ -81,7 +81,7 @@
             
             <clr-input-container >
                 <label>City</label>
-                <input clrInput name="city" disabled class="disabled"/>
+                <input clrInput name="city" disabled />
             </clr-input-container>
             
         </div>
@@ -93,7 +93,7 @@
             
             <clr-input-container >
                 <label>State</label>
-                <input clrInput name="state" disabled class="disabled" />
+                <input clrInput name="state" disabled />
             </clr-input-container>
             
         </div>
@@ -101,14 +101,14 @@
         <div class="clr-col-2">
             <clr-textarea-container>
                 <label>Address</label>
-                <textarea clrTextarea name="address" required disabled class="disabled" ></textarea>
-                <!--<clr-control-helper>You can't modify this </clr-control-helper>-->
+                <textarea clrTextarea name="address" required disabled ></textarea>
+                <clr-control-helper>You can't modify this </clr-control-helper>
             </clr-textarea-container>
         </div>
         <div class="clr-col-2">
             <clr-input-container >
                 <label>Postal Code</label>
-                <input clrInput name="postalCode" disabled class="disabled" />
+                <input clrInput name="postalCode" disabled/>
             </clr-input-container>
             
         </div>
@@ -117,7 +117,7 @@
             
             <clr-input-container >
                 <label>Contact</label>
-                <input clrInput name="contact" disabled class="disabled" />
+                <input clrInput name="contact" disabled />
             </clr-input-container>
             
         </div>
@@ -125,7 +125,7 @@
             
             <clr-input-container >
                 <label>Phone Number</label>
-                <input clrInput name="phoneNumber" disabled class="disabled" />
+                <input clrInput name="phoneNumber" disabled />
             </clr-input-container>
             
         </div>
@@ -133,7 +133,7 @@
         <div class="clr-col-2">
             <clr-input-container >
                 <label>E-Mail</label>
-                <input clrInput name="email" disabled class="disabled" />
+                <input clrInput name="email" disabled />
             </clr-input-container>
         </div>
 
@@ -143,12 +143,13 @@
         <div class="clr-col-2">
             <clr-input-container >
                 <label>Receiving Tax ID</label>
-                <input clrInput name="receivingTaxId" disabled class="disabled" />
+                <input clrInput name="receivingTaxId" disabled />
             </clr-input-container>
             
         </div>
     </div>
-
+</form>
+<form clrLayout="horizontal" clrLabelSize="4" [formGroup]="shipmentInformationForm" >
     <div class="clr-row">
         <div class="clr-col-2">
             <clr-input-container >
@@ -160,7 +161,7 @@
         <div class="clr-col-2">
             <clr-input-container >
                 <label>SKU No.</label>
-                <input clrInput name="skuNo" />
+                <input clrInput name="skuNo" formControlName="skuNo" />
             </clr-input-container>
             
         </div>
@@ -168,7 +169,7 @@
         <div class="clr-col-2">
             <clr-select-container>
                 <label>Service</label>
-                <select clrSelect name="service" >
+                <select clrSelect name="service" formControlName="service">
                     <option *ngFor="let svc of this.defValue?.ServiceType" [value]="svc">
                         {{svc}}
                       </option>
@@ -180,7 +181,7 @@
             
             <clr-input-container >
                 <label>Number Of Items</label>
-                <input clrInput name="numberOfItems" class="mandatory" />
+                <input clrInput name="numberOfItems" class="mandatory" formControlName="numberOfItems" />
             </clr-input-container>
             
         </div>
@@ -189,7 +190,7 @@
             
             <clr-input-container >
                 <label>Goods Description</label>
-                <input clrInput name="goodsDescription" />
+                <input clrInput name="goodsDescription" formControlName="goodsDescription" />
             </clr-input-container>
             
         </div>
@@ -197,7 +198,7 @@
         <div class="clr-col-2">
             <clr-input-container >
                 <label>Goods Value</label>
-                <input clrInput name="goodsValue" />
+                <input clrInput name="goodsValue" formControlName="goodsValue" />
             </clr-input-container>
             
         </div>
@@ -206,7 +207,7 @@
             
             <clr-input-container >
                 <label>Customs Value</label>
-                <input clrInput name="customsValue" />
+                <input clrInput name="customsValue" formControlName="customsValue" />
             </clr-input-container>
             
         </div>
@@ -219,7 +220,7 @@
             
             <clr-input-container >
                 <label>COD Ammount</label>
-                <input clrInput name="codAmount" />
+                <input clrInput name="codAmount" formControlName="codAmount" />
             </clr-input-container>
             
         </div>
@@ -228,14 +229,14 @@
             
             <clr-input-container >
                 <label>VAT</label>
-                <input clrInput name="vat" />
+                <input clrInput name="vat" formControlName="vat" />
             </clr-input-container>
             
         </div>
         <div class="clr-col-2">
             <clr-select-container>
                 <label>Currency</label>
-                <select clrSelect name="currency" >
+                <select clrSelect name="currency" formControlName="currency" >
                     <option *ngFor="let currency of this.defValue?.Currency" [value]="currency">
                         {{currency}}
                     </option>
@@ -248,7 +249,7 @@
             
             <clr-input-container >
                 <label class="required">Weight</label>
-                <input clrInput name="weight" />
+                <input clrInput name="weight" formControlName="weight" />
             </clr-input-container>
             
         </div>
@@ -256,7 +257,7 @@
         <div class="clr-col-2">
             <clr-select-container>
                 <label >Weight Units</label>
-                <select clrSelect name="weightUnits" >
+                <select clrSelect name="weightUnits" formControlName="weightUnits">
                     <option value="kg">KG</option>
                     <option value="gram">Gram</option>
                 </select>
@@ -267,12 +268,13 @@
         <div class="clr-col-2">
             <clr-input-container >
                 <label>Cubic Weight (LxBxH)</label>
-                <input clrInput name="cubicWeight" />
+                <input clrInput name="cubicWeight" formControlName="cubicWeight" />
             </clr-input-container>
         </div>
 
     </div>
-
+</form>
+<form clrLayout="horizontal" clrLabelSize="4" [formGroup]="receiverInformationForm" >
     <div class="clr-row">
         <div class="clr-col">
             <clr-input-container >
@@ -285,7 +287,7 @@
             
             <clr-input-container >
                 <label>Name</label>
-                <input clrInput name="name" />
+                <input clrInput name="name" formControlName="name" />
             </clr-input-container>
             
         </div>
@@ -293,7 +295,7 @@
         <div class="clr-col-2">
             <clr-select-container >
                 <label>Country</label>
-                <select clrSelect name="country">
+                <select clrSelect name="country" formControlName="country" >
                     <option *ngFor="let cuntry of this.defValue?.CountryName" [value]="cuntry">
                         {{cuntry}}
                     </option>
@@ -306,7 +308,7 @@
             
             <clr-input-container >
                 <label>City</label>
-                <input clrInput name="city" />
+                <input clrInput name="city" formControlName="city" />
             </clr-input-container>
             
         </div>
@@ -315,14 +317,14 @@
             
             <clr-input-container >
                 <label>State</label>
-                <input clrInput name="state" />
+                <input clrInput name="state" formControlName="state" />
             </clr-input-container>
             
         </div>
         <div class="clr-col-2">
             <clr-input-container >
                 <label>Postal Code</label>
-                <input clrInput name="postalCode" />
+                <input clrInput name="postalCode" formControlName="postalCode" />
             </clr-input-container>
             
         </div>
@@ -331,7 +333,7 @@
             
             <clr-input-container >
                 <label>Contact</label>
-                <input clrInput name="contact" />
+                <input clrInput name="contact" formControlName="contact" />
             </clr-input-container>
             
         </div>
@@ -342,7 +344,7 @@
         <div class="clr-col-2">
             <clr-textarea-container>
                 <label>Address</label>
-                <textarea clrTextarea name="address" required ></textarea>
+                <textarea clrTextarea name="address" required formControlName="address" ></textarea>
                 <!--<clr-control-helper>You can't modify this </clr-control-helper>-->
             </clr-textarea-container>
         </div>
@@ -351,7 +353,7 @@
             
             <clr-input-container >
                 <label>Phone</label>
-                <input clrInput name="phone" />
+                <input clrInput name="phone" formControlName="phone" />
             </clr-input-container>
             
         </div>
@@ -359,7 +361,7 @@
         <div class="clr-col-2">
             <clr-input-container >
                 <label>E-Mail</label>
-                <input clrInput name="email" />
+                <input clrInput name="email" formControlName="email" />
             </clr-input-container>
         </div>
 
@@ -367,7 +369,7 @@
 
     <div class="clr-row">
         <div class="clr-col-2">
-            <button class="btn btn-primary">Create Shipment</button>
+            <button class="btn btn-primary" (click)="onShipmentCreate()">Create Shipment</button>
         </div>
     </div>
     

@@ -10,8 +10,11 @@ import { AppGlobals, AppGlobalsDefault } from 'src/common/app-globals';
 })
 export class SingleComponent implements OnInit {
 
-  shipmentForm: FormGroup;
+  senderInformationForm: FormGroup;
   genericForm: FormGroup;
+  shipmentInformationForm: FormGroup;
+  receiverInformationForm: FormGroup;
+
   defValue?: AppGlobals;
 
   constructor(private fb: FormBuilder, private rt:Router) {
@@ -23,8 +26,8 @@ export class SingleComponent implements OnInit {
       altRefNo: ''
     });
 
-    this.shipmentForm = this.fb.group({
-        senderInformation: this.fb.group({
+    this.senderInformationForm = this.fb.group({
+        
           accountNo: '',
           referenceNo: '',
           name:'',
@@ -38,8 +41,8 @@ export class SingleComponent implements OnInit {
           phoneNumber:'',
           email:'',
           receivingTaxId:''
-        }),
-        shipmentInformation: this.fb.group({
+        });
+    this.shipmentInformationForm = this.fb.group({
           skuNo:'',
           service:this.defValue.ServiceType?.at(1),
           numberOfItems:'',
@@ -54,8 +57,8 @@ export class SingleComponent implements OnInit {
           cubicWeight:'',
           altRefNo: this.genericForm.get('altRefNo')?.value,
           awbNo: this.genericForm.get('awbno')?.value
-        }),
-        receiverInformation: this.fb.group({
+        });
+  this.receiverInformationForm= this.fb.group({
           name:'',
           country:this.defValue.CountryName?.at(1),
           city:'',
@@ -65,13 +68,15 @@ export class SingleComponent implements OnInit {
           address:'',
           phone:'',
           email:''
-        })
-    });
+        });
   }
   
   onShipmentCreate()
   {
-      console.log(this.shipmentForm.value);
+      console.log(this.genericForm.value);
+      console.log(this.senderInformationForm.value);
+      console.log(this.receiverInformationForm.value);
+      console.log(this.shipmentInformationForm.value);
   }
 
   ngOnInit(): void {
