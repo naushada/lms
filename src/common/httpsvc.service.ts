@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
 import { forkJoin, Observable } from 'rxjs';
-import { Shipment } from './app-globals';
+import { Shipment, Account, ShipmentStatus, Inventory } from './app-globals';
 
 @Injectable({
   providedIn: 'root'
@@ -27,9 +27,14 @@ export class HttpsvcService {
   //private apiURL: string = 'https://xpmile.herokuapp.com'
   //apiURL = 'https://xpmile-wphbm7seyq-uc.a.run.app';
 
-  
+  /**
+   * @brief This function retrieves the waybill details based on waybill number.
+   * @param awb 
+   * @param accountCode 
+   * @returns 
+   */
   getShipmentByAwbNo(awb: string, accountCode?: string): Observable<Shipment> {
-    let param = `shipmentNo=${awb}`;
+    let param = `awbNo=${awb}`;
 
     if(accountCode != undefined) {
       param += `&accountCode=${accountCode}`
@@ -37,10 +42,16 @@ export class HttpsvcService {
 
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + '/api/awbno';
+    let uri: string = this.apiURL + '/api/v1/shipment/shipping';
     return this.http.get<Shipment>(uri, options)
   }
 
+  /**
+   * 
+   * @param altRefNo 
+   * @param accountCode 
+   * @returns 
+   */
   getShipmentByAltRefNo(altRefNo: string, accountCode?: string): Observable<Shipment> {
     let param = `altRefNo=${altRefNo}`;
 
@@ -50,10 +61,16 @@ export class HttpsvcService {
     
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + '/api/altrefno';
+    let uri: string = this.apiURL + '/api/v1/shipment/shipping';
     return this.http.get<Shipment>(uri, options)
   }
 
+  /**
+   * 
+   * @param senderRefNo 
+   * @param accountCode 
+   * @returns 
+   */
   getShipmentBySenderRefNo(senderRefNo: string, accountCode?: string): Observable<Shipment> {
     let param = `senderRefNo=${senderRefNo}`;
 
@@ -67,6 +84,14 @@ export class HttpsvcService {
     return this.http.get<Shipment>(uri, options)
   }
 
+  /**
+   * 
+   * @param fromDate 
+   * @param toDate 
+   * @param country 
+   * @param accountCode 
+   * @returns 
+   */
   getShipments(fromDate:string, toDate:string, country?:string, accountCode?: Array<string>): Observable<Shipment[]> {
     let param = `fromDate=${fromDate}&toDate=${toDate}`;
 
@@ -85,6 +110,12 @@ export class HttpsvcService {
   }
 
 
+  /**
+   * 
+   * @param awb 
+   * @param accountCode 
+   * @returns 
+   */
   getShipmentsByAwbNo(awb: Array<string>, accountCode?: string): Observable<Shipment[]> {
     let param = `awbNo=${awb}`;
 
@@ -98,6 +129,12 @@ export class HttpsvcService {
     return this.http.get<Shipment[]>(uri, options)
   }
 
+  /**
+   * 
+   * @param altRefNo 
+   * @param accountCode 
+   * @returns 
+   */
   getShipmentsByAltRefNo(altRefNo: Array<string>, accountCode?: string): Observable<Shipment[]> {
     let param = `awbNo=${altRefNo}`;
 
@@ -111,6 +148,12 @@ export class HttpsvcService {
     return this.http.get<Shipment[]>(uri, options)
   }
 
+  /**
+   * 
+   * @param senderRefNo 
+   * @param accountCode 
+   * @returns 
+   */
   getShipmentsBySenderRefNo(senderRefNo: Array<string>, accountCode?: string): Observable<Shipment[]> {
     let param = `awbNo=${senderRefNo}`;
 
@@ -124,6 +167,12 @@ export class HttpsvcService {
     return this.http.get<Shipment[]>(uri, options)
   }
 
+  /**
+   * 
+   * @param id 
+   * @param pwd 
+   * @returns 
+   */
   getAccountInfo(id:string, pwd: string): Observable<Account> {
     let param = `userId=${id}&password=${pwd}`;
 
@@ -134,6 +183,10 @@ export class HttpsvcService {
   }
 
 
+  /**
+   * 
+   * @returns 
+   */
   getAccountInfoList(): Observable<Account[]> {
     
      const options = {
@@ -147,6 +200,11 @@ export class HttpsvcService {
     return this.http.get<Account[]>(uri, options);
   }
 
+  /**
+   * 
+   * @param accountCode 
+   * @returns 
+   */
   getCustomerInfo(accountCode: string): Observable<Account> {
     let param = `accountCode=${accountCode}`;
 
@@ -156,10 +214,21 @@ export class HttpsvcService {
     return this.http.get<Account>(uri, options);
   }
 
+  /**
+   * 
+   * @param newShipment 
+   * @returns 
+   */
   createBulkShipment(newShipment:string) : Observable<any> {
     return this.http.post<Shipment>(this.apiURL + '/api/bulk/shipping', newShipment, this.httpOptions);
   }
 
+  /**
+   * 
+   * @param awbNo 
+   * @param data 
+   * @returns 
+   */
   updateShipment(awbNo: Array<string>, data: ShipmentStatus) : Observable<any> {
     let param = `shipmentNo=${awbNo}`;
 
@@ -204,6 +273,11 @@ export class HttpsvcService {
     return forkJoin(reqArr);
   }
 
+  /**
+   * 
+   * @param newAccount 
+   * @returns 
+   */
   createAccount(newAccount:Account) : Observable<Account> {
     return this.http.post<Account>(this.apiURL + '/api/account', JSON.stringify(newAccount), this.httpOptions);
 

@@ -180,3 +180,15 @@ export interface Shipment {
     shipmentInfo: shipmentInformation;
     receiverInfo: receiverInformation;
 }
+
+export interface Account {
+
+}
+
+export interface ShipmentStatus{
+
+}
+
+export interface Inventory {
+    
+}
