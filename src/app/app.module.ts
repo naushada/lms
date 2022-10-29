@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ClarityModule} from "@clr/angular";
@@ -82,7 +83,7 @@ import { EmailComponent } from './tracking/email/email.component';
     FormsModule,
     ReactiveFormsModule,
     CdsModule,
-    
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

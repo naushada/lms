@@ -358,7 +358,7 @@ export class HttpsvcService {
    * @returns 
    */
    createShipment(newShipment:any) : Observable<any> {
-    return this.http.post<any>(this.apiURL + UriMap.get("from_web_shipment"), 
+    return this.http.post<any>(this.apiURL + UriMap.get("from_web_single_shipment"), 
                                     newShipment, 
                                     this.httpOptions);
   }

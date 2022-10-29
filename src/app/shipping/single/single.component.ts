@@ -41,7 +41,8 @@ export class SingleComponent implements OnInit {
           phoneNumber:'',
           email:'',
           receivingTaxId:''
-        });
+    });
+
     this.shipmentInformationForm = this.fb.group({
           skuNo:'',
           service:this.defValue.ServiceType?.at(1),
@@ -57,8 +58,9 @@ export class SingleComponent implements OnInit {
           cubicWeight:'',
           altRefNo: this.genericForm.get('altRefNo')?.value,
           awbNo: this.genericForm.get('awbno')?.value
-        });
-  this.receiverInformationForm= this.fb.group({
+    });
+
+    this.receiverInformationForm= this.fb.group({
           name:'',
           country:this.defValue.CountryName?.at(1),
           city:'',
@@ -68,7 +70,7 @@ export class SingleComponent implements OnInit {
           address:'',
           phone:'',
           email:''
-        });
+    });
   }
   
   onShipmentCreate()
@@ -78,18 +80,18 @@ export class SingleComponent implements OnInit {
       console.log(this.receiverInformationForm.value);
       console.log(this.shipmentInformationForm.value);
 
-      let new_shipment:any = {"shipment": {"senderInformation": { ...this.senderInformationForm.value},
+      let new_shipment:any = {"shipment": {
+                                  "senderInformation":   { ...this.senderInformationForm.value},
                                   "shipmentInformation": { ...this.shipmentInformationForm.value},
                                   "receiverInformation": { ...this.receiverInformationForm.value}
-                                },
+                              }
                     };
 
       console.log(new_shipment);
       alert(JSON.stringify(new_shipment));
       this.rest.createShipment(JSON.stringify(new_shipment)).subscribe((resp: any) => {},
                                                                        error => {alert("Waybill creation failed");},
-                                                                       () => {}
-      );
+                                                                       () => {});
   }
 
   ngOnInit(): void {
