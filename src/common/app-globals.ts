@@ -1,3 +1,5 @@
+import { Time } from "@angular/common";
+
 export interface AppGlobals {
     ServiceType?: Array<string>;
     Events?: Array<string>;
@@ -159,20 +161,67 @@ export const AppGlobalsDefault: AppGlobals = {
     "Dhahran",
     "AlKharj"]
 
-    
-
 }
 
 interface senderInformation {
 
+    accountNo: string;
+    referenceNo: string;
+    name: string;
+    companyName: string;
+    country: string;
+    city: string;
+    state:string;
+    address: string;
+    postalCode: string;
+    contact: string;
+    phoneNumber: string;
+    email: string;
+    receivingTaxId: string;
 }
 
 interface shipmentInformation {
 
+    activity: activityOnShipment;
+    skuNo: string;
+    service: string;
+    numberOfItems: string;
+    goodsDescription: string;
+    goodsValue: string;
+    customsValue: string;
+    codAmount: string;
+    vat: string;
+    currency: string;
+    weight: string;
+    weightUnits: string;
+    cubicWeight:string;
+    altRefNo: string;
+    awbNo: string;
+    createdOn: Date;
+    createdBy: string;
 }
 
 interface receiverInformation {
 
+    name: string
+    country:string;
+    city:string;
+    state: string;
+    postalCode: string;
+    contact:string;
+    address: string;
+    phone: string;
+    email: string;
+}
+
+interface activityOnShipment{
+    date: Date;
+    event:string;
+    time: Time;
+    notes: string;
+    driver: string;
+    updatedBy: string;
+    eventLocation: string;
 }
 
 export interface Shipment {

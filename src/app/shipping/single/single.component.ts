@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppGlobals, AppGlobalsDefault, Shipment } from 'src/common/app-globals';
 import { HttpsvcService } from 'src/common/httpsvc.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-single',
@@ -15,7 +16,7 @@ export class SingleComponent implements OnInit {
   genericForm: FormGroup;
   shipmentInformationForm: FormGroup;
   receiverInformationForm: FormGroup;
-
+  
   defValue?: AppGlobals;
 
   constructor(private fb: FormBuilder, private rt:Router, private rest:HttpsvcService) {
@@ -44,6 +45,9 @@ export class SingleComponent implements OnInit {
     });
 
     this.shipmentInformationForm = this.fb.group({
+          activity: this.fb.array([{date: formatDate(new Date(), 'dd/MM/yyyy', 'en'), event: "Document Created", 
+                                    time:new Date().getHours()+':'+new Date().getMinutes(), notes:'Document Ccreated', driver:'', 
+                                    updatedBy: '', eventLocation:'Riyadh'}]),
           skuNo:'',
           service:this.defValue.ServiceType?.at(1),
           numberOfItems:'',
@@ -57,7 +61,9 @@ export class SingleComponent implements OnInit {
           weightUnits:'',
           cubicWeight:'',
           altRefNo: this.genericForm.get('altRefNo')?.value,
-          awbNo: this.genericForm.get('awbno')?.value
+          awbNo: this.genericForm.get('awbno')?.value,
+          createdOn: formatDate(new Date(), 'dd/MM/yyyy', 'en'),
+          createdBy: new Date().getHours()+':'+new Date().getMinutes()
     });
 
     this.receiverInformationForm= this.fb.group({
@@ -89,7 +95,7 @@ export class SingleComponent implements OnInit {
 
       console.log(new_shipment);
       alert(JSON.stringify(new_shipment));
-      this.rest.createShipment(JSON.stringify(new_shipment)).subscribe((resp: any) => {},
+      this.rest.createShipment(JSON.stringify(new_shipment)).subscribe((resp: any) => {alert("Waybill is create successfully for shipment.")},
                                                                        error => {alert("Waybill creation failed");},
                                                                        () => {});
   }
