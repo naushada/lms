@@ -81,7 +81,7 @@ import { EmailComponent } from './tracking/email/email.component';
     ClarityModule,
     FormsModule,
     ReactiveFormsModule,
-    CdsModule
+    CdsModule,
     
   ],
   providers: [],

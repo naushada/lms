@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
 import { forkJoin, Observable } from 'rxjs';
-import { Shipment, Account, ShipmentStatus, Inventory } from './app-globals';
+import { Shipment, Account, ShipmentStatus, Inventory, UriMap } from './app-globals';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,8 @@ export class HttpsvcService {
   //private apiURL:string = 'https://xapp-cpkpi52p2q-uc.a.run.app';
   //private apiURL: string = 'https://xpmile.herokuapp.com'
   //apiURL = 'https://xpmile-wphbm7seyq-uc.a.run.app';
-
+  
+  /** CREATE Section */
   /**
    * @brief This function retrieves the waybill details based on waybill number.
    * @param awb 
@@ -42,7 +43,7 @@ export class HttpsvcService {
 
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + '/api/v1/shipment/shipping';
+    let uri: string = this.apiURL + UriMap.get("from_web_shipment");
     return this.http.get<Shipment>(uri, options)
   }
 
@@ -61,7 +62,7 @@ export class HttpsvcService {
     
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + '/api/v1/shipment/shipping';
+    let uri: string = this.apiURL + UriMap.get("from_web_shipment");
     return this.http.get<Shipment>(uri, options)
   }
 
@@ -80,7 +81,7 @@ export class HttpsvcService {
     
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + '/api/senderrefno';
+    let uri: string = this.apiURL + UriMap.get("from_web_shipment");
     return this.http.get<Shipment>(uri, options)
   }
 
@@ -105,7 +106,7 @@ export class HttpsvcService {
 
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + '/api/shipmentlist';
+    let uri: string = this.apiURL + UriMap.get("from_web_shipment");
     return this.http.get<Shipment[]>(uri, options)
   }
 
@@ -125,7 +126,7 @@ export class HttpsvcService {
 
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + '/api/awbnolist';
+    let uri: string = this.apiURL + UriMap.get("from_web_shipment");
     return this.http.get<Shipment[]>(uri, options)
   }
 
@@ -144,7 +145,7 @@ export class HttpsvcService {
     
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + '/api/altrefnolist';
+    let uri: string = this.apiURL + UriMap.get("from_web_shipment");
     return this.http.get<Shipment[]>(uri, options)
   }
 
@@ -163,7 +164,7 @@ export class HttpsvcService {
     
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + '/api/senderrefnolist';
+    let uri: string = this.apiURL + UriMap.get("from_web_shipment");
     return this.http.get<Shipment[]>(uri, options)
   }
 
@@ -178,7 +179,7 @@ export class HttpsvcService {
 
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + '/api/login';
+    let uri: string = this.apiURL + UriMap.get("from_web_account");
     return this.http.get<Account>(uri, options);
   }
 
@@ -196,7 +197,7 @@ export class HttpsvcService {
       })
     } 
 
-    let uri: string = this.apiURL + '/api/accountlist';
+    let uri: string = this.apiURL + UriMap.get("from_web_account");
     return this.http.get<Account[]>(uri, options);
   }
 
@@ -210,18 +211,43 @@ export class HttpsvcService {
 
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + '/api/account';
+    let uri: string = this.apiURL + UriMap.get("from_web_account");
     return this.http.get<Account>(uri, options);
   }
 
-  /**
-   * 
-   * @param newShipment 
-   * @returns 
-   */
-  createBulkShipment(newShipment:string) : Observable<any> {
-    return this.http.post<Shipment>(this.apiURL + '/api/bulk/shipping', newShipment, this.httpOptions);
+
+  getFromInventory(sku: string, acc?: string): Observable<Inventory[]> {
+    let param = `sku=${sku}`;
+
+    if(acc && acc.length > 0) {
+      param += `accountCode=${acc}`;
+    }
+
+    const options = {params: new HttpParams({fromString: param})};
+
+    let uri: string = this.apiURL + UriMap.get("from_web_manifest");
+    return this.http.get<Inventory[]>(uri, options);
   }
+
+  /** UPDATE Section */
+
+  updateInventory(sku:string, qty:number, acc?: string): Observable<any> {
+    let param = `sku=${sku}&qty=${qty}`;
+    
+    if(acc && acc.length) {
+      param += `&accountCode=${acc}`;
+    }
+
+    const options = {
+                     params: new HttpParams({fromString: param}),
+                     headers: new HttpHeaders({
+                              'Content-Type': 'application/json'
+                      })
+                    };
+    let uri: string = this.apiURL + UriMap.get("from_web_manifest");
+    return this.http.put<any>(uri, JSON.stringify({}), options);
+  }
+
 
   /**
    * 
@@ -229,7 +255,7 @@ export class HttpsvcService {
    * @param data 
    * @returns 
    */
-  updateShipment(awbNo: Array<string>, data: ShipmentStatus) : Observable<any> {
+  updateShipmentStatus(awbNo: Array<string>, data: ShipmentStatus) : Observable<any> {
     let param = `shipmentNo=${awbNo}`;
 
     const options = {
@@ -238,7 +264,7 @@ export class HttpsvcService {
                               'Content-Type': 'application/json'
                       })
                     };
-    let uri: string = this.apiURL + '/api/shipment';
+    let uri: string = this.apiURL + UriMap.get("from_web_shipment");
     return this.http.put<any>(uri, JSON.stringify(data), options);
   }
 
@@ -265,7 +291,7 @@ export class HttpsvcService {
                                 'Content-Type': 'application/json'
                         })
                       };
-      let uri: string = this.apiURL + '/api/shipment';
+      let uri: string = this.apiURL + UriMap.get("from_web_shipment");
       let req = this.http.put<any>(uri, JSON.stringify(data), options);
       reqArr.push(req);
     }
@@ -273,52 +299,20 @@ export class HttpsvcService {
     return forkJoin(reqArr);
   }
 
+  /** CREATE Section */
   /**
    * 
    * @param newAccount 
    * @returns 
    */
   createAccount(newAccount:Account) : Observable<Account> {
-    return this.http.post<Account>(this.apiURL + '/api/account', JSON.stringify(newAccount), this.httpOptions);
-
-  }
-
-  getFromInventory(sku: string, acc?: string): Observable<Inventory[]> {
-    let param = `sku=${sku}`;
-
-    if(acc && acc.length > 0) {
-      param += `accountCode=${acc}`;
-    }
-
-    const options = {params: new HttpParams({fromString: param})};
-
-    let uri: string = this.apiURL + '/api/manifest';
-    return this.http.get<Inventory[]>(uri, options);
+    return this.http.post<Account>(this.apiURL + UriMap.get("from_web_account"), JSON.stringify(newAccount), this.httpOptions);
   }
 
   createInventory(product: Inventory): Observable<any> {
 
-    return this.http.post<Account>(this.apiURL + '/api/manifest', JSON.stringify(product), this.httpOptions);
-
+    return this.http.post<Account>(this.apiURL + UriMap.get("from_web_manifest"), JSON.stringify(product), this.httpOptions);
   }
-
-  updateInventory(sku:string, qty:number, acc?: string): Observable<any> {
-    let param = `sku=${sku}&qty=${qty}`;
-    
-    if(acc && acc.length) {
-      param += `&accountCode=${acc}`;
-    }
-
-    const options = {
-                     params: new HttpParams({fromString: param}),
-                     headers: new HttpHeaders({
-                              'Content-Type': 'application/json'
-                      })
-                    };
-    let uri: string = this.apiURL + '/api/manifest';
-    return this.http.put<any>(uri, JSON.stringify(Inventory), options);
-  }
-
   //3rd Part Shipment Creation 
   create3rdPartyShipment(awbList:string, uri:string, acc?: string): Observable<any> {
     let param:string = "" ;
@@ -344,5 +338,28 @@ export class HttpsvcService {
     }
     //let uri: string = this.apiURL + '/api/manifest';
     return this.http.post<any>((this.apiURL + uri), JSON.stringify(awbList), this.httpOptions);
+  }
+
+
+  /**
+   * 
+   * @param newShipment 
+   * @returns 
+   */
+   createBulkShipment(newShipment:string) : Observable<any> {
+    return this.http.post<Shipment>(this.apiURL + UriMap.get("from_web_bulk_shipment"), 
+                                    newShipment, 
+                                    this.httpOptions);
+  }
+
+  /**
+   * 
+   * @param newShipment 
+   * @returns 
+   */
+   createShipment(newShipment:any) : Observable<any> {
+    return this.http.post<any>(this.apiURL + UriMap.get("from_web_shipment"), 
+                                    newShipment, 
+                                    this.httpOptions);
   }
 }

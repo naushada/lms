@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AppGlobals, AppGlobalsDefault } from 'src/common/app-globals';
+import { AppGlobals, AppGlobalsDefault, Shipment } from 'src/common/app-globals';
+import { HttpsvcService } from 'src/common/httpsvc.service';
 
 @Component({
   selector: 'app-single',
@@ -17,7 +18,7 @@ export class SingleComponent implements OnInit {
 
   defValue?: AppGlobals;
 
-  constructor(private fb: FormBuilder, private rt:Router) {
+  constructor(private fb: FormBuilder, private rt:Router, private rest:HttpsvcService) {
     this.defValue = {...AppGlobalsDefault};
 
     this.genericForm = this.fb.group({
@@ -76,13 +77,19 @@ export class SingleComponent implements OnInit {
       console.log(this.senderInformationForm.value);
       console.log(this.receiverInformationForm.value);
       console.log(this.shipmentInformationForm.value);
-      const jjson = {"shipment": {"senderInformation": { ...this.senderInformationForm.value},
+
+      let new_shipment:any = {"shipment": {"senderInformation": { ...this.senderInformationForm.value},
                                   "shipmentInformation": { ...this.shipmentInformationForm.value},
                                   "receiverInformation": { ...this.receiverInformationForm.value}
                                 },
                     };
-      console.log(jjson);
-      alert(jjson);
+
+      console.log(new_shipment);
+      alert(JSON.stringify(new_shipment));
+      this.rest.createShipment(JSON.stringify(new_shipment)).subscribe((resp: any) => {},
+                                                                       error => {alert("Waybill creation failed");},
+                                                                       () => {}
+      );
   }
 
   ngOnInit(): void {
