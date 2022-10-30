@@ -164,20 +164,7 @@ export const AppGlobalsDefault: AppGlobals = {
 }
 
 interface senderInformation {
-
-    accountNo: string;
-    referenceNo: string;
-    name: string;
-    companyName: string;
-    country: string;
-    city: string;
-    state:string;
-    address: string;
-    postalCode: string;
-    contact: string;
-    phoneNumber: string;
-    email: string;
-    receivingTaxId: string;
+    account: Account;
 }
 
 interface shipmentInformation {
@@ -230,8 +217,34 @@ export interface Shipment {
     receiverInfo: receiverInformation;
 }
 
+export interface accessOnUri {
+
+    uri: string;
+    permision: string;
+    mappedToOption: string;
+}
+
 export interface Account {
 
+    autoGenerate: boolean;
+    accountNo: string;
+    email: string;
+    contact: string;
+    quotedAmount: string;
+    vat: string;
+    currency: string;
+    tradingLicense: string;
+    bankAccountNo: string;
+    ibnNo: string;
+    country:string;
+    postalCode: string;
+    state: string;
+    city: string;
+    address:string;
+    name:string;
+    password: string;
+    corporateName:string;
+    uriAccessList: Array<accessOnUri>;
 }
 
 export interface ShipmentStatus{
