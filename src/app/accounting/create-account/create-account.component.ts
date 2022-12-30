@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Account, AppGlobals } from 'src/common/app-globals';
 import { HttpsvcService } from 'src/common/httpsvc.service';
 
 @Component({
@@ -10,7 +11,8 @@ import { HttpsvcService } from 'src/common/httpsvc.service';
 export class CreateAccountComponent implements OnInit {
 
   accountForm: FormGroup;
-  
+  defVal?: AppGlobals;
+
   constructor(private fb: FormBuilder, private http: HttpsvcService) { 
     this.accountForm = this.fb.group({
       isAccountCodeAutoGen: true,
@@ -45,6 +47,8 @@ export class CreateAccountComponent implements OnInit {
 
   createAccount(): void {
     console.log("AccountInfo Form " + JSON.stringify(this.accountForm.value));
+    let newAcc: Account = this.accountForm.value;
+    this.http.createAccount(newAcc).subscribe((rsp: any) => {}, error => {alert("Account Creation Failed");}, () => {alert('Account is created successfully');});
   }
 
 }

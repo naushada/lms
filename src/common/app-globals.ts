@@ -226,25 +226,33 @@ export interface accessOnUri {
 
 export interface Account {
 
-    autoGenerate: boolean;
-    accountNo: string;
-    email: string;
-    contact: string;
-    quotedAmount: string;
-    vat: string;
-    currency: string;
-    tradingLicense: string;
-    bankAccountNo: string;
-    ibnNo: string;
-    country:string;
-    postalCode: string;
-    state: string;
-    city: string;
-    address:string;
-    name:string;
-    password: string;
-    corporateName:string;
-    uriAccessList: Array<accessOnUri>;
+    isAccountCodeAutoGen: boolean;
+    loginCredentials: {
+        accountCode: string;
+        accountPassword: string
+    };
+    personalInfo: {
+        eventLocation: string;
+	    role: string;
+	    name: string;
+	    contact: string;
+	    email: string;
+	    address: string;
+		city: string;
+		state: string;
+		postalCode: string;
+      };
+    customerInfo: {
+        companyName: string;
+        quotedAmount: string;
+        tradingLicense: string;
+        vat: string;
+        currency: string;
+        bankAccountNumber: string;
+        iban: string;
+    };
+
+    //uriAccessList: Array<accessOnUri>;
 }
 
 export interface ShipmentStatus{
