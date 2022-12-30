@@ -35,9 +35,8 @@
             <clr-select-container>
                 <label>Role</label>
                 <select clrSelect name="role" formControlName="role">
-                  <option value="one">Employee</option>
-                  <option value="two">Customer</option>
-                  <option value="three">Driver</option>
+                  <option *ngFor="let rl of this.defVal?.Role" [value]="rl">{{rl}}</option>
+                  
                 </select>
               </clr-select-container>
         </div>
@@ -83,9 +82,8 @@
             <clr-select-container>
                 <label>Event Location</label>
                 <select clrSelect name="eventLocation" formControlName="eventLocation">
-                    <option value="one">Saudi Arabia</option>
-                    <option value="two">Customer</option>
-                    <option value="three">Driver</option>
+                    <option *ngFor="let evtLoc of this.defVal?.EventLocation" [value]="evtLoc">{{evtLoc}}</option>
+                    
                 </select>
             </clr-select-container>
         </div>
@@ -131,9 +129,9 @@
             <clr-select-container>
                 <label>Currency</label>
                 <select clrSelect name="currency" formControlName="currency">
-                  <option value="one">Saudi Arabia Rayal</option>
-                  <option value="two">Customer</option>
-                  <option value="three">Driver</option>
+                    <option *ngFor="let currency of this.defVal?.Currency" [value]="currency">
+                        {{currency}}
+                    </option>
                 </select>
               </clr-select-container>
         </div>
@@ -154,7 +152,7 @@
     </div>
     
     
-    <div class="clr-row-2">
+    <div class="clr-row">
         <div class="clr-col">
             <button class="btn btn-primary" (click)="createAccount()">Submit</button>
         </div>

@@ -174,8 +174,12 @@ export class HttpsvcService {
    * @param pwd 
    * @returns 
    */
-  getAccountInfo(id:string, pwd: string): Observable<Account> {
-    let param = `userId=${id}&password=${pwd}`;
+  getAccountInfo(id:string, pwd?: string): Observable<Account> {
+    let param = `userId=${id}`;
+
+    if(pwd && pwd.length > 0) {
+      param += `&password=${pwd}`;
+    }
 
     const options = {params: new HttpParams({fromString: param})};
 
@@ -248,6 +252,19 @@ export class HttpsvcService {
     return this.http.put<any>(uri, JSON.stringify({}), options);
   }
 
+
+  updateAccountInfo(id:string, accInfo:Account): Observable<any> {
+    let param = `userId=${id}`;
+    
+    const options = {
+                     params: new HttpParams({fromString: param}),
+                     headers: new HttpHeaders({
+                              'Content-Type': 'application/json'
+                      })
+                    };
+    let uri: string = this.apiURL + UriMap.get("from_web_manifest");
+    return this.http.put<Account>(uri, JSON.stringify(accInfo), options);
+  }
 
   /**
    * 
