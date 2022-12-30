@@ -262,7 +262,7 @@ export class HttpsvcService {
                               'Content-Type': 'application/json'
                       })
                     };
-    let uri: string = this.apiURL + UriMap.get("from_web_manifest");
+    let uri: string = this.apiURL + UriMap.get("from_web_account");
     return this.http.put<Account>(uri, JSON.stringify(accInfo), options);
   }
 
