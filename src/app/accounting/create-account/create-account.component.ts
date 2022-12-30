@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpsvcService } from 'src/common/httpsvc.service';
 
 @Component({
   selector: 'app-create-account',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateAccountComponent implements OnInit {
 
-  constructor() { }
+  accountForm: FormGroup;
+  constructor(private fb: FormBuilder, private http: HttpsvcService) { 
+    this.accountForm = this.fb.group({
+
+    });
+  }
 
   ngOnInit(): void {
   }

@@ -18,12 +18,13 @@ export class SingleComponent implements OnInit {
   receiverInformationForm: FormGroup;
   
   defValue?: AppGlobals;
+  isAutoGenerateState: boolean = true;
 
   constructor(private fb: FormBuilder, private rt:Router, private rest:HttpsvcService) {
     this.defValue = {...AppGlobalsDefault};
 
     this.genericForm = this.fb.group({
-      isAutoGenerate: true,
+      isAutoGenerate: '',
       awbno: '',
       altRefNo: ''
     });
@@ -101,6 +102,20 @@ export class SingleComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
 
+  getIsAutoGenerateStatus(): boolean {
+    //alert("Value of isAutoGenerateClicked " + this.isAutoGenerateClicked);
+    //return (this.genericForm.get("isAutoGenerate")?.enable());
+    alert("Naushad line:110");
+    return(false);
+  }
+
+  isAutoGenerateClicked(evt: any): void {
+    alert("Naushad line:114 " + this.genericForm.get("isAutoGenerate")?.value());
+    if(true == evt.target.checked) {
+      this.genericForm.get("awbno")?.disable();
+    }
+  }
 }
