@@ -10,13 +10,41 @@ import { HttpsvcService } from 'src/common/httpsvc.service';
 export class CreateAccountComponent implements OnInit {
 
   accountForm: FormGroup;
+  
   constructor(private fb: FormBuilder, private http: HttpsvcService) { 
     this.accountForm = this.fb.group({
-
+      isAccountCodeAutoGen: true,
+      loginCredentials: this.fb.group({
+      accountCode: '',
+      accountPassword: ''}),
+      personalInfo: this.fb.group({
+        eventLocation:'',
+	      role:'',
+	      name: '',
+	      contact: '',
+	      email: '',
+	      address: '',
+		    city:'',
+		    state:'',
+		    postalCode:'',
+      }),
+      customerInfo: this.fb.group({
+        companyName:'',
+        quotedAmount: '',
+        tradingLicense:'',
+        vat: '',
+        currency:'',
+        bankAccountNumber: '',
+        iban: ''
+      })
     });
   }
 
   ngOnInit(): void {
+  }
+
+  createAccount(): void {
+    console.log("AccountInfo Form " + JSON.stringify(this.accountForm.value));
   }
 
 }
