@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-email',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmailComponent implements OnInit {
 
-  constructor() { }
+  emailForm: FormGroup
+  constructor(private fb: FormBuilder) {
+    this.emailForm = this.fb.group({
+      to: '',
+      cc:'',
+      bcc:'',
+      emailbody:''
+    });
+   }
 
   ngOnInit(): void {
   }
 
+  sendEmail() : void {
+
+  }
 }
