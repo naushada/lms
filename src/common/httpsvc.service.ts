@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
 import { forkJoin, Observable } from 'rxjs';
-import { Shipment, Account, ShipmentStatus, Inventory, UriMap } from './app-globals';
+import { Shipment, Account, ShipmentStatus, Inventory, UriMap, Email } from './app-globals';
 
 @Injectable({
   providedIn: 'root'
@@ -199,7 +199,7 @@ export class HttpsvcService {
         'Content-Type': 'application/json',
         'Content-Length': '0'
       })
-    } 
+     } 
 
     let uri: string = this.apiURL + UriMap.get("from_web_account");
     return this.http.get<Account[]>(uri, options);
@@ -379,4 +379,10 @@ export class HttpsvcService {
                                     newShipment, 
                                     this.httpOptions);
   }
+
+
+  initiateEmail(email: Email): Observable<any> {
+    return this.http.post<Email>(this.apiURL + UriMap.get("from_web_email"), JSON.stringify(email), this.httpOptions);
+  }
+
 }

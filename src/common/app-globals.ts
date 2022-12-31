@@ -263,6 +263,16 @@ export interface Inventory {
 
 }
 
+export interface Email {
+    from: string;
+    //Password generated for APP
+    passwd: string;
+    to: Array<string>;
+    cc: Array<string>;
+    bcc: Array<string>;
+    emailbody: string;
+};
+
 export let UriMap = new Map<string, string>([
     ["from_web_shipment",         "/api/v1/shipment/shipping"],
     ["from_web_single_shipment",  "/api/v1/shipment/single/shipping"],
@@ -271,5 +281,5 @@ export let UriMap = new Map<string, string>([
     ["from_web_account",          "/api/v1/account/account"],
     ["from_web_manifest",         "/api/v1/inventory/manifest"],
     ["from_web_document",         "/api/v1/document"],
-    ["from_web_send",             "/api/v1/email/send"],
+    ["from_web_email",            "/api/v1/email"],
 ]);
