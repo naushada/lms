@@ -16,7 +16,7 @@ export class CreateAccountComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private http: HttpsvcService) { 
     this.accountForm = this.fb.group({
-      isAccountCodeAutoGen: true,
+      isAccountCodeAutoGen: false,
       loginCredentials: this.fb.group({
       accountCode: '',
       accountPassword: ''}),
@@ -47,7 +47,6 @@ export class CreateAccountComponent implements OnInit {
   }
 
   createAccount(): void {
-    console.log("AccountInfo Form " + JSON.stringify(this.accountForm.value));
     let newAcc: Account = this.accountForm.value;
     ClrLoadingState.LOADING
     this.http.createAccount(newAcc).subscribe((rsp: any) => {}, error => {alert("Account Creation Failed");}, () => {ClrLoadingState.SUCCESS; alert('Account is created successfully');});

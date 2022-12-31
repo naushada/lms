@@ -1,52 +1,54 @@
 
 
 <clr-datagrid>
+    <clr-dg-column>Auto Generated Account Code</clr-dg-column>
     <clr-dg-column>Account Code</clr-dg-column>
     <clr-dg-column>Account Password</clr-dg-column>
-    <clr-dg-column>Company Name</clr-dg-column>
+    <clr-dg-column>Event Location</clr-dg-column>
     <clr-dg-column>Role</clr-dg-column>
     <clr-dg-column>Name</clr-dg-column>
-    <clr-dg-column>Address</clr-dg-column>
+    <clr-dg-column>Contact</clr-dg-column>
+    <clr-dg-column>E-mail</clr-dg-column>
     <clr-dg-column>City</clr-dg-column>
     <clr-dg-column>State</clr-dg-column>
     <clr-dg-column>Postal Code</clr-dg-column>
-    <clr-dg-column>Country</clr-dg-column>
-    <clr-dg-column>Contact</clr-dg-column>
-    <clr-dg-column>E-mail</clr-dg-column>
+    <clr-dg-column>Address</clr-dg-column>
+    <clr-dg-column>Company Name</clr-dg-column>
     <clr-dg-column>Quoted Amount</clr-dg-column>
-    <clr-dg-column>Currency</clr-dg-column>
-    <clr-dg-column>VAT</clr-dg-column>
     <clr-dg-column>Trading License</clr-dg-column>
+    <clr-dg-column>VAT</clr-dg-column>
+    <clr-dg-column>Currency</clr-dg-column>
     <clr-dg-column>Bank Account Number</clr-dg-column>
     <clr-dg-column>IBAN</clr-dg-column>
     
-    <clr-dg-row>
-        <clr-dg-cell>1</clr-dg-cell>
-        <clr-dg-cell>2</clr-dg-cell>
-        <clr-dg-cell>3</clr-dg-cell>
-        <clr-dg-cell>4</clr-dg-cell>
-        <clr-dg-cell>5</clr-dg-cell>
-        <clr-dg-cell>6</clr-dg-cell>
-        <clr-dg-cell>7</clr-dg-cell>
-        <clr-dg-cell>8</clr-dg-cell>
-        <clr-dg-cell>9</clr-dg-cell>
-        <clr-dg-cell>10</clr-dg-cell>
-        <clr-dg-cell>11</clr-dg-cell>
-        <clr-dg-cell>12</clr-dg-cell>
-        <clr-dg-cell>13</clr-dg-cell>
-        <clr-dg-cell>14</clr-dg-cell>
-        <clr-dg-cell>15</clr-dg-cell>
-        <clr-dg-cell>16</clr-dg-cell>
-        <clr-dg-cell>17</clr-dg-cell>
-        <clr-dg-cell>18</clr-dg-cell>
+    <clr-dg-row *ngFor="let acc of accountInfoList">
+        <clr-dg-cell>{{acc.isAccountCodeAutoGen}}</clr-dg-cell>
+        <clr-dg-cell>{{acc.loginCredentials.accountCode}}</clr-dg-cell>
+        <clr-dg-cell>{{acc.loginCredentials.accountPassword}}</clr-dg-cell>
+        <clr-dg-cell>{{acc.personalInfo.eventLocation}}</clr-dg-cell>
+        <clr-dg-cell>{{acc.personalInfo.role}}</clr-dg-cell>
+        <clr-dg-cell>{{acc.personalInfo.name}}</clr-dg-cell>
+        <clr-dg-cell>{{acc.personalInfo.contact}}</clr-dg-cell>
+        <clr-dg-cell>{{acc.personalInfo.email}}</clr-dg-cell>
+        <clr-dg-cell>{{acc.personalInfo.city}}</clr-dg-cell>
+        <clr-dg-cell>{{acc.personalInfo.state}}</clr-dg-cell>
+        <clr-dg-cell>{{acc.personalInfo.postalCode}}</clr-dg-cell>
+        <clr-dg-cell>{{acc.personalInfo.address}}</clr-dg-cell>
+        <clr-dg-cell>{{acc.customerInfo.companyName}}</clr-dg-cell>
+        <clr-dg-cell>{{acc.customerInfo.quotedAmount}}</clr-dg-cell>
+        <clr-dg-cell>{{acc.customerInfo.tradingLicense}}</clr-dg-cell>
+        <clr-dg-cell>{{acc.customerInfo.vat}}</clr-dg-cell>
+        <clr-dg-cell>{{acc.customerInfo.currency}}</clr-dg-cell>
+        <clr-dg-cell>{{acc.customerInfo.bankAccountNumber}}</clr-dg-cell>
+        <clr-dg-cell>{{acc.customerInfo.iban}}</clr-dg-cell>
     
     </clr-dg-row>
 
     <clr-dg-footer>
 		<clr-dg-pagination #pagination [clrDgPageSize]="10">
-			<clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Shipment per page</clr-dg-page-size>
+			<clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Account per page</clr-dg-page-size>
         {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
-        of {{pagination.totalItems}} shipments
+        of {{pagination.totalItems}} Account
     </clr-dg-pagination>
     </clr-dg-footer>
 </clr-datagrid>

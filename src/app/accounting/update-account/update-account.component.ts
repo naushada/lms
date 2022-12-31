@@ -54,7 +54,9 @@ export class UpdateAccountComponent implements OnInit {
   }
 
   updateAccount(): void {
+    alert("Not implemented yet");
+    return;
     let accCode: string = this.accountForm.get("loginCredentials.accountCode")?.value;
-    this.http.updateAccountInfo(accCode, this.accountForm.value).subscribe((rsp: any) => {}, error => {}, () => {});
+    this.http.updateAccountInfo(accCode, this.accountForm.value).subscribe((rsp: any) => {}, error => {alert("Account is updated failed");}, () => {alert("Account is updated successfully");});
   }
 }

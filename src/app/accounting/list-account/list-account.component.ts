@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Account } from 'src/common/app-globals';
+import { HttpsvcService } from 'src/common/httpsvc.service';
 
 @Component({
   selector: 'app-list-account',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListAccountComponent implements OnInit {
 
-  constructor() { }
+  accountInfoList?: Account[] = [];
+  constructor(private http: HttpsvcService) { }
 
   ngOnInit(): void {
+    this.http.getAccountInfoList().subscribe(
+      (rsp:Account[]) => { rsp.forEach(elm => {this.accountInfoList?.push(elm);});}, 
+      error => {}, 
+      () => {});
   }
 
 }
