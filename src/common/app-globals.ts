@@ -267,10 +267,13 @@ export interface Email {
     from: string;
     //Password generated for APP
     passwd: string;
+    // Email sender's Name
+    name: string;
     to: Array<string>;
-    cc: Array<string>;
-    bcc: Array<string>;
+    cc: string;
+    bcc: string;
     emailbody: string;
+    subject: string;
 };
 
 export let UriMap = new Map<string, string>([

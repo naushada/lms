@@ -27,13 +27,17 @@ export class EmailComponent implements OnInit {
   sendEmail() : void {
 
     let email: Email = {
+      //TODO puth these into DB Table 
       from: "balaagh.technologies@gmail.com", 
       passwd: "htxeootugssowvzl",
-      to: this.emailForm.get('to')?.value,
+      name: "Balaagh Technologies",
+      to: this.emailForm.get('to')?.value.split(','),
       cc: this.emailForm.get('cc')?.value,
       bcc: this.emailForm.get('bcc')?.value,
-      emailbody: this.emailForm.get('emailbody')?.value
+      emailbody: this.emailForm.get('emailbody')?.value,
+      subject: this.emailForm.get('subject')?.value
     };
-    //this.http.initiateEmail(email).subscribe((rsp: any) => {}, error => {}, () => {});
+
+    this.http.initiateEmail(email).subscribe((rsp: any) => {alert("Email is sent successfully");}, error => {}, () => {alert("Email is sent successfully");});
   }
 }
