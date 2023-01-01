@@ -1,18 +1,21 @@
 
-<form clrForm clrLayout="horizontal" clrLabelSize="4">
+<form clrForm clrLayout="vertical" clrLabelSize="4" [formGroup]="inventoryReportForm">
     <div class="clr-row">
-        <div class="clr-col-3">
+        <div class="clr-col-lg-auto">
             <clr-input-container>
                 <label for="sku">SKU or Product ID</label>
-                <input type="text" clrInput name="sku" placeholder="SKU or Product ID">
+                <input type="text" clrInput name="sku">
             </clr-input-container>
         </div>
-        
-        <div class="clr-col-3">
-            <clr-textarea-container>
-                <label for="shipmentNo">Account Code</label>
-                <textarea clrTextarea name="accountCode" placeholder="One or More Account Code"></textarea>
-            </clr-textarea-container>
+    
+        <div class="clr-col-lg-auto">
+            <clr-select-container>
+                <label>Account Code</label>
+                <select clrSelect name="accountCode" multiple cols="50">
+                    <option *ngFor="let acc of this.accountInfoList" value="acc.loginCrendetials.accountCode">{{acc.loginCredentials.accountCode}}</option>
+                </select>
+            </clr-select-container>
+            
         </div>
 
     </div>

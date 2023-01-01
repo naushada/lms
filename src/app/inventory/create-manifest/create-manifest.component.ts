@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpsvcService } from 'src/common/httpsvc.service';
 
 @Component({
   selector: 'app-create-manifest',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateManifestComponent implements OnInit {
 
-  constructor() { }
+  manifestForm:FormGroup;
+  constructor(private fb:FormBuilder, private http:HttpsvcService) {
+    this.manifestForm = this.fb.group({
+      sku: '',
+      qty: ''
+    });
+   }
 
   ngOnInit(): void {
   }
 
+  createManifest(): void {
+
+  }
 }

@@ -1,13 +1,13 @@
-<form action="" clrForm clrLayout="horizontal" clrLabelSize="4">
+<form action="" clrForm clrLayout="vertical" clrLabelSize="4">
     <div class="clr-row">
-        <div class="clr-col">
+        <div class="clr-col-lg-auto">
             <clr-input-container>
                 <label>SKU or Product ID</label>
                 <input type="text" clrInput name="sku" >
             </clr-input-container>
         </div>
 
-        <div class="clr-col">
+        <div class="clr-col-lg-auto">
             <clr-input-container>
                 <label>Product Description</label>
                 <input type="text" clrInput name="productDescription" >
@@ -15,21 +15,20 @@
         </div>
         
 
-        <div class="clr-col">
+        <div class="clr-col-lg-auto">
             <clr-input-container>
                 <label>Quantity</label>
                 <input type="text" clrInput name="qty" >
             </clr-input-container>
         </div>
 
-        <div class="clr-col">
+        <div class="clr-col-lg-auto">
             <clr-date-container>
                 <label>Current Date</label>
                 <input type="date" clrDate name="currentDate" >
             </clr-date-container>
         </div>
-    </div>
-    <div class="clr-row">
+        <!--
         <div class="clr-col">
             <cds-time>
                 <label>Current Time</label>
@@ -37,32 +36,32 @@
               </cds-time>
 
         </div>
-
-        <div class="clr-col">
+        -->
+    </div>
+    <div class="clr-row">
+        
+        <div class="clr-col-lg-auto">
             <clr-input-container>
                 <label>Shelf</label>
                 <input type="text" clrInput name="shelf" >
             </clr-input-container>
         </div>
 
-        <div class="clr-col">
+        <div class="clr-col-lg-auto">
             <clr-input-container>
                 <label>Row Number</label>
                 <input type="text" clrInput name="rowNumber" >
             </clr-input-container>
         </div>
 
-        <div class="clr-col">
+        <div class="clr-col-lg-auto">
             <clr-input-container>
                 <label>Created By</label>
                 <input type="text" clrInput name="createdBy" >
             </clr-input-container>
         </div>
-    </div>
-    <div class="clr-row">
-        <div class="clr-col">
-            <div class="clr-row">
-                <div class="clr-col-4">
+
+        <div class="clr-col-lg-auto">
             <clr-select-container>
                 <label>Account Code</label>
                 <select clrSelect name="accountCode" >
@@ -71,12 +70,9 @@
                   <option value="three">Three</option>
                 </select>
               </clr-select-container>
-            </div>
-            </div>
         </div>
-
     </div>
-
+    
     <div class="clr-row">
         <div class="clr-col">
             <button class="btn btn-primary">Submit</button>

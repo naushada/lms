@@ -1,34 +1,30 @@
 
-<form clrForm clrLayout="horizontal" clrLabelSize="4">
+<form clrForm clrLayout="vertical" clrLabelSize="4">
     <div class="clr-row">
-        <div class="clr-col-8">
-            <div class="clr-row">
-                <div class="clr-col-4">
-                    <clr-input-container >
-                        <label>SKU or Product ID</label>
-                        <input clrInput name="sku" />
-                    </clr-input-container>
-                </div>
-                <div class="clr-col">
-                    <clr-input-container >
-                        <label>Quantity</label>
-                        <input clrInput name="qty" />
-                    </clr-input-container>
-                </div>
-                <div class="clr-col-4">
-                    <clr-select-container>
-                        <label>Account Code</label>
-                        <select clrSelect name="accountCode" >
-                            <option value="one">One</option>
-                            <option value="two">Two</option>
-                            <option value="three">Three</option>
-                        </select>
-                    </clr-select-container>
-                </div>
-            </div>
+        <div class="clr-col-lg-auto">
+            <clr-input-container >
+                <label>SKU or Product ID</label>
+                <input clrInput name="sku" />
+            </clr-input-container>
+        </div>
+        <div class="clr-col-lg-auto">
+            <clr-input-container >
+                <label>Quantity</label>
+                <input clrInput name="qty" />
+            </clr-input-container>
+        </div>
+        <div class="clr-col-lg-auto">
+            <clr-select-container>
+                <label>Account Code</label>
+                <select clrSelect name="accountCode" >
+                    <option value="one">One</option>
+                    <option value="two">Two</option>
+                    <option value="three">Three</option>
+                </select>
+            </clr-select-container>
         </div>
     </div>
-
+    
     <div class="clr-row">
         <div class="clr-col">
             <button class="btn btn-primary">Submit</button>

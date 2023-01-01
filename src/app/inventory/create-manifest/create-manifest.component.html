@@ -1,27 +1,23 @@
-<form clrForm clrLayout="horizontal" clrLabelSize="4">
+<form clrForm clrLayout="vertical" clrLabelSize="4" [formGroup]="manifestForm">
     <div class="clr-row">
-        <div class="clr-col-8">
-            <div class="clr-row">
-                <div class="clr-col-4">
-                    <clr-input-container >
-                        <label>SKU or Product ID</label>
-                        <input clrInput name="sku" />
-                    </clr-input-container>
-                </div>
-                <div class="clr-col-2">
-                    <clr-input-container >
-                        <label>Quantity</label>
-                        <input clrInput name="qty" />
-                    </clr-input-container>
+        <div class="clr-col-lg-auto">
+            <clr-input-container >
+                <label>SKU or Product ID</label>
+                <input clrInput name="sku" />
+            </clr-input-container>
+        </div>
+        <div class="clr-col-lg-auto">
+            <clr-input-container >
+                <label>Quantity</label>
+                <input clrInput name="qty" />
+            </clr-input-container>
                             
-                </div>
-            </div>
         </div>
     </div>
-
+    
     <div class="clr-row">
         <div class="clr-col">
-            <button class="btn btn-primary">Submit</button>
+            <button class="btn btn-primary" (click)="createManifest()">Create Manifest</button>
         </div>
     </div>
 </form>

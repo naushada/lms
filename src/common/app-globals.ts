@@ -283,6 +283,7 @@ export let UriMap = new Map<string, string>([
     ["from_web_config",           "/api/v1/config"],
     ["from_web_account",          "/api/v1/account/account"],
     ["from_web_manifest",         "/api/v1/inventory/manifest"],
+    ["from_web_inventory",        "/api/v1/inventory"],
     ["from_web_document",         "/api/v1/document"],
     ["from_web_email",            "/api/v1/email"],
 ]);
