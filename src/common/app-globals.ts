@@ -261,7 +261,15 @@ export interface ShipmentStatus{
 }
 
 export interface Inventory {
-
+    sku: string;
+    productDescription: string;
+    qty: number;
+    currentDate: Date;
+    currentTime: Time;
+    shelf: string;
+    rowNumber: string;
+    createdBy: string;
+    accountCode: string;
 }
 
 export interface Email {

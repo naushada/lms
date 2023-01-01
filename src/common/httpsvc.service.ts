@@ -328,8 +328,9 @@ export class HttpsvcService {
 
   createInventory(product: Inventory): Observable<any> {
 
-    return this.http.post<Account>(this.apiURL + UriMap.get("from_web_manifest"), JSON.stringify(product), this.httpOptions);
+    return this.http.post<Inventory>(this.apiURL + UriMap.get("from_web_inventory"), JSON.stringify(product), this.httpOptions);
   }
+
   //3rd Part Shipment Creation 
   create3rdPartyShipment(awbList:string, uri:string, acc?: string): Observable<any> {
     let param:string = "" ;

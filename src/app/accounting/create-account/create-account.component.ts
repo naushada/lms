@@ -49,7 +49,10 @@ export class CreateAccountComponent implements OnInit {
   createAccount(): void {
     let newAcc: Account = this.accountForm.value;
     ClrLoadingState.LOADING
-    this.http.createAccount(newAcc).subscribe((rsp: any) => {}, error => {alert("Account Creation Failed");}, () => {ClrLoadingState.SUCCESS; alert('Account is created successfully');});
+    this.http.createAccount(newAcc).subscribe(
+      (rsp: any) => {}, 
+      error => {alert("Account Creation Failed");}, 
+      () => {ClrLoadingState.SUCCESS; alert('Account is created successfully');});
   }
 
 }
