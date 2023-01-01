@@ -1,19 +1,17 @@
-<form clrForm clrLayout="horizontal" clrLabelSize="4">
+<form clrForm clrLayout="vertical" clrLabelSize="4">
     
     <div class="clr-row">
-        <div class="clr-col">
-            <div class="clr-row">
-                <div class="clr-col">
-                    <clr-input-container>
-                        <label>Choose bulk upload excel file</label>
-                    </clr-input-container>
-                    <input type="file" name="tt">
-                    <clr-input-container>
-                        <label>Bulk Shipment Template</label>
-                    </clr-input-container>
-                    <button class="btn btn-sm">Download</button>
-                </div>
-            </div>
+        <div class="clr-col-lg-auto">
+            <clr-input-container>
+                <label>Choose bulk upload excel file</label>
+                <input type="file" clrInput name="tt">
+            </clr-input-container>
+        </div>
+        <div class="clr-col-lg-auto">
+            <clr-input-container>
+                <label>Bulk Shipment Template</label>
+            </clr-input-container>
+            <button class="btn btn-sm">Download</button>
         </div>
     </div>
     

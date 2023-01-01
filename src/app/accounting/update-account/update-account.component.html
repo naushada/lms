@@ -1,6 +1,3 @@
-
-<button class="btn btn-primary" (click)="retrieveAccountInfo()">Retrieve Account Info</button>
-
 <form [formGroup]="accountForm" clrForm clrLayout="vertical" clrLabelSize="2">
     <div class="clr-row">
         <div class="clr-col-lg-auto">
@@ -17,6 +14,7 @@
                 <label for="accountCode">Account Code</label>
                 <input clrInput name="accountCode" formControlName="accountCode">
             </clr-input-container>
+            <button class="btn" (click)="retrieveAccountInfo()">Retrieve Account Info</button>
         </div>
         <!--element 2-->
         <div class="clr-col-lg-auto" formGroupName="loginCredentials">
