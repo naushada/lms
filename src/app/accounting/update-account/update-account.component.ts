@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Account, AppGlobals, AppGlobalsDefault } from 'src/common/app-globals';
 import { HttpsvcService } from 'src/common/httpsvc.service';
+import { PubsubsvcService } from 'src/common/pubsubsvc.service';
 
 @Component({
   selector: 'app-update-account',
@@ -13,7 +14,7 @@ export class UpdateAccountComponent implements OnInit {
   defVal: AppGlobals = {...AppGlobalsDefault};
   accountForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpsvcService) { 
+  constructor(private fb: FormBuilder, private http: HttpsvcService, private subject: PubsubsvcService) { 
     this.accountForm = this.fb.group({
       isAccountCodeAutoGen: true,
       loginCredentials: this.fb.group({
@@ -45,6 +46,10 @@ export class UpdateAccountComponent implements OnInit {
   
 
   ngOnInit(): void {
+    this.subject.onAccount.subscribe(
+      (rsp) => {this.accountForm.setValue({...rsp});}, 
+      error => {}, 
+      () => {});
   }
 
   retrieveAccountInfo(): void {

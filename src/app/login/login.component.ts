@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ClrLoadingState } from '@clr/angular';
 import { Account } from 'src/common/app-globals';
 import { HttpsvcService } from 'src/common/httpsvc.service';
+import { PubsubsvcService } from 'src/common/pubsubsvc.service';
 import { __values } from 'tslib';
 
 @Component({
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
     return this.loginForm.value.password;
   }
 
-  constructor(private fb: FormBuilder, private rt: Router, private http: HttpsvcService) { 
+  constructor(private fb: FormBuilder, private rt: Router, private http: HttpsvcService, private on: PubsubsvcService) { 
 
     this.loginForm = this.fb.group({
       corporatename: ['', Validators.required],
@@ -49,15 +50,21 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     //alert("I am clicked login " + this.username + " password " + this.password);
-    console.log(this.loginForm.value);
     let passwd = this.loginForm.get('password')?.value;
     let id = this.loginForm.get('username')?.value;
     this.loginForm.get('password')?.setValue(this.getHash32(passwd));
-    console.log(this.loginForm.value);
-    this.http.getAccountInfo(id, passwd).subscribe((rsp:Account) => {}, error => {}, () => {});
+
+    this.http.getAccountInfo(id, passwd).subscribe(
+      (rsp:Account) => {
+        // Publish the Account Info of logged in user to subscribed widget
+        this.on.emit_accountInfo(rsp);
+      }, 
+      error => {}, 
+      () => {this.rt.navigateByUrl('/main');});
+
     this.validateDemo() ;
     this.submitDemo();
-    this.rt.navigateByUrl('/main');
+    
   }
 
   validateBtnState: ClrLoadingState = ClrLoadingState.DEFAULT;
@@ -66,7 +73,7 @@ export class LoginComponent implements OnInit {
   validateDemo() {
     this.validateBtnState = ClrLoadingState.LOADING;
     //Validating Logic
-    this.validateBtnState = ClrLoadingState.SUCCESS;
+    //this.validateBtnState = ClrLoadingState.SUCCESS;
   }
 
   submitDemo() {
