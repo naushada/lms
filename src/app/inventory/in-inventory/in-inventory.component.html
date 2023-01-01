@@ -1,4 +1,4 @@
-<form action="" clrForm clrLayout="vertical" clrLabelSize="4">
+<form  clrForm clrLayout="vertical" clrLabelSize="4" [formGroup]="createInventoryForm">
     <div class="clr-row">
         <div class="clr-col-lg-auto">
             <clr-input-container>
@@ -6,30 +6,25 @@
                 <input type="text" clrInput name="sku" >
             </clr-input-container>
         </div>
-
         <div class="clr-col-lg-auto">
             <clr-input-container>
                 <label>Product Description</label>
                 <input type="text" clrInput name="productDescription" >
             </clr-input-container>
         </div>
-        
-
         <div class="clr-col-lg-auto">
             <clr-input-container>
                 <label>Quantity</label>
                 <input type="text" clrInput name="qty" >
             </clr-input-container>
         </div>
-
         <div class="clr-col-lg-auto">
             <clr-date-container>
                 <label>Current Date</label>
                 <input type="date" clrDate name="currentDate" >
             </clr-date-container>
         </div>
-        
-        <div class="clr-col">
+        <div class="clr-col-lg-auto">
             <clr-input-container>
                 <label>Current Time</label>
                 <input type="time" clrInput name="currentTime" />
@@ -39,40 +34,33 @@
         
     </div>
     <div class="clr-row">
-        
         <div class="clr-col-lg-auto">
             <clr-input-container>
                 <label>Shelf</label>
                 <input type="text" clrInput name="shelf" >
             </clr-input-container>
         </div>
-
         <div class="clr-col-lg-auto">
             <clr-input-container>
                 <label>Row Number</label>
                 <input type="text" clrInput name="rowNumber" >
             </clr-input-container>
         </div>
-
         <div class="clr-col-lg-auto">
             <clr-input-container>
                 <label>Created By</label>
                 <input type="text" clrInput name="createdBy" >
             </clr-input-container>
         </div>
-
         <div class="clr-col-lg-auto">
             <clr-select-container>
                 <label>Account Code</label>
                 <select clrSelect name="accountCode" >
-                  <option value="one">One</option>
-                  <option value="two">Two</option>
-                  <option value="three">Three</option>
+                  <option *ngFor="let acc of this.acctList" [value]="acc.loginCredentials.accountCode">{{acc.loginCredentials.accountCode}}</option>
                 </select>
               </clr-select-container>
         </div>
     </div>
-    
     <div class="clr-row">
         <div class="clr-col">
             <button class="btn btn-primary">Submit</button>

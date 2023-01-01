@@ -107,7 +107,8 @@ export const AppGlobalsDefault: AppGlobals = {
     "Baharaini - Dinar",
     "Qatar - Riyal"],
 
-    Role: ["Employee",
+    Role: ["Admin",
+    "Employee",
     "Contract-X",
     "Customer",
     "Agent",

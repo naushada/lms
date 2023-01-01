@@ -59,11 +59,11 @@ export class LoginComponent implements OnInit {
         // Publish the Account Info of logged in user to subscribed widget
         this.on.emit_accountInfo(rsp);
       }, 
-      error => {}, 
+      error => {alert("Login Failed");}, 
       () => {this.rt.navigateByUrl('/main');});
 
-    this.validateDemo() ;
-    this.submitDemo();
+    //this.validateDemo() ;
+    //this.submitDemo();
     
   }
 
