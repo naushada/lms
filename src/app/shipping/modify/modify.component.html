@@ -112,14 +112,14 @@
 </form>
 <form clrLayout="vertical" clrLabelSize="4" [formGroup]="shipmentInfoForm">
     <div class="clr-row">
-        <div class="clr-col">
+        <div class="clr-col-lg-auto">
             <clr-input-container >
             <label for=""><u><i>Shipment Information</i></u></label>
             </clr-input-container>
         </div>
     </div>
     <div class="clr-row">
-        <div class="clr-col">
+        <div class="clr-col-lg-auto">
             <clr-input-container >
                 <label>SKU No.</label>
                 <input clrInput name="skuNo" formControlName="skuNo" />
@@ -127,7 +127,7 @@
             
         </div>
 
-        <div class="clr-col">
+        <div class="clr-col-lg-auto">
             <clr-select-container>
                 <label>Service</label>
                 <select clrSelect name="service" formControlName="service" >
@@ -138,24 +138,20 @@
             </clr-select-container>
         </div>
 
-        <div class="clr-col">
-            
+        <div class="clr-col-lg-auto">
             <clr-input-container >
                 <label>Number Of Items</label>
                 <input clrInput name="numberOfItems" class="mandatory" formControlName="numberOfItems" />
             </clr-input-container>
-            
         </div>
 
-        <div class="clr-col">
-            
+        <div class="clr-col-lg-auto">
             <clr-input-container >
                 <label>Goods Description</label>
                 <input clrInput name="goodsDescription" formControlName="goodsDescription" />
             </clr-input-container>
-            
         </div>
-        <div class="clr-col">
+        <div class="clr-col-lg-auto">
             <clr-input-container >
                 <label>Goods Value</label>
                 <input clrInput name="goodsValue" formControlName="goodsValue" />
@@ -163,37 +159,29 @@
             
         </div>
 
-        <div class="clr-col">
-            
+        <div class="clr-col-lg-auto">
             <clr-input-container >
                 <label>Customs Value</label>
                 <input clrInput name="customsValue" formControlName="customsValue" />
             </clr-input-container>
-            
         </div>
-
     </div>
 
     <div class="clr-row">
-        
-        <div class="clr-col">
-            
+        <div class="clr-col-lg-auto">
             <clr-input-container >
                 <label>COD Ammount</label>
                 <input clrInput name="codAmount" formControlName="codAmount" />
             </clr-input-container>
-            
         </div>
 
-        <div class="clr-col">
-            
+        <div class="clr-col-lg-auto">
             <clr-input-container >
                 <label>VAT</label>
                 <input clrInput name="vat" formControlName="vat" />
             </clr-input-container>
-            
         </div>
-        <div class="clr-col">
+        <div class="clr-col-lg-auto">
             <clr-select-container>
                 <label>Currency</label>
                 <select clrSelect name="currency" formControlName="currency" >
@@ -202,125 +190,97 @@
                     </option>
                 </select>
             </clr-select-container>
-
         </div>
-
-        <div class="clr-col">
-            
+        <div class="clr-col-lg-auto">
             <clr-input-container >
                 <label class="required">Weight</label>
                 <input clrInput name="weight" formControlName="weight" />
             </clr-input-container>
-            
         </div>
-
-        <div class="clr-col">
+        <div class="clr-col-lg-auto">
             <clr-select-container>
                 <label >Weight Units</label>
                 <select clrSelect name="weightUnits" formControlName="weightUnits" >
                     <option value="kg">KG</option>
                     <option value="gram">Gram</option>
-                    
                 </select>
             </clr-select-container>
-            
         </div>
-
-        <div class="clr-col">
+        <div class="clr-col-lg-auto">
             <clr-input-container >
                 <label>Cubic Weight (LxBxH)</label>
                 <input clrInput name="cubicWeight" formControlName="cubicWeight" />
             </clr-input-container>
         </div>
-
     </div>
 </form>
-<form clrLayout="horizontal" clrLabelSize="4" [formGroup]="receiverInfoForm">
+<form clrLayout="vertical" clrLabelSize="4" [formGroup]="receiverInfoForm">
     <div class="clr-row">
-        <div class="clr-col">
+        <div class="clr-col-lg-auto">
             <clr-input-container >
             <label for=""><u><i>Receiver Information</i></u></label>
             </clr-input-container>
         </div>
     </div>
     <div class="clr-row">
-        <div class="clr-col">
-            
+        <div class="clr-col-lg-auto">
             <clr-input-container >
                 <label>Name</label>
                 <input clrInput name="name" formControlName="name" />
             </clr-input-container>
-            
         </div>
-
-        <div class="clr-col">
+        <div class="clr-col-lg-auto">
             <clr-input-container >
                 <label>Country</label>
                 <input clrInput name="country" formControlName="country" />
             </clr-input-container>
-            
         </div>
-
-        <div class="clr-col">
-            
+        <div class="clr-col-lg-auto">
             <clr-input-container >
                 <label>City</label>
                 <input clrInput name="city" formControlName="city" />
             </clr-input-container>
-            
-        </div>
-
-        <div class="clr-col">
-            
+         </div>
+        <div class="clr-col-lg-auto">
             <clr-input-container >
                 <label>State</label>
                 <input clrInput name="state" formControlName="state" />
             </clr-input-container>
-            
         </div>
-        <div class="clr-col">
+        <div class="clr-col-lg-auto">
             <clr-input-container >
                 <label>Postal Code</label>
                 <input clrInput name="postalCode" formControlName="postalCode" />
             </clr-input-container>
-            
         </div>
-
-        <div class="clr-col">
-            
+        <div class="clr-col-lg-auto">
             <clr-input-container >
                 <label>Contact</label>
                 <input clrInput name="contact" formControlName="contact" />
             </clr-input-container>
-            
         </div>
     </div>
-
     <div class="clr-row">
-        <div class="clr-col-2">
+        <div class="clr-col-lg-auto">
             <clr-textarea-container>
                 <label>Address</label>
                 <textarea clrTextarea name="address" required formControlName="address" ></textarea>
                 <!--<clr-control-helper>You can't modify this </clr-control-helper>-->
             </clr-textarea-container>
         </div>
-
-        <div class="clr-col-2">
-            
+        <div class="clr-col-lg-auto">
             <clr-input-container >
                 <label>Phone</label>
                 <input clrInput name="phone" formControlName="phone" />
             </clr-input-container>
-            
         </div>
-        <div class="clr-col-2">
+        <div class="clr-col-lg-auto">
             <clr-input-container >
                 <label>E-Mail</label>
                 <input clrInput name="email" formControlName="email" />
             </clr-input-container>
         </div>
     </div>
-
     <div class="clr-row">
         <div class="clr-col">
             <button class="btn btn-primary" (click)="onShipmentUpdate()">Update Shipment</button>
