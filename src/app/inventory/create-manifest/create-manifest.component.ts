@@ -21,6 +21,9 @@ export class CreateManifestComponent implements OnInit {
   }
 
   createManifest(): void {
+    let sku: string = this.manifestForm.get('sku')?.value;
+    let qty: number = this.manifestForm.get('qty')?.value;
 
+    alert("sku " + sku + " qty " + qty);
   }
 }
