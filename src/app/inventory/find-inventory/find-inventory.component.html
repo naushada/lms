@@ -1,18 +1,18 @@
 
-<form clrForm clrLayout="vertical" clrLabelSize="10">
+<form clrForm clrLayout="vertical" clrLabelSize="10" [formGroup]="findInventoryForm">
     <div class="clr-row">
         <div class="clr-col-lg-auto">
             <clr-input-container >
-                <label>SKU or Product ID</label>
-                <input clrInput name="sku" />
+                <label for="sku">SKU or Product ID</label>
+                <input clrInput name="sku" formControlName="sku"/>
             </clr-input-container>
         </div>
     
         <div class="clr-col-lg-auto">
             <clr-select-container>
-                <label>Account Code</label>
-                <select clrSelect name="accountCode" multiple cols="50">
-                    <option *ngFor="let acc of this.accountInfoList" value="acc.loginCrendetials.accountCode">{{acc.loginCredentials.accountCode}}</option>
+                <label for="accountCode">Account Code</label>
+                <select clrSelect name="accountCode" multiple cols="50" formControlName="accountCode">
+                    <option *ngFor="let acc of this.accountInfoList" [value]="acc.loginCredentials.accountCode">{{acc.loginCredentials.accountCode}}</option>
                 </select>
             </clr-select-container>
         </div>
@@ -20,7 +20,7 @@
     
 
     <div class="clr-row">
-            <button class="btn btn-primary">Submit</button>
+            <button class="btn btn-primary" (click)="findInventory()">Get Inventory</button>
             <button class="btn btn-primary">Export To Excel</button>
     </div>
 </form>
@@ -28,25 +28,25 @@
 
 <clr-datagrid>
     <clr-dg-column>SKU or Product ID</clr-dg-column>
-    <clr-dg-column>Description</clr-dg-column>
+    <clr-dg-column>Product Description</clr-dg-column>
     <clr-dg-column>Quantity</clr-dg-column>
     <clr-dg-column>Shelf</clr-dg-column>
     <clr-dg-column>Row Number</clr-dg-column>
-    <clr-dg-column>Updated At</clr-dg-column>
-    <clr-dg-column>Updated On</clr-dg-column>
+    <clr-dg-column>Date</clr-dg-column>
+    <clr-dg-column>Time</clr-dg-column>
     <clr-dg-column>Account Code</clr-dg-column>
     <clr-dg-column>Created By</clr-dg-column>
     
-    <clr-dg-row>
-        <clr-dg-cell>1</clr-dg-cell>
-        <clr-dg-cell>2</clr-dg-cell>
-        <clr-dg-cell>3</clr-dg-cell>
-        <clr-dg-cell>4</clr-dg-cell>
-        <clr-dg-cell>5</clr-dg-cell>
-        <clr-dg-cell>6</clr-dg-cell>
-        <clr-dg-cell>7</clr-dg-cell>
-        <clr-dg-cell>8</clr-dg-cell>
-        <clr-dg-cell>9</clr-dg-cell>
+    <clr-dg-row *ngFor="let inv of this.inventoryList">
+        <clr-dg-cell >{{inv.sku}}</clr-dg-cell>
+        <clr-dg-cell>{{inv.productDescription}}</clr-dg-cell>
+        <clr-dg-cell>{{inv.qty}}</clr-dg-cell>
+        <clr-dg-cell>{{inv.shelf}}</clr-dg-cell>
+        <clr-dg-cell>{{inv.rowNumber}}</clr-dg-cell>
+        <clr-dg-cell>{{inv.currentDate}}</clr-dg-cell>
+        <clr-dg-cell>{{inv.currentTime}}</clr-dg-cell>
+        <clr-dg-cell>{{inv.accountCode}}</clr-dg-cell>
+        <clr-dg-cell>{{inv.createdBy}}</clr-dg-cell>
     
     </clr-dg-row>
 

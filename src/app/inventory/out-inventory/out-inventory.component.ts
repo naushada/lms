@@ -52,7 +52,6 @@ export class OutInventoryComponent implements OnInit, OnDestroy {
       rsp => { 
         //alert(JSON.stringify(rsp));
         this.loggedInUser = rsp as Account;
-        //this.createInventoryForm.get('createdBy')?.setValue(this.loggedInUser?.loginCredentials.accountCode);
       },
       erro =>{}, 
       () => {});
@@ -64,7 +63,9 @@ export class OutInventoryComponent implements OnInit, OnDestroy {
     let sku = this.outInventoryForm.get('sku')?.value;
     let qty = this.outInventoryForm.get('qty')?.value;
     let accCode = this.outInventoryForm.get('accountCode')?.value;
-    alert("sku " + sku + " qty " + qty + " accCode " + accCode);
+    
+    //alert("sku " + sku + " qty " + qty + " accCode " + accCode);
+    this.http.updateInventory(sku, qty, accCode).subscribe((rsp:any) => {}, error => {}, () => {alert("Item is Removed from Inventory");});
   }
   ngOnDestroy(): void {
     this.subsink.unsubscribe();

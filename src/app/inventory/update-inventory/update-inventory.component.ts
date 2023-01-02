@@ -63,7 +63,9 @@ export class UpdateInventoryComponent implements OnInit {
     let sku = this.updateInventoryForm.get('sku')?.value;
     let qty = this.updateInventoryForm.get('qty')?.value;
     let accCode = this.updateInventoryForm.get('accountCode')?.value;
-    alert("sku " + sku + " qty " + qty + " accCode " + accCode);
+    let isUpdate: string = "true";
+    //alert("sku " + sku + " qty " + qty + " accCode " + accCode);
+    this.http.updateInventory(sku, qty, accCode, isUpdate).subscribe((rsp:any) => {}, error => {}, () => {alert("Inventory is updated successfully");});
   }
   
   ngOnDestroy(): void {

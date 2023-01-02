@@ -221,25 +221,32 @@ export class HttpsvcService {
 
 
   getFromInventory(sku: string, acc?: string): Observable<Inventory[]> {
-    let param = `sku=${sku}`;
+    let param = ``;
 
-    if(acc && acc.length > 0) {
-      param += `accountCode=${acc}`;
+    if(sku.length > 0 && acc && acc.length > 0) {
+      param = `sku=${sku}&accountCode=${acc}`;
+    } else if(acc && acc.length > 0) {
+      param = `accountCode=${acc}`;
+    } else {
+      param = `sku=${sku}`;
     }
 
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + UriMap.get("from_web_manifest");
+    let uri: string = this.apiURL + UriMap.get("from_web_inventory");
     return this.http.get<Inventory[]>(uri, options);
   }
 
   /** UPDATE Section */
 
-  updateInventory(sku:string, qty:number, acc?: string): Observable<any> {
+  updateInventory(sku:string, qty:number, acc?: string, isUpdate?: string): Observable<any> {
     let param = `sku=${sku}&qty=${qty}`;
     
     if(acc && acc.length) {
       param += `&accountCode=${acc}`;
+    }
+    if(isUpdate && isUpdate.length) {
+      param += `&isUpdate=${isUpdate}`;
     }
 
     const options = {
@@ -248,7 +255,7 @@ export class HttpsvcService {
                               'Content-Type': 'application/json'
                       })
                     };
-    let uri: string = this.apiURL + UriMap.get("from_web_manifest");
+    let uri: string = this.apiURL + UriMap.get("from_web_inventory");
     return this.http.put<any>(uri, JSON.stringify({}), options);
   }
 

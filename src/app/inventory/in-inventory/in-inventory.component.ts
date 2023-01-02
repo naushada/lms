@@ -29,7 +29,7 @@ export class InInventoryComponent implements OnInit,OnDestroy {
       sku: '',
       productDescription:'',
       qty:0,
-      currentDate: [formatDate(new Date(Date.now()), 'dd-MM-yyyy', 'en')],
+      currentDate: [formatDate(new Date(Date.now()), 'dd-MM-yyyy', 'en-GB')],
       currentTime:'',
       shelf:'',
       rowNumber:'',
@@ -59,7 +59,7 @@ export class InInventoryComponent implements OnInit,OnDestroy {
       rsp => { 
         //alert(JSON.stringify(rsp));
         this.loggedInUser = rsp as Account;
-        //this.createInventoryForm.get('createdBy')?.setValue(this.loggedInUser?.loginCredentials.accountCode);
+        this.createInventoryForm.get('createdBy')?.setValue(this.loggedInUser?.personalInfo.name);
       },
       erro =>{}, 
       () => {});
@@ -67,11 +67,11 @@ export class InInventoryComponent implements OnInit,OnDestroy {
   }
 
   createInventory() : void {
-    let inven: Inventory;
-    inven = this.createInventoryForm.value;
-    alert(JSON.stringify(inven));
-    return;
-    this.http.createInventory(inven).subscribe(
+    let inventory: Inventory;
+    inventory = this.createInventoryForm.value;
+    //alert(JSON.stringify(inventory));
+
+    this.http.createInventory(inventory).subscribe(
       (rsp:any) => {}, 
       error => {}, 
       () => {alert("Inventory is created successfully");});
