@@ -4,6 +4,7 @@ import { Account, Inventory } from 'src/common/app-globals';
 import { HttpsvcService } from 'src/common/httpsvc.service';
 import { PubsubsvcService } from 'src/common/pubsubsvc.service';
 import { SubSink } from 'subsink';
+import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-in-inventory',
@@ -27,8 +28,8 @@ export class InInventoryComponent implements OnInit,OnDestroy {
     this.createInventoryForm = this.fb.group({
       sku: '',
       productDescription:'',
-      qty:'',
-      currentDate: '',
+      qty:0,
+      currentDate: [formatDate(new Date(Date.now()), 'dd-MM-yyyy', 'en')],
       currentTime:'',
       shelf:'',
       rowNumber:'',
@@ -62,13 +63,15 @@ export class InInventoryComponent implements OnInit,OnDestroy {
       },
       erro =>{}, 
       () => {});
+
   }
 
   createInventory() : void {
-    let inventory: Inventory = this.createInventoryForm.value;
-    alert(JSON.stringify(this.createInventoryForm.value));
+    let inven: Inventory;
+    inven = this.createInventoryForm.value;
+    alert(JSON.stringify(inven));
     return;
-    this.http.createInventory(inventory).subscribe(
+    this.http.createInventory(inven).subscribe(
       (rsp:any) => {}, 
       error => {}, 
       () => {alert("Inventory is created successfully");});
