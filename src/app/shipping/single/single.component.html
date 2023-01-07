@@ -1,12 +1,10 @@
-<form clrForm clrLayout="vertical" clrLabelSize="4" [formGroup]="genericForm">
+<form clrForm clrLayout="vertical" clrLabelSize="4" [formGroup]="singleShipmentForm">
     <div class="clr-row">
         <div class="clr-col-lg-auto">
-            <clr-checkbox-container>
             <clr-checkbox-wrapper>
-                <input type="checkbox" clrCheckbox name="isAutoGenerate" [checked]="isAutoGenerateState" (change)="isAutoGenerateClicked($event)" />
-                <label for="isAutoGenerate">Autogenerate AWB Number</label>
+                <input type="checkbox" formControlName="isAutoGenerate" clrCheckbox name="isAutoGenerate" value="" [checked]="isAutoGenerateState"/>
+                <label for="">Autogenerate AWB Number</label>
             </clr-checkbox-wrapper>
-        </clr-checkbox-container>
         </div>
     </div>
     <div class="clr-row">
@@ -25,9 +23,6 @@
                     
         </div>
     </div>
-    
-</form>
-<form clrLayout="vertical" clrLabelSize="4" [formGroup]="senderInformationForm">
 
     <div class="clr-row">
         <div class="clr-col-lg-auto">
@@ -36,13 +31,22 @@
             </clr-input-container>
         </div>
     </div>
-    <div class="clr-row">
+    <div class="clr-row" formGroupName="senderInformation">
         <div class="clr-col-lg-auto">
-            <clr-input-container >
+            <clr-input-container *ngIf="'Customer' == this.loggedInUser?.personalInfo?.role">
                 <label>Account No.</label>
-                <input clrInput name="accountNo" formControlName="accountNo" />
+                <input clrInput name="accountNo" formControlName="accountNo" value="this.loggedInUser?.personalInfo?.accountNo" />
             </clr-input-container>
-            <button class="btn">Retrieve</button>
+            <clr-select-container *ngIf="'Customer' != this.loggedInUser?.personalInfo?.role">
+                <label>Account No.</label>
+                <select clrSelect name="service" formControlName="accountNo">
+                    <option *ngFor="let act of this.accountInfoList" [value]="act.loginCredentials.accountCode">
+                        {{act.loginCredentials.accountCode}}
+                      </option>
+                </select>
+            </clr-select-container>
+
+            <button class="btn" (click)="retrieveAccountInfo()">Retrieve</button>
         </div>
 
         <div class="clr-col-lg-auto">
@@ -90,7 +94,7 @@
         
     </div>
 
-    <div class="clr-row">
+    <div class="clr-row" formGroupName="senderInformation">
         <div class="clr-col-lg-auto">
             
             <clr-input-container >
@@ -141,7 +145,7 @@
 
     </div>
 
-    <div class="clr-row">
+    <div class="clr-row" formGroupName="senderInformation">
         <div class="clr-col-lg-auto">
             <clr-input-container >
                 <label>Receiving Tax ID</label>
@@ -150,8 +154,6 @@
             
         </div>
     </div>
-</form>
-<form clrLayout="vertical" clrLabelSize="4" [formGroup]="shipmentInformationForm" >
     <div class="clr-row">
         <div class="clr-col-lg-auto">
             <clr-input-container >
@@ -159,7 +161,7 @@
             </clr-input-container>
         </div>
     </div>
-    <div class="clr-row">
+    <div class="clr-row" formGroupName="shipmentInformation">
         <div class="clr-col-lg-auto">
             <clr-input-container >
                 <label>SKU No.</label>
@@ -216,7 +218,7 @@
 
     </div>
 
-    <div class="clr-row">
+    <div class="clr-row" formGroupName="shipmentInformation">
         
         <div class="clr-col-lg-auto">
             
@@ -275,8 +277,6 @@
         </div>
 
     </div>
-</form>
-<form clrLayout="vertical" clrLabelSize="4" [formGroup]="receiverInformationForm" >
     <div class="clr-row">
         <div class="clr-col-lg-auto">
             <clr-input-container >
@@ -284,7 +284,7 @@
             </clr-input-container>
         </div>
     </div>
-    <div class="clr-row">
+    <div class="clr-row" formGroupName="receiverInformation">
         <div class="clr-col-lg-auto">
             
             <clr-input-container >
@@ -341,7 +341,7 @@
         </div>
     </div>
 
-    <div class="clr-row">
+    <div class="clr-row" formGroupName="receiverInformation">
         
         <div class="clr-col-lg-auto">
             <clr-textarea-container>
