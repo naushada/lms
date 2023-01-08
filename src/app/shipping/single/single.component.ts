@@ -125,6 +125,7 @@ export class SingleComponent implements OnInit, OnDestroy {
   }
 
   retrieveAccountInfo(): void {
+    
     if('Customer' == this.loggedInUser?.personalInfo.role) {
       this.singleShipmentForm.get('referenceNo')?.setValue(this.loggedInUser.personalInfo.name);
 
@@ -133,7 +134,7 @@ export class SingleComponent implements OnInit, OnDestroy {
         alert(this.singleShipmentForm.get('senderInformation.acccountNo')?.value);
         alert(this.accountInfoList[idx].loginCredentials.accountCode);
         if(this.accountInfoList[idx].loginCredentials.accountCode == this.singleShipmentForm.get('acccountNo')?.value) {
-          this.singleShipmentForm.get('name')?.setValue(this.accountInfoList[idx].personalInfo.name);
+          this.singleShipmentForm.get('senderInformation.name')?.setValue(this.accountInfoList[idx].personalInfo.name);
         }
       }
     }
