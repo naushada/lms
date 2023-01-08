@@ -1,22 +1,22 @@
-<form clrForm clrLayout="vertical" clrLabelSize="1">
+<form clrForm clrLayout="vertical" clrLabelSize="1" [formGroup]="shipmentListForm">
     <div class="clr-row">
         <div class="clr-col-lg-auto">
             <clr-date-container>
                 <label>Start Date</label>
-                <input type="date" clrDate name="startDate" >
+                <input type="date" clrDate name="startDate" formControlName="startDate">
             </clr-date-container>
         </div>
         <div class="clr-col-lg-auto">
             <clr-date-container>
                 <label>End Date</label>
-                <input type="date" clrDate name="endDate" >
+                <input type="date" clrDate name="endDate" formControlName="endDate">
             </clr-date-container>
             
         </div>
     </div>
     <div class="clr-row">
         <div class="clr-col">
-            <button class="btn btn-primary">Submit</button>
+            <button class="btn btn-primary" (click)="retrieveShipmentList()">Submit</button>
             <button class="btn btn-primary">Clear</button>
         </div>
         
@@ -47,18 +47,20 @@
     <clr-dg-column [clrDgField]="'Location'">Location</clr-dg-column>
     <clr-dg-column [clrDgField]="'Country'">Country</clr-dg-column>
     
-    <!--
-    <clr-dg-row *clrDgItems="let user of users">
-        <clr-dg-cell>{{user.id}}</clr-dg-cell>
-        <clr-dg-cell>{{user.name}}</clr-dg-cell>
-        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
-        <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
-        <clr-dg-cell>
-            <span class="color-square" [style.backgroundColor]="user.color"></span>
-        </clr-dg-cell>
-        <clr-dg-cell>{{user.wins}}</clr-dg-cell>
+    
+    <clr-dg-row *clrDgItems="let shipment of shipments; let idx">
+        <clr-dg-cell>{{idx}}</clr-dg-cell>
+        <clr-dg-cell>{{shipment.awbno}}</clr-dg-cell>
+        <clr-dg-cell>{{shipment.altRefNo}}</clr-dg-cell>
+        <clr-dg-cell>{{shipment.shipmentInformation.activity[0].updatedBy}}</clr-dg-cell>
+        <clr-dg-cell>{{shipment.shipmentInformation.activity[0].date}}</clr-dg-cell>
+        <clr-dg-cell>{{shipment.shipmentInformation.service}}</clr-dg-cell>
+        <clr-dg-cell>{{shipment.receiverInformation.name}}</clr-dg-cell>
+        <clr-dg-cell>{{shipment.shipmentInformation.activity[0].eventLocation}}</clr-dg-cell>
+        <clr-dg-cell>{{shipment.receiverInformation.country}}</clr-dg-cell>
+        
     </clr-dg-row>
--->
+
 	<!-- Inside the full datagrid declaration -->
 	<clr-dg-footer>
 		<clr-dg-pagination #pagination [clrDgPageSize]="10">

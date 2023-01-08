@@ -93,7 +93,7 @@ export class HttpsvcService {
    * @param accountCode 
    * @returns 
    */
-  getShipments(fromDate:string, toDate:string, country?:string, accountCode?: Array<string>): Observable<Shipment[]> {
+  getShipments(fromDate:Date, toDate:Date, country?:string, accountCode?: Array<string>): Observable<Shipment[]> {
     let param = `fromDate=${fromDate}&toDate=${toDate}`;
 
     if(accountCode != undefined) {
@@ -110,6 +110,27 @@ export class HttpsvcService {
     return this.http.get<Shipment[]>(uri, options)
   }
 
+
+  /**
+   * 
+   * @param fromDate 
+   * @param toDate 
+   * @param country 
+   * @param accountCode 
+   * @returns 
+   */
+  getShipmentsList(fromDate:Date, toDate:Date, accountCode?: string): Observable<Shipment[]> {
+    let param = `fromDate=${fromDate}&toDate=${toDate}`;
+
+    if(accountCode != undefined) {
+      param += `&accountCode=${accountCode}`
+    }
+
+    const options = {params: new HttpParams({fromString: param})};
+
+    let uri: string = this.apiURL + UriMap.get("from_web_shipment");
+    return this.http.get<Shipment[]>(uri, options)
+  }
 
   /**
    * 

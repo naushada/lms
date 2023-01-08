@@ -101,7 +101,7 @@ export class SingleComponent implements OnInit, OnDestroy {
       let new_shipment:any = {"shipment": { ...this.singleShipmentForm.value}
                     };
 
-      alert(JSON.stringify(new_shipment));
+      //alert(JSON.stringify(new_shipment));
       this.http.createShipment(JSON.stringify(new_shipment)).subscribe((resp: any) => {alert("Waybill is create successfully for shipment.")},
                                                                        error => {alert("Waybill creation failed");},
                                                                        () => {});
@@ -109,7 +109,7 @@ export class SingleComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if(true == this.isAutoGenerateState) {
-      this.singleShipmentForm.get('awbno')?.disable();
+      //this.singleShipmentForm.get('awbno')?.disable();
     } else {
       this.singleShipmentForm.get('awbno')?.enable();
     }
@@ -156,8 +156,9 @@ export class SingleComponent implements OnInit, OnDestroy {
               contact:        this.accountInfoList[idx].personalInfo.contact,
               phoneNumber:    this.accountInfoList[idx].personalInfo.contact,
               email:          this.accountInfoList[idx].personalInfo.email,
-              receivingTaxId: this.accountInfoList[idx].customerInfo.vat});
-            }
+              receivingTaxId: this.accountInfoList[idx].customerInfo.vat
+            });
+        }
       }
     }
 
