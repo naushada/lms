@@ -133,7 +133,7 @@ export class SingleComponent implements OnInit, OnDestroy {
       this.singleShipmentForm.get('referenceNo')?.setValue(this.loggedInUser.personalInfo.name);
 
     } else {
-      alert(this.singleShipmentForm.get('senderInformation.accountNo')?.value);
+      //alert(this.singleShipmentForm.get('senderInformation.accountNo')?.value);
       for (let idx:number = 0; idx < this.accountInfoList.length ; ++idx) {
         
         //alert(this.accountInfoList[idx].loginCredentials.accountCode);
@@ -141,10 +141,24 @@ export class SingleComponent implements OnInit, OnDestroy {
         //let accCode:string = this.singleShipmentForm.get('senderInformation.acccountNo')?.value;
         //console.log(accCode);
         if(this.accountInfoList[idx].loginCredentials.accountCode == this.singleShipmentForm.get('senderInformation.accountNo')?.value) {
-          console.log(this.accountInfoList[idx].loginCredentials.accountCode);
-          console.log(this.singleShipmentForm.get('senderInformation.accountNo')?.value);
-          this.singleShipmentForm.get('senderInformation.name')?.patchValue((this.accountInfoList[idx].personalInfo.name));
-        }
+          //console.log(this.accountInfoList[idx].loginCredentials.accountCode);
+          //console.log(this.singleShipmentForm.get('senderInformation.accountNo')?.value);
+          this.singleShipmentForm.get('senderInformation')?.setValue(
+            {
+              accountNo:      this.accountInfoList[idx].loginCredentials.accountCode,
+              referenceNo:    '',
+              name:           this.accountInfoList[idx].personalInfo.name,
+              companyName:    this.accountInfoList[idx].customerInfo.companyName,
+              country:        this.accountInfoList[idx].loginCredentials.accountCode,
+              city:           this.accountInfoList[idx].personalInfo.city,
+              state:          this.accountInfoList[idx].personalInfo.state,
+              address:        this.accountInfoList[idx].personalInfo.address,
+              postalCode:     this.accountInfoList[idx].personalInfo.postalCode,
+              contact:        this.accountInfoList[idx].personalInfo.contact,
+              phoneNumber:    this.accountInfoList[idx].personalInfo.contact,
+              email:          this.accountInfoList[idx].personalInfo.email,
+              receivingTaxId: this.accountInfoList[idx].customerInfo.vat});
+            }
       }
     }
 
