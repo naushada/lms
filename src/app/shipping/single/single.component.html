@@ -76,11 +76,20 @@
             
         </div>
         <div class="clr-col-lg-auto">
+            <clr-select-container >
+                <label>Country</label>
+                <select clrSelect name="country" formControlName="country" >
+                    <option *ngFor="let cuntry of this.defValue?.CountryName" [value]="cuntry">
+                        {{cuntry}}
+                    </option>
+                </select>
+            </clr-select-container>
+            <!--
             <clr-input-container >
                 <label>Country</label>
                 <input clrInput name="country"  formControlName="country"/>
             </clr-input-container>
-            
+            -->
         </div>
 
         <div class="clr-col-lg-auto">

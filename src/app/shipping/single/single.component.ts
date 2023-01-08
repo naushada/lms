@@ -101,7 +101,6 @@ export class SingleComponent implements OnInit, OnDestroy {
       let new_shipment:any = {"shipment": { ...this.singleShipmentForm.value}
                     };
 
-      console.log(new_shipment);
       alert(JSON.stringify(new_shipment));
       this.http.createShipment(JSON.stringify(new_shipment)).subscribe((resp: any) => {alert("Waybill is create successfully for shipment.")},
                                                                        error => {alert("Waybill creation failed");},
@@ -143,13 +142,13 @@ export class SingleComponent implements OnInit, OnDestroy {
         if(this.accountInfoList[idx].loginCredentials.accountCode == this.singleShipmentForm.get('senderInformation.accountNo')?.value) {
           //console.log(this.accountInfoList[idx].loginCredentials.accountCode);
           //console.log(this.singleShipmentForm.get('senderInformation.accountNo')?.value);
-          this.singleShipmentForm.get('senderInformation')?.setValue(
+          this.singleShipmentForm.get('senderInformation')?.patchValue(
             {
               accountNo:      this.accountInfoList[idx].loginCredentials.accountCode,
-              referenceNo:    '',
+              //referenceNo:    '',
               name:           this.accountInfoList[idx].personalInfo.name,
               companyName:    this.accountInfoList[idx].customerInfo.companyName,
-              country:        this.accountInfoList[idx].loginCredentials.accountCode,
+              //country:        this.accountInfoList[idx].loginCredentials.accountCode,
               city:           this.accountInfoList[idx].personalInfo.city,
               state:          this.accountInfoList[idx].personalInfo.state,
               address:        this.accountInfoList[idx].personalInfo.address,
