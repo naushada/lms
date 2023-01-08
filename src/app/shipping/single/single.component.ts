@@ -47,9 +47,10 @@ export class SingleComponent implements OnInit, OnDestroy {
         email:'',
         receivingTaxId:''
       }),
+
       shipmentInformation : this.fb.group({
         activity: this.fb.array([{date: formatDate(new Date(), 'dd/MM/yyyy', 'en'), event: "Document Created", 
-                                  time:new Date().getHours()+':'+new Date().getMinutes(), notes:'Document Ccreated', driver:'', 
+                                  time:new Date().getHours() +':'+new Date().getMinutes(), notes:'Document Ccreated', driver:'', 
                                   updatedBy: '', eventLocation:'Riyadh'}]),
         skuNo:'',
         service:this.defValue.ServiceType?.at(1),
@@ -63,9 +64,10 @@ export class SingleComponent implements OnInit, OnDestroy {
         weight:'',
         weightUnits:'',
         cubicWeight:'',
-        createdOn: formatDate(new Date(), 'dd/MM/yyyy', 'en'),
-        createdBy: new Date().getHours()+':'+new Date().getMinutes()
+        createdOn: formatDate(new Date(), 'dd/MM/yyyy', 'en-GB'),
+        createdBy: new Date().getHours() + ':' + new Date().getMinutes()
       }),
+
       receiverInformation: this.fb.group({
         name:'',
         country:this.defValue.CountryName?.at(1),
@@ -77,6 +79,7 @@ export class SingleComponent implements OnInit, OnDestroy {
         phone:'',
         email:''
       })
+
     });
 
 
@@ -130,11 +133,17 @@ export class SingleComponent implements OnInit, OnDestroy {
       this.singleShipmentForm.get('referenceNo')?.setValue(this.loggedInUser.personalInfo.name);
 
     } else {
+      alert(this.singleShipmentForm.get('senderInformation.accountNo')?.value);
       for (let idx:number = 0; idx < this.accountInfoList.length ; ++idx) {
-        alert(this.singleShipmentForm.get('senderInformation.acccountNo')?.value);
-        alert(this.accountInfoList[idx].loginCredentials.accountCode);
-        if(this.accountInfoList[idx].loginCredentials.accountCode == this.singleShipmentForm.get('acccountNo')?.value) {
-          this.singleShipmentForm.get('senderInformation.name')?.setValue(this.accountInfoList[idx].personalInfo.name);
+        
+        //alert(this.accountInfoList[idx].loginCredentials.accountCode);
+        //alert(this.singleShipmentForm.get('senderInformation.accountNo')?.value);
+        //let accCode:string = this.singleShipmentForm.get('senderInformation.acccountNo')?.value;
+        //console.log(accCode);
+        if(this.accountInfoList[idx].loginCredentials.accountCode == this.singleShipmentForm.get('senderInformation.accountNo')?.value) {
+          console.log(this.accountInfoList[idx].loginCredentials.accountCode);
+          console.log(this.singleShipmentForm.get('senderInformation.accountNo')?.value);
+          this.singleShipmentForm.get('senderInformation.name')?.patchValue((this.accountInfoList[idx].personalInfo.name));
         }
       }
     }

@@ -40,7 +40,7 @@
             <clr-select-container *ngIf="'Customer' != this.loggedInUser?.personalInfo?.role">
                 <label>Account No.</label>
                 <select clrSelect name="accountNo" formControlName="accountNo">
-                    <option *ngFor="let act of this.accountInfoList" value="act.loginCredentials.accountCode">
+                    <option *ngFor="let act of this.accountInfoList" [value]="act.loginCredentials.accountCode">
                         {{act.loginCredentials.accountCode}}
                       </option>
                 </select>
