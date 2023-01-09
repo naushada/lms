@@ -170,7 +170,7 @@ interface senderInformation {
 
 interface shipmentInformation {
 
-    activity: activityOnShipment;
+    activity: Array<activityOnShipment>;
     skuNo: string;
     service: string;
     numberOfItems: string;
@@ -213,9 +213,11 @@ interface activityOnShipment{
 }
 
 export interface Shipment {
-    senderInfo: senderInformation;
-    shipmentInfo: shipmentInformation;
-    receiverInfo: receiverInformation;
+    shipment: {
+        senderInfo: senderInformation;
+        shipmentInfo: shipmentInformation;
+        receiverInfo: receiverInformation;
+    }
 }
 
 export interface accessOnUri {

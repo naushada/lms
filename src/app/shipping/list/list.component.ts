@@ -45,8 +45,11 @@ export class ListComponent implements OnInit {
       
     } else {
       this.http.getShipmentsList(this.shipmentListForm.get('startDate')?.value, 
-                                 this.shipmentListForm.get('endDate')?.value).subscribe((rsp: Shipment[]) => {
+                                 this.shipmentListForm.get('endDate')?.value).subscribe((rsp: Shipment[]) => 
+                                 {
+                                  //alert(JSON.stringify(rsp));
                                   rsp.forEach(elm => {this.shipments.push(elm);})
+                                  //this.shipments = {...rsp};
                                  },
                                  error => {alert("No Shipments in this Date Range");},
                                  () => {});

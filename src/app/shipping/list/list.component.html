@@ -37,27 +37,27 @@
 
 <clr-datagrid>
     
-    <clr-dg-column [clrDgField]="'SerialNo'">Serial No</clr-dg-column>
-    <clr-dg-column [clrDgField]="'ShipmentNo'">Shipment No</clr-dg-column>
-    <clr-dg-column [clrDgField]="'AltRefNo'">Alternate ReferenceNo</clr-dg-column>
-    <clr-dg-column [clrDgField]="'CreatedBy'">Created By</clr-dg-column>
-    <clr-dg-column [clrDgField]="'CreatedOn'">Created On</clr-dg-column>
-    <clr-dg-column [clrDgField]="'Service'">Service</clr-dg-column>
-    <clr-dg-column [clrDgField]="'Receipient'">Receipient</clr-dg-column>
-    <clr-dg-column [clrDgField]="'Location'">Location</clr-dg-column>
-    <clr-dg-column [clrDgField]="'Country'">Country</clr-dg-column>
+    <clr-dg-column >Serial No</clr-dg-column>
+    <clr-dg-column >Shipment No</clr-dg-column>
+    <clr-dg-column >Alternate ReferenceNo</clr-dg-column>
+    <clr-dg-column >Created By</clr-dg-column>
+    <clr-dg-column >Created On</clr-dg-column>
+    <clr-dg-column >Service</clr-dg-column>
+    <clr-dg-column >Receipient</clr-dg-column>
+    <clr-dg-column >Location</clr-dg-column>
+    <clr-dg-column >Country</clr-dg-column>
     
     
     <clr-dg-row *clrDgItems="let shipment of shipments; let idx">
         <clr-dg-cell>{{idx}}</clr-dg-cell>
         <clr-dg-cell>{{shipment.awbno}}</clr-dg-cell>
         <clr-dg-cell>{{shipment.altRefNo}}</clr-dg-cell>
-        <clr-dg-cell>{{shipment.shipmentInformation.activity[0].updatedBy}}</clr-dg-cell>
-        <clr-dg-cell>{{shipment.shipmentInformation.activity[0].date}}</clr-dg-cell>
-        <clr-dg-cell>{{shipment.shipmentInformation.service}}</clr-dg-cell>
-        <clr-dg-cell>{{shipment.receiverInformation.name}}</clr-dg-cell>
-        <clr-dg-cell>{{shipment.shipmentInformation.activity[0].eventLocation}}</clr-dg-cell>
-        <clr-dg-cell>{{shipment.receiverInformation.country}}</clr-dg-cell>
+        <clr-dg-cell>{{shipment.shipmentInfo.createdBy}}</clr-dg-cell>
+        <clr-dg-cell>{{shipment.shipmentInfo.createdOn}}</clr-dg-cell>
+        <clr-dg-cell>{{shipment.shipmentInfo.service}}</clr-dg-cell>
+        <clr-dg-cell>{{shipment.receiverInfo.name}}</clr-dg-cell>
+        <clr-dg-cell>{{shipment.shipmentInfo.activity[0].eventLocation}}</clr-dg-cell>
+        <clr-dg-cell>{{shipment.receiverInfo.country}}</clr-dg-cell>
         
     </clr-dg-row>
 

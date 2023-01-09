@@ -83,7 +83,7 @@ export class ModifyComponent implements OnInit {
     let awbNo: string = this.retrieveForm.get('awbno')?.value;
     alert("the Waybill Number -> " +  awbNo);
     this.rest.getShipmentByAwbNo(awbNo).subscribe((resp: Shipment) => {
-      alert("The Address is" + resp.receiverInfo.address);
+      //alert("The Address is" + resp.receiverInfo.address);
     }, 
     (error) => {}, 
     () => {alert("This is default");});
