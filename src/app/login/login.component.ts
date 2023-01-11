@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
 
     //this.validateDemo() ;
     //this.submitDemo();
-    
+    //this.rt.navigateByUrl('/main');
   }
 
   validateBtnState: ClrLoadingState = ClrLoadingState.DEFAULT;

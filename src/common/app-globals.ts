@@ -164,11 +164,23 @@ export const AppGlobalsDefault: AppGlobals = {
 
 }
 
-interface senderInformation {
-    account: Account;
+interface SenderInformation {
+    accountNo: string
+    referenceNo: string
+    name: string
+    companyName: string
+    country: string
+    city: string;
+    state: string;
+    address:string;
+    postalCode: string;
+    contact: string;
+    phoneNumber: string;
+    email: string;
+    receivingTaxId: string;
 }
 
-interface shipmentInformation {
+interface ShipmentInformation {
 
     activity: Array<activityOnShipment>;
     skuNo: string;
@@ -183,13 +195,11 @@ interface shipmentInformation {
     weight: string;
     weightUnits: string;
     cubicWeight:string;
-    altRefNo: string;
-    awbNo: string;
     createdOn: Date;
     createdBy: string;
 }
 
-interface receiverInformation {
+interface ReceiverInformation {
 
     name: string
     country:string;
@@ -214,9 +224,12 @@ interface activityOnShipment{
 
 export interface Shipment {
     shipment: {
-        senderInfo: senderInformation;
-        shipmentInfo: shipmentInformation;
-        receiverInfo: receiverInformation;
+        isAutoGenerate: boolean;
+        awbno: string;
+        altRefNo: string;
+        senderInformation: SenderInformation;
+        shipmentInformation: ShipmentInformation;
+        receiverInformation: ReceiverInformation;
     }
 }
 

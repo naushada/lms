@@ -18,8 +18,8 @@ export class CreateAccountComponent implements OnInit {
     this.accountForm = this.fb.group({
       isAccountCodeAutoGen: false,
       loginCredentials: this.fb.group({
-      accountCode: '',
-      accountPassword: ''}),
+        accountCode: '',
+        accountPassword: ''}),
       personalInfo: this.fb.group({
         eventLocation:'',
 	      role:'',

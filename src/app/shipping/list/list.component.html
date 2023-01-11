@@ -48,16 +48,16 @@
     <clr-dg-column >Country</clr-dg-column>
     
     
-    <clr-dg-row *clrDgItems="let shipment of shipments; let idx">
-        <clr-dg-cell>{{idx}}</clr-dg-cell>
-        <clr-dg-cell>{{shipment.awbno}}</clr-dg-cell>
-        <clr-dg-cell>{{shipment.altRefNo}}</clr-dg-cell>
-        <clr-dg-cell>{{shipment.shipmentInfo.createdBy}}</clr-dg-cell>
-        <clr-dg-cell>{{shipment.shipmentInfo.createdOn}}</clr-dg-cell>
-        <clr-dg-cell>{{shipment.shipmentInfo.service}}</clr-dg-cell>
-        <clr-dg-cell>{{shipment.receiverInfo.name}}</clr-dg-cell>
-        <clr-dg-cell>{{shipment.shipmentInfo.activity[0].eventLocation}}</clr-dg-cell>
-        <clr-dg-cell>{{shipment.receiverInfo.country}}</clr-dg-cell>
+    <clr-dg-row *clrDgItems="let sh of shipments; let idx = index">
+        <clr-dg-cell>{{idx + 1}}</clr-dg-cell>
+        <clr-dg-cell>{{sh.shipment.awbno}}</clr-dg-cell>
+        <clr-dg-cell>{{sh.shipment.altRefNo}}</clr-dg-cell>
+        <clr-dg-cell>{{sh.shipment.shipmentInformation.createdBy}}</clr-dg-cell>
+        <clr-dg-cell>{{sh.shipment.shipmentInformation.createdOn}}</clr-dg-cell>
+        <clr-dg-cell>{{sh.shipment.shipmentInformation.service}}</clr-dg-cell>
+        <clr-dg-cell>{{sh.shipment.receiverInformation.name}}</clr-dg-cell>
+        <clr-dg-cell>{{sh.shipment.shipmentInformation.activity[0].eventLocation}}</clr-dg-cell>
+        <clr-dg-cell>{{sh.shipment.receiverInformation.country}}</clr-dg-cell>
         
     </clr-dg-row>
 
