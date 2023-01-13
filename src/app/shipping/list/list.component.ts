@@ -26,6 +26,7 @@ export class ListComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.shipments = [];
     this.subsink.sink = this.subject.onAccount.subscribe(rsp => {
       this.loggedInUser = rsp;
     },
@@ -40,7 +41,7 @@ export class ListComponent implements OnInit {
                                  this.loggedInUser.loginCredentials.accountCode).subscribe((rsp: Shipment[]) => {
                                     rsp.forEach(elm => {this.shipments.push(elm);})
                                  },
-                                 error => {alert("No Shipments in this Date Range");},
+                                 error => {this.shipments = [];alert("No Shipments in this Date Range");},
                                  () => {});
       
     } else {
@@ -50,7 +51,7 @@ export class ListComponent implements OnInit {
                                          this.shipments.push(elm);
                                       });
                                   },
-                                  error => {this.shipments.length = 0; console.log("error naushad 400");},
+                                  error => {this.shipments = []; alert("No Shipment is Found");},
                                   () => {});
     }
     
