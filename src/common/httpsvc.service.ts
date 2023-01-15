@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
-import { forkJoin, Observable } from 'rxjs';
+import { HttpClient, HttpParams, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
+import { catchError, forkJoin, Observable} from 'rxjs';
 import { Shipment, Account, ShipmentStatus, Inventory, UriMap, Email } from './app-globals';
+
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +45,7 @@ export class HttpsvcService {
     const options = {params: new HttpParams({fromString: param})};
 
     let uri: string = this.apiURL + UriMap.get("from_web_shipment");
-    return this.http.get<Shipment>(uri, options)
+    return this.http.get<Shipment>(uri, options);
   }
 
   /**
@@ -63,7 +64,8 @@ export class HttpsvcService {
     const options = {params: new HttpParams({fromString: param})};
 
     let uri: string = this.apiURL + UriMap.get("from_web_shipment");
-    return this.http.get<Shipment>(uri, options)
+    return this.http.get<Shipment>(uri, options);
+    
   }
 
   /**
@@ -107,7 +109,7 @@ export class HttpsvcService {
     const options = {params: new HttpParams({fromString: param})};
 
     let uri: string = this.apiURL + UriMap.get("from_web_shipment");
-    return this.http.get<Shipment[]>(uri, options)
+    return this.http.get<Shipment[]>(uri, options);
   }
 
 

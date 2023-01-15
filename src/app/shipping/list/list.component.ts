@@ -5,6 +5,7 @@ import { HttpsvcService } from 'src/common/httpsvc.service';
 import {formatDate} from '@angular/common';
 import { SubSink } from 'subsink';
 import { PubsubsvcService } from 'src/common/pubsubsvc.service';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-list',
@@ -57,4 +58,7 @@ export class ListComponent implements OnInit {
     
   }
 
+  onClear() {
+    this.shipmentListForm.reset;
+  }
 }
