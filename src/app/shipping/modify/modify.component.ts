@@ -31,12 +31,13 @@ export class ModifyComponent implements OnInit {
       isAutoGenerate: this.isAutoGenerateState,
       awbno: '',
       altRefNo: '',
+
       senderInformation : this.fb.group({
         accountNo: '',
         referenceNo: '',
         name:'',
         companyName:'',
-        country: this.defValue.CountryName?.at(1),
+        country: '',
         city:'',
         state:'',
         address:'',
@@ -56,24 +57,24 @@ export class ModifyComponent implements OnInit {
                                   updatedBy: '', 
                                   eventLocation: ''}]),
         skuNo:'',
-        service:this.defValue.ServiceType?.at(1),
+        service: '',
         numberOfItems:'',
         goodsDescription:'',
         goodsValue:'',
         customsValue:'',
         codAmount:'',
         vat:'',
-        currency: this.defValue.Currency?.at(1),
+        currency: '',
         weight:'',
         weightUnits:'',
         cubicWeight:'',
         createdOn: '',
-        createdBy: this.loggedInUser?.personalInfo.name
+        createdBy: ''
       }),
 
       receiverInformation: this.fb.group({
         name:'',
-        country:this.defValue.CountryName?.at(1),
+        country:'',
         city:'',
         state:'',
         postalCode:'',
@@ -102,7 +103,57 @@ export class ModifyComponent implements OnInit {
 
       this.http.getShipmentByAwbNo(awbNo).subscribe(rsp => {
         // Got the Response 
-        alert(JSON.stringify(rsp));
+        //alert(JSON.stringify(rsp));
+        this.modifyShipmentForm.get('altRefNo')?.patchValue(rsp.shipment.altRefNo);
+        this.modifyShipmentForm.get('senderInformation')?.patchValue(
+          {
+            accountNo:      rsp.shipment.senderInformation.accountNo,
+            referenceNo:    rsp.shipment.senderInformation.referenceNo,
+            name:           rsp.shipment.senderInformation.name,
+            companyName:    rsp.shipment.senderInformation.companyName,
+            country:        rsp.shipment.senderInformation.country,
+            city:           rsp.shipment.senderInformation.city,
+            state:          rsp.shipment.senderInformation.state,
+            address:        rsp.shipment.senderInformation.address,
+            postalCode:     rsp.shipment.senderInformation.postalCode,
+            contact:        rsp.shipment.senderInformation.contact,
+            phoneNumber:    rsp.shipment.senderInformation.phoneNumber,
+            email:          rsp.shipment.senderInformation.email,
+            receivingTaxId: rsp.shipment.senderInformation.receivingTaxId
+          });
+
+          this.modifyShipmentForm.get('shipmentInformation')?.patchValue(
+            {
+              activity:           rsp.shipment.shipmentInformation.activity,
+              skuNo:              rsp.shipment.shipmentInformation.skuNo,
+              service:            rsp.shipment.shipmentInformation.service,
+              numberOfItems:      rsp.shipment.shipmentInformation.numberOfItems,
+              goodsDescription:   rsp.shipment.shipmentInformation.goodsDescription,
+              goodsValue:         rsp.shipment.shipmentInformation.goodsValue,
+              customsValue:       rsp.shipment.shipmentInformation.customsValue,
+              codAmount:          rsp.shipment.shipmentInformation.codAmount,
+              vat:                rsp.shipment.shipmentInformation.vat,
+              currency:           rsp.shipment.shipmentInformation.currency,
+              weight:             rsp.shipment.shipmentInformation.weight,
+              weightUnits:        rsp.shipment.shipmentInformation.weightUnits,
+              cubicWeight:        rsp.shipment.shipmentInformation.cubicWeight,
+              createdOn:          rsp.shipment.shipmentInformation.createdOn,
+              createdBy:          rsp.shipment.shipmentInformation.createdBy
+            });
+
+            this.modifyShipmentForm.get('receiverInformation')?.patchValue(
+              {
+                name:       rsp.shipment.receiverInformation.name,
+                country:    rsp.shipment.receiverInformation.country,
+                city:       rsp.shipment.receiverInformation.city,
+                state:      rsp.shipment.receiverInformation.state,
+                postalCode: rsp.shipment.receiverInformation.postalCode,
+                contact:    rsp.shipment.receiverInformation.contact,
+                address:    rsp.shipment.receiverInformation.address,
+                phone:      rsp.shipment.receiverInformation.phone,
+                email:      rsp.shipment.receiverInformation.email
+              });
+
       },
 
       error => {},
