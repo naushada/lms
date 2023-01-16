@@ -134,23 +134,13 @@ export class SingleComponent implements OnInit, OnDestroy {
       this.singleShipmentForm.get('referenceNo')?.setValue(this.loggedInUser.personalInfo.name);
 
     } else {
-      //alert(this.singleShipmentForm.get('senderInformation.accountNo')?.value);
       for (let idx:number = 0; idx < this.accountInfoList.length ; ++idx) {
-        
-        //alert(this.accountInfoList[idx].loginCredentials.accountCode);
-        //alert(this.singleShipmentForm.get('senderInformation.accountNo')?.value);
-        //let accCode:string = this.singleShipmentForm.get('senderInformation.acccountNo')?.value;
-        //console.log(accCode);
         if(this.accountInfoList[idx].loginCredentials.accountCode == this.singleShipmentForm.get('senderInformation.accountNo')?.value) {
-          //console.log(this.accountInfoList[idx].loginCredentials.accountCode);
-          //console.log(this.singleShipmentForm.get('senderInformation.accountNo')?.value);
           this.singleShipmentForm.get('senderInformation')?.patchValue(
             {
               accountNo:      this.accountInfoList[idx].loginCredentials.accountCode,
-              //referenceNo:    '',
               name:           this.accountInfoList[idx].personalInfo.name,
               companyName:    this.accountInfoList[idx].customerInfo.companyName,
-              //country:        this.accountInfoList[idx].loginCredentials.accountCode,
               city:           this.accountInfoList[idx].personalInfo.city,
               state:          this.accountInfoList[idx].personalInfo.state,
               address:        this.accountInfoList[idx].personalInfo.address,
@@ -167,14 +157,10 @@ export class SingleComponent implements OnInit, OnDestroy {
   }
 
   getIsAutoGenerateStatus(): boolean {
-    //alert("Value of isAutoGenerateClicked " + this.isAutoGenerateClicked);
-    //return (this.genericForm.get("isAutoGenerate")?.enable());
-    alert("Naushad line:110");
     return(false);
   }
 
   isAutoGenerateClicked(evt: any): void {
-    alert("Naushad line:114 " + this.singleShipmentForm.get("isAutoGenerate")?.value());
     if(true == evt.target.checked) {
       this.singleShipmentForm.get("awbno")?.disable();
     }
