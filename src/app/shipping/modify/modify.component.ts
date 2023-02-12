@@ -16,14 +16,14 @@ export class ModifyComponent implements OnInit, OnDestroy {
   modifyShipmentForm: FormGroup;
   subsink = new SubSink();
   loggedInUser?: Account;
-  shipments: Shipment[] = [];
   isAutoGenerateState: boolean = true;
   
   constructor(private fb:FormBuilder, private http: HttpsvcService, private subject: PubsubsvcService) {
 
     this.defValue = {...AppGlobalsDefault };
 
-    this.subsink.sink = this.subject.onAccount.subscribe(rsp => {this.loggedInUser = rsp;},
+    this.subsink.sink = this.subject.onAccount.subscribe(
+      rsp => {this.loggedInUser = rsp;},
       error => {},
       () => {});
 
@@ -92,80 +92,17 @@ export class ModifyComponent implements OnInit, OnDestroy {
   onShipmentUpdate(){
 
   }
-
-  populateFields(rsp: Shipment): void {
-    //console.log("Value: " + rsp.shipment.altRefNo);
-    //this.modifyShipmentForm.get('altRefNo')?.setValue(rsp.shipment.altRefNo);
-
-    this.modifyShipmentForm.patchValue({
-    
-    altRefNo: rsp.shipment.altRefNo,  
-    senderInformation :
-      {
-        accountNo:      rsp.shipment.senderInformation.accountNo,
-        referenceNo:    rsp.shipment.senderInformation.referenceNo,
-        name:           rsp.shipment.senderInformation.name,
-        companyName:    rsp.shipment.senderInformation.companyName,
-        country:        rsp.shipment.senderInformation.country,
-        city:           rsp.shipment.senderInformation.city,
-        state:          rsp.shipment.senderInformation.state,
-        address:        rsp.shipment.senderInformation.address,
-        postalCode:     rsp.shipment.senderInformation.postalCode,
-        contact:        rsp.shipment.senderInformation.contact,
-        phoneNumber:    rsp.shipment.senderInformation.phoneNumber,
-        email:          rsp.shipment.senderInformation.email,
-        receivingTaxId: rsp.shipment.senderInformation.receivingTaxId
-      },
-      shipmentInformation:
-        {
-          activity:           rsp.shipment.shipmentInformation.activity,
-          skuNo:              rsp.shipment.shipmentInformation.skuNo,
-          service:            rsp.shipment.shipmentInformation.service,
-          numberOfItems:      rsp.shipment.shipmentInformation.numberOfItems,
-          goodsDescription:   rsp.shipment.shipmentInformation.goodsDescription,
-          goodsValue:         rsp.shipment.shipmentInformation.goodsValue,
-          customsValue:       rsp.shipment.shipmentInformation.customsValue,
-          codAmount:          rsp.shipment.shipmentInformation.codAmount,
-          vat:                rsp.shipment.shipmentInformation.vat,
-          currency:           rsp.shipment.shipmentInformation.currency,
-          weight:             rsp.shipment.shipmentInformation.weight,
-          weightUnits:        rsp.shipment.shipmentInformation.weightUnits,
-          cubicWeight:        rsp.shipment.shipmentInformation.cubicWeight,
-          createdOn:          rsp.shipment.shipmentInformation.createdOn,
-          createdBy:          rsp.shipment.shipmentInformation.createdBy
-        },
-      receiverInformation: 
-          {
-            name:       rsp.shipment.receiverInformation.name,
-            country:    rsp.shipment.receiverInformation.country,
-            city:       rsp.shipment.receiverInformation.city,
-            state:      rsp.shipment.receiverInformation.state,
-            postalCode: rsp.shipment.receiverInformation.postalCode,
-            contact:    rsp.shipment.receiverInformation.contact,
-            address:    rsp.shipment.receiverInformation.address,
-            phone:      rsp.shipment.receiverInformation.phone,
-            email:      rsp.shipment.receiverInformation.email
-          }
-        });
-  }
-
+  
   retrieveShipment() {
 
     let awbNo = this.modifyShipmentForm.get('awbno')?.value;
-    let altrefno =  '' //this.modifyShipmentForm.get('altRefNo')?.value;
+    let altrefno = this.modifyShipmentForm.get('altRefNo')?.value;
 
     if(awbNo && awbNo.length > 0) {
 
-      this.http.getShipmentByAwbNo(awbNo).subscribe((rsp: Shipment) => {
+      this.http.getShipmentByAwbNo(awbNo).subscribe((rsp: any) => {
         // Got the Response 
-        //console.log(JSON.stringify(rsp));
-        console.log("Populating Form Field");
-        //this.populateFields(rsp);
-        this.shipments[0] = rsp;
-        //this.modifyShipmentForm.setValue(this.shipments[0].shipment);
-        //console.log(this.shipments[0]);
-        this.populateFields(this.shipments[0]);
-
+        this.modifyShipmentForm.patchValue(rsp[0].shipment);
       },
 
       error => {},
@@ -178,13 +115,11 @@ export class ModifyComponent implements OnInit, OnDestroy {
   }
 
   onFetchByAwbNo() {
-
-    
+    this.retrieveShipment();
   }
 
   onFetchByAltRefNo() {
-
-    
+    this.retrieveShipment();
   }
 
   ngOnDestroy(): void {
