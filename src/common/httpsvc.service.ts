@@ -346,6 +346,29 @@ export class HttpsvcService {
     return forkJoin(reqArr);
   }
 
+  /**
+   * @brief This method sends multiple request
+   * @param awbNo An aero bill of string
+   * @param json data 
+   * @returns Observable <any>
+   */
+  updateSingleShipment(awbNo: string, data: string, acc?: string) : Observable<any> {
+    let param = "";
+    if(acc && acc.length > 0) {
+      param = `shipmentNo=${awbNo}&isSingleShipment=true&accountCode=${acc}`;
+    } else {
+      param = `shipmentNo=${awbNo}&isSingleShipment=true`;
+    }
+    const options = {
+                       params: new HttpParams({fromString: param}),
+                       headers: new HttpHeaders({
+                                'Content-Type': 'application/json'
+                        })
+                    };
+    let uri: string = this.apiURL + UriMap.get("from_web_shipment");
+    return(this.http.put<any>(uri, JSON.stringify(data), options));
+  }
+
   /** CREATE Section */
   /**
    * 

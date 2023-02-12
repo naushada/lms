@@ -90,7 +90,12 @@ export class ModifyComponent implements OnInit, OnDestroy {
   }
 
   onShipmentUpdate(){
-
+    let ship: Shipment = {shipment: this.modifyShipmentForm.value};
+    let awbNo = this.modifyShipmentForm.get('awbno')?.value;
+    this.http.updateSingleShipment(awbNo, ship as any).subscribe(
+      rsp => {alert("Shipment is updated successfully");},
+      error => {alert("Shipment updation is failed");},
+      () => {});
   }
   
   retrieveShipment() {
@@ -111,6 +116,14 @@ export class ModifyComponent implements OnInit, OnDestroy {
 
     } else if(altrefno && altrefno.length > 0) {
 
+      this.http.getShipmentsByAltRefNo(awbNo).subscribe((rsp: any) => {
+        // Got the Response 
+        this.modifyShipmentForm.patchValue(rsp[0].shipment);
+      },
+
+      error => {},
+
+      () => {});
     }
   }
 
