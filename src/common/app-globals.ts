@@ -222,6 +222,23 @@ interface activityOnShipment{
     eventLocation: string;
 }
 
+export interface ShipmentExcelRow {
+    AccountCode: string;
+    ReferenceNo : string
+    Weight: string
+    ReceiverCity: string;
+    ReceiverName: string;
+    ReceiverAddress: string;
+    ReceiverPhoneNo: string;
+    ReceiverAlternatePhoneNo: string;
+    GoodsDescription: string;
+    CodAmount: string;
+    AlternateReferenceNo: string;
+    CustomsValue: string;
+    CustomsCurrency: string;
+    SenderName: string;
+}
+
 export interface Shipment {
     shipment: {
         isAutoGenerate: boolean;

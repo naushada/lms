@@ -33,7 +33,9 @@ export class BulkComponent implements OnInit {
     
   }
 
-  onFileSelect(event: Event) {
-    
+  onFileSelect(event: any) {
+    alert(event.target.files[0]);
+    let rows = this.xls.getFromExcel(event.target.files[0])
+    console.log("rows "+ rows);
   }
 }

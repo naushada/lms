@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 //import { Workbook } from 'exceljs';
 import * as fs from 'file-saver';
 import * as Excel from 'exceljs';
-import { AppGlobals, AppGlobalsDefault } from './app-globals';
+import { AppGlobals, AppGlobalsDefault, ShipmentExcelRow } from './app-globals';
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +21,11 @@ export class ExcelsvcService {
     const workbook = new Excel.Workbook();
     const worksheet = workbook.addWorksheet(sheetName);
 
-    worksheet.properties.defaultRowHeight = 15;
+    worksheet.properties.defaultRowHeight = 20;
     worksheet.properties.defaultColWidth = 20;
     worksheet.pageSetup.paperSize = 9;
     worksheet.pageSetup.orientation = 'landscape';
+
     worksheet.columns = [
       {header: this.defValue?.ExcelHeading?.at(0), key: this.defValue?.ExcelHeading?.at(0), width: 15},
       {header: this.defValue?.ExcelHeading?.at(1), key: this.defValue?.ExcelHeading?.at(1), width: 15},
@@ -41,6 +42,7 @@ export class ExcelsvcService {
       {header: this.defValue?.ExcelHeading?.at(12), key: this.defValue?.ExcelHeading?.at(12), width: 25},
       {header: this.defValue?.ExcelHeading?.at(13), key: this.defValue?.ExcelHeading?.at(13), width: 15},
     ];
+    
     worksheet.views = [
       {state: 'frozen', xSplit: 0, ySplit: 1}
     ];
@@ -49,22 +51,6 @@ export class ExcelsvcService {
       let blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
       fs.saveAs(blob, 'ShipmentTemplate.xlsx');
     });
-
-    //Add Header Row
-
-    /*
-    let headerRow = worksheet.addRow(this.defValue?.ExcelHeading);
-
-    // Cell Style : Fill and Border
-    headerRow.eachCell((cell, number) => {
-        cell.fill = {
-        type: 'pattern',
-        pattern: 'solid',
-        fgColor: { argb: 'FFFFFF00' },
-        bgColor: { argb: 'FF0000FF' }
-      }
-      cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
-    });*/
 
   }
 
@@ -75,5 +61,20 @@ export class ExcelsvcService {
       let blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
       fs.saveAs(blob, 'ExportedData.xlsx');
     });
+  }
+
+  getFromExcel(fileName: string) {
+    let rows: Array<string> = [];
+
+    const workbook = new Excel.Workbook();
+    workbook.xlsx.readFile(fileName).then(() => {
+      workbook.eachSheet((sheetName:any, id:any) => {
+        let sheet = workbook.getWorksheet(sheetName);
+        for(var i = 1; i <= sheet.actualRowCount; i++) {
+          rows[i] = JSON.stringify(sheet.getRow(i));
+        }
+      });
+    });
+    return(rows);
   }
 }
