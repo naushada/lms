@@ -5,6 +5,7 @@ import '@cds/core/time/register.js';
 import '@cds/core/button/register.js';
 import { HttpsvcService } from 'src/common/httpsvc.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ExcelsvcService } from 'src/common/excelsvc.service';
 
 @Component({
   selector: 'app-bulk',
@@ -14,7 +15,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class BulkComponent implements OnInit {
 
   bulkShipmentForm: FormGroup;
-  constructor(private http: HttpsvcService, private fb: FormBuilder) { 
+  constructor(private http: HttpsvcService, private fb: FormBuilder, private xls: ExcelsvcService) { 
     this.bulkShipmentForm = this.fb.group({
       excelFileName: ''
     });
@@ -24,11 +25,12 @@ export class BulkComponent implements OnInit {
   }
 
   onDownloadTemplate() {
-
+    this.xls.createAndSaveShipmentTemplate("ShipmentTemplate");
   }
 
   onCreateBulkShipment() {
     alert(this.bulkShipmentForm?.get('excelFileName')?.value);
+    
   }
 
   onFileSelect(event: Event) {
