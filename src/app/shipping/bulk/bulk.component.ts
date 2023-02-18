@@ -20,8 +20,8 @@ export class BulkComponent implements OnInit, OnDestroy {
   public loggedInUser?: Account;
   public subsink: SubSink = new SubSink();
   public bulkShipmentForm: FormGroup;
-  public accountInfoList: Map<string, Account > = new Map<string, Account>();
-  public shipmentExcelRows: Array<ShipmentExcelRow> = new Array<ShipmentExcelRow>();
+  //public accountInfoList: Map<string, Account > = new Map<string, Account>();
+  //public shipmentExcelRows: Array<ShipmentExcelRow> = new Array<ShipmentExcelRow>();
 
 
   constructor(private http: HttpsvcService, private fb: FormBuilder, private xls: ExcelsvcService, private subject: PubsubsvcService) {
@@ -47,13 +47,15 @@ export class BulkComponent implements OnInit, OnDestroy {
   }
 
   onFileSelect(event: any) {
-    console.log(event);
-    alert("filename " + event.target.files[0].name + " frmFname " + this.bulkShipmentForm.value.excelFileName);
+    //console.log(event);
+    //alert("filename " + event.target.files[0].name + " frmFname " + this.bulkShipmentForm.value.excelFileName);
     //let rows = this.xls.getFromExcel(this.bulkShipmentForm.value.excelFileName);
     let accType:string = this.loggedInUser?.personalInfo.role as string;
-     this.xls.processShipmentExcelFile(event, this.bulkShipmentForm.value.excelFileName, accType);
-    console.log("rows "+ this.xls.shipmentExcelRows);
-    console.log("accInfo " + this.xls.accountInfoList);
+    this.xls.processShipmentExcelFile(event, accType);
+    this.xls.shipmentExcelRows.forEach(ent => {console.log("AccountCode "+ ent.AccountCode)});
+    //console.log("rows "+ this.xls.shipmentExcelRows.at(0)?.AccountCode);
+    //console.log("accInfo " + this.xls.accountInfoList);
+    this.xls.accountInfoList.forEach(ent => {console.log("AccCode "+ ent.loginCredentials.accountCode)});
   }
   
   ngOnDestroy(): void {

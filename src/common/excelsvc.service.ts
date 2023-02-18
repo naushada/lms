@@ -72,8 +72,8 @@ export class ExcelsvcService {
     return data.filter((value, idx) => data.indexOf(value) === idx);
   }
 
-  public processShipmentExcelFile(evt: any, fName:any, accountType: string) {
-    let rows: any[] = [];
+  public processShipmentExcelFile(evt: any, accountType: string) {
+    let rows: ShipmentExcelRow[] = [];
     let accList: string[] = [];
     
     const fileReader = new FileReader();
@@ -87,10 +87,9 @@ export class ExcelsvcService {
       
       wb.SheetNames.forEach(sheet => {
         let data = XLSX.utils.sheet_to_json(wb.Sheets[sheet]);
-        rows = <any[]>data;
+        rows = <ShipmentExcelRow[]>data;
         for(let idx:number = 0; idx < rows.length; ++idx) {
-          console.log("rows[" + idx + "]" + JSON.stringify(rows.at(idx)));
-          accList.push(rows[idx].accountCode);
+          accList.push(rows.at(idx).AccountCode);
           this.shipmentExcelRows.push(rows.at(idx));
         }
       });
@@ -100,17 +99,14 @@ export class ExcelsvcService {
     fileReader.onloadend = (event) => {
       if(accountType == "Employee") {
         let uniq: Array<string> = this.getridofDupElement(accList);
-        console.log("uniq " + uniq);
+
         for(let idx: number = 0; idx < uniq.length; ++idx) {
           this.http.getCustomerInfo(uniq[idx]).subscribe(
             (data: Account) => {
               this.accountInfoList.set(data.loginCredentials.accountCode, data);
-              console.log("accCode " + data.loginCredentials.accountCode);
             },
             (error: any) => {alert("Invalid AccountCode "); },
-            () => {
-              
-            }
+            () => {}
           );
         }
       } else {
@@ -120,7 +116,6 @@ export class ExcelsvcService {
 
     fileReader.onerror = (event) => {
       alert("Excel File is invalid: ");
-      
     }
   }
 
