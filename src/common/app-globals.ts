@@ -164,7 +164,7 @@ export const AppGlobalsDefault: AppGlobals = {
 
 }
 
-interface SenderInformation {
+export interface SenderInformation {
     accountNo: string
     referenceNo: string
     name: string

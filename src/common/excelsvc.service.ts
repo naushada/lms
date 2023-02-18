@@ -3,16 +3,21 @@ import { Injectable } from '@angular/core';
 //import { Workbook } from 'exceljs';
 import * as fs from 'file-saver';
 import * as Excel from 'exceljs';
-import { AppGlobals, AppGlobalsDefault, ShipmentExcelRow } from './app-globals';
+import * as XLSX from 'xlsx';
+
+import { Account, AppGlobals, AppGlobalsDefault, SenderInformation, ShipmentExcelRow } from './app-globals';
+import { HttpsvcService } from './httpsvc.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExcelsvcService {
 
+  public accountInfoList: Map<string, Account > = new Map<string, Account>();
+  public shipmentExcelRows: Array<ShipmentExcelRow> = new Array<ShipmentExcelRow>();
   defValue?: AppGlobals;
 
-  constructor() { 
+  constructor(private http: HttpsvcService) { 
     this.defValue = {...AppGlobalsDefault};
 
   }
@@ -63,15 +68,73 @@ export class ExcelsvcService {
     });
   }
 
+  public getridofDupElement(data: Array<string>) {
+    return data.filter((value, idx) => data.indexOf(value) === idx);
+  }
+
+  public processShipmentExcelFile(evt: any, fName:any, accountType: string) {
+    let rows: any[] = [];
+    let accList: string[] = [];
+    
+    const fileReader = new FileReader();
+    fileReader.readAsBinaryString(evt.target.files[0]);
+
+    /** This is lamda Funtion = anonymous function */
+    fileReader.onload = (event) => {
+      let binaryData = event.target?.result;
+      /** wb -- workBook of excel sheet */
+      let wb = XLSX.read(binaryData, {type:'binary'});
+      
+      wb.SheetNames.forEach(sheet => {
+        let data = XLSX.utils.sheet_to_json(wb.Sheets[sheet]);
+        rows = <any[]>data;
+        for(let idx:number = 0; idx < rows.length; ++idx) {
+          console.log("rows[" + idx + "]" + JSON.stringify(rows.at(idx)));
+          accList.push(rows[idx].accountCode);
+          this.shipmentExcelRows.push(rows.at(idx));
+        }
+      });
+    }
+
+    /** This lamda Fn is invoked once excel file is loaded */
+    fileReader.onloadend = (event) => {
+      if(accountType == "Employee") {
+        let uniq: Array<string> = this.getridofDupElement(accList);
+        console.log("uniq " + uniq);
+        for(let idx: number = 0; idx < uniq.length; ++idx) {
+          this.http.getCustomerInfo(uniq[idx]).subscribe(
+            (data: Account) => {
+              this.accountInfoList.set(data.loginCredentials.accountCode, data);
+              console.log("accCode " + data.loginCredentials.accountCode);
+            },
+            (error: any) => {alert("Invalid AccountCode "); },
+            () => {
+              
+            }
+          );
+        }
+      } else {
+        //this.isBtnDisabled = false;
+      }
+    }
+
+    fileReader.onerror = (event) => {
+      alert("Excel File is invalid: ");
+      
+    }
+  }
+
   getFromExcel(fileName: string) {
     let rows: Array<string> = [];
+    let workbook = new Excel.Workbook();
 
-    const workbook = new Excel.Workbook();
-    workbook.xlsx.readFile(fileName).then(() => {
+    workbook.xlsx.readFile(fileName).then((data) => {
+      console.log("data " + data);
       workbook.eachSheet((sheetName:any, id:any) => {
         let sheet = workbook.getWorksheet(sheetName);
         for(var i = 1; i <= sheet.actualRowCount; i++) {
-          rows[i] = JSON.stringify(sheet.getRow(i));
+          rows.push(JSON.stringify(sheet.getRow(i)));
+          console.log(rows.at(i));
         }
       });
     });

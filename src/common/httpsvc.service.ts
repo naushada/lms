@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
 import { catchError, forkJoin, Observable} from 'rxjs';
-import { Shipment, Account, ShipmentStatus, Inventory, UriMap, Email } from './app-globals';
+import { Shipment, Account, ShipmentStatus, Inventory, UriMap, Email, SenderInformation } from './app-globals';
 
 
 @Injectable({
