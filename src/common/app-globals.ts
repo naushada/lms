@@ -222,7 +222,7 @@ interface activityOnShipment{
     eventLocation: string;
 }
 
-export interface ShipmentExcelRow {
+export class ShipmentExcelRow {
     AccountCode: string;
     ReferenceNo : string
     Weight: string
@@ -237,6 +237,23 @@ export interface ShipmentExcelRow {
     CustomsValue: string;
     CustomsCurrency: string;
     SenderName: string;
+
+    constructor(ent: ShipmentExcelRow) {
+        this.AccountCode = ent.AccountCode;
+        this.ReferenceNo = ent.ReferenceNo;
+        this.Weight = ent.Weight;
+        this.ReceiverCity = ent.ReceiverCity;
+        this.ReceiverName = ent.ReceiverName;
+        this.ReceiverAddress = ent.ReceiverAddress;
+        this.ReceiverPhoneNo = ent.ReceiverPhoneNo;
+        this.ReceiverAlternatePhoneNo = ent.ReceiverAlternatePhoneNo;
+        this.GoodsDescription = ent.GoodsDescription;
+        this.CodAmount = ent.CodAmount;
+        this.AlternateReferenceNo = ent.AlternateReferenceNo;
+        this.CustomsValue = ent.CustomsValue;
+        this.CustomsCurrency = ent.CustomsCurrency;
+        this.SenderName = ent.SenderName;
+    }
 }
 
 export interface Shipment {

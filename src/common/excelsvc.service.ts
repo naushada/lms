@@ -13,9 +13,7 @@ import { HttpsvcService } from './httpsvc.service';
 })
 export class ExcelsvcService {
 
-  public accountInfoList: Map<string, Account > = new Map<string, Account>();
-  public shipmentExcelRows: Array<ShipmentExcelRow> = new Array<ShipmentExcelRow>();
-  defValue?: AppGlobals;
+  public defValue?: AppGlobals;
 
   constructor(private http: HttpsvcService) { 
     this.defValue = {...AppGlobalsDefault};
@@ -66,57 +64,6 @@ export class ExcelsvcService {
       let blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
       fs.saveAs(blob, 'ExportedData.xlsx');
     });
-  }
-
-  public getridofDupElement(data: Array<string>) {
-    return data.filter((value, idx) => data.indexOf(value) === idx);
-  }
-
-  public processShipmentExcelFile(evt: any, accountType: string) {
-    let rows: ShipmentExcelRow[] = [];
-    let accList: string[] = [];
-    
-    const fileReader = new FileReader();
-    fileReader.readAsBinaryString(evt.target.files[0]);
-
-    /** This is lamda Funtion = anonymous function */
-    fileReader.onload = (event) => {
-      let binaryData = event.target?.result;
-      /** wb -- workBook of excel sheet */
-      let wb = XLSX.read(binaryData, {type:'binary'});
-      
-      wb.SheetNames.forEach(sheet => {
-        let data = XLSX.utils.sheet_to_json(wb.Sheets[sheet]);
-        rows = <ShipmentExcelRow[]>data;
-        for(let idx:number = 0; idx < rows.length; ++idx) {
-          accList.push(rows.at(idx).AccountCode);
-          this.shipmentExcelRows.push(rows.at(idx));
-        }
-      });
-    }
-
-    /** This lamda Fn is invoked once excel file is loaded */
-    fileReader.onloadend = (event) => {
-      if(accountType == "Employee") {
-        let uniq: Array<string> = this.getridofDupElement(accList);
-
-        for(let idx: number = 0; idx < uniq.length; ++idx) {
-          this.http.getCustomerInfo(uniq[idx]).subscribe(
-            (data: Account) => {
-              this.accountInfoList.set(data.loginCredentials.accountCode, data);
-            },
-            (error: any) => {alert("Invalid AccountCode "); },
-            () => {}
-          );
-        }
-      } else {
-        //this.isBtnDisabled = false;
-      }
-    }
-
-    fileReader.onerror = (event) => {
-      alert("Excel File is invalid: ");
-    }
   }
 
   getFromExcel(fileName: string) {
