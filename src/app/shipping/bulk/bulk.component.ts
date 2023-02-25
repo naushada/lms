@@ -45,6 +45,7 @@ export class BulkComponent implements OnInit, OnDestroy {
   }
 
   onCreateBulkShipment() {
+    let bulkShipment: Array<string> = [];
     this.shipmentExcelRows?.forEach((ent: ShipmentExcelRow) => {
 
       let accCode:string = ent.AccountCode;
@@ -52,7 +53,7 @@ export class BulkComponent implements OnInit, OnDestroy {
 
       if(senderInfo != undefined) {
 
-        let singleShipmentForm:FormGroup = this.fb.group({
+        let shipment:FormGroup = this.fb.group({
           isAutoGenerate: true,
           awbno: '',
           altRefNo: ent.AlternateReferenceNo,
@@ -105,9 +106,23 @@ export class BulkComponent implements OnInit, OnDestroy {
             email: ''
          })
       });
+      
+      let tmpShipment:any = {"shipment": {...shipment.value}};
+      bulkShipment.push(tmpShipment);
     }
 
   });
+
+  bulkShipment.forEach(elm => {console.log("elm: " + JSON.stringify(elm));});
+  this.http.createBulkShipment(JSON.stringify(bulkShipment)).subscribe(rsp => {
+    let record: any; 
+    let jObj = JSON.stringify(rsp);
+    record = JSON.parse(jObj); alert("Shipments Create are: " + record.createdShipments);
+  },
+  error => {},
+  () => {});
+
+  this.accountInfoList.clear();
 }
 
 
