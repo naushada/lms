@@ -4,7 +4,7 @@
         <div class="clr-col-lg-auto">
             <clr-input-container>
                 <label>Choose bulk upload excel file</label>
-                <input type="file" clrInput name="excelFileName" formControlName="excelFileName" (change)="onFileSelect($event)">
+                <input type="file" clrInput name="excelFileName" formControlName="excelFileName" (change)="onFileSelect($event)" accept=".xls,.excel,.xlsx" >
             </clr-input-container>
         </div>
 
