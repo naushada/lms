@@ -6,6 +6,7 @@ import {formatDate} from '@angular/common';
 import { SubSink } from 'subsink';
 import { PubsubsvcService } from 'src/common/pubsubsvc.service';
 import { catchError } from 'rxjs/operators';
+import { alignRightIcon } from '@cds/core/icon';
 
 @Component({
   selector: 'app-list',
@@ -18,6 +19,7 @@ export class ListComponent implements OnInit {
   loggedInUser?: Account;
   subsink = new SubSink();
   shipments: Shipment[] = [];
+  rowsSelected?:Array<Shipment> = [];
 
   constructor(private fb: FormBuilder, private http: HttpsvcService, private subject: PubsubsvcService) {
     this.shipmentListForm = this.fb.group({
@@ -60,5 +62,11 @@ export class ListComponent implements OnInit {
 
   onClear() {
     this.shipmentListForm.reset;
+  }
+
+  onSelectionChanged(event:Shipment[]) {
+    
+    event.forEach(elm => {alert(JSON.stringify(elm))});
+
   }
 }

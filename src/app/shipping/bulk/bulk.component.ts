@@ -113,14 +113,16 @@ export class BulkComponent implements OnInit, OnDestroy {
 
   });
 
-  bulkShipment.forEach(elm => {console.log("elm: " + JSON.stringify(elm));});
-  this.http.createBulkShipment(JSON.stringify(bulkShipment)).subscribe(rsp => {
-    let record: any; 
-    let jObj = JSON.stringify(rsp);
-    record = JSON.parse(jObj); alert("Shipments Create are: " + record.createdShipments);
-  },
-  error => {},
-  () => {});
+  if(this.accountInfoList.size) {
+    bulkShipment.forEach(elm => {console.log("elm: " + JSON.stringify(elm));});
+    this.http.createBulkShipment(JSON.stringify(bulkShipment)).subscribe(rsp => {
+      let record: any; 
+      let jObj = JSON.stringify(rsp);
+      record = JSON.parse(jObj); alert("Shipments Create are: " + record.createdShipments);
+    },
+    error => {},
+    () => {});
+  }
 
   this.accountInfoList.clear();
 }
@@ -165,7 +167,7 @@ export class BulkComponent implements OnInit, OnDestroy {
               this.accountInfoList.set(data.loginCredentials.accountCode, data);
             },
             (error: any) => {alert("Invalid AccountCode "); },
-            () => {this.shipmentExcelRows?.forEach((ent: ShipmentExcelRow) => {console.log("AccountCode11 "+ ent.AccountCode);});}
+            () => {}
           );
         }
       } else {

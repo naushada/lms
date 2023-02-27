@@ -35,8 +35,7 @@
     </button>
 </div>
 
-<clr-datagrid>
-    
+<clr-datagrid  (clrDgSelectedChange)="onSelectionChanged($event)" [(clrDgSelected)]="rowsSelected">
     <clr-dg-column >Serial No</clr-dg-column>
     <clr-dg-column >Shipment No</clr-dg-column>
     <clr-dg-column >Alternate ReferenceNo</clr-dg-column>
@@ -48,7 +47,8 @@
     <clr-dg-column >Country</clr-dg-column>
     
     
-    <clr-dg-row *clrDgItems="let sh of shipments; let idx = index">
+    <clr-dg-row *clrDgItems="let sh of shipments; let idx = index" [clrDgItem]="sh">
+        
         <clr-dg-cell>{{idx + 1}}</clr-dg-cell>
         <clr-dg-cell>{{sh.shipment.awbno}}</clr-dg-cell>
         <clr-dg-cell>{{sh.shipment.altRefNo}}</clr-dg-cell>
