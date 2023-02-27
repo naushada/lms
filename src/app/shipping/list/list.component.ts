@@ -66,7 +66,21 @@ export class ListComponent implements OnInit {
 
   onSelectionChanged(event:Shipment[]) {
     
-    event.forEach(elm => {alert(JSON.stringify(elm))});
+    //event.forEach(elm => {alert(JSON.stringify(elm))});
+    //this.rowsSelected?.forEach(elm => {alert(JSON.stringify(elm))});
 
   }
+
+  onCreateA2Label() {
+    this.rowsSelected?.forEach(elm => {alert(JSON.stringify(elm))});
+  }
+
+  onCreateA4Label() {
+    this.rowsSelected?.forEach(elm => {alert(JSON.stringify(elm))});
+  }
+
+  onCreateA6Label() {
+    this.rowsSelected?.forEach(elm => {alert(JSON.stringify(elm))});
+  }
+
 }
