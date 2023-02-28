@@ -12,6 +12,8 @@ import * as JsBarcode from "jsbarcode";
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -88,7 +90,8 @@ export class ListComponent implements OnInit {
 
   buildA6ContentsBody() {
     this.A6LabelContentsBody.length = 0;
-    this.rowsSelected?.forEach((elm:Shipment) => { 
+    this.rowsSelected?.forEach((elm:Shipment) => {
+      console.log("awbNo: " + elm.shipment.awbno + " altRefNo: " + elm.shipment.altRefNo);
       let ent = [
         {
           table: {
@@ -115,7 +118,8 @@ export class ListComponent implements OnInit {
 
   buildA4ContentsBody() {
     this.A4LabelContentsBody.length = 0;
-    this.rowsSelected?.forEach((elm: Shipment) => { 
+    this.rowsSelected?.forEach((elm: Shipment) => {
+      console.log("awbNo: " + elm.shipment.awbno + " altRefNo: " + elm.shipment.altRefNo);
       let ent = [
         {
           table: {
@@ -200,6 +204,10 @@ export class ListComponent implements OnInit {
   };
 
   textToBase64Barcode(text: string, ht:number, fSize: number = 15) {
+    if(!text.length) {
+      text = "default";
+    }
+
     var canvas = document.createElement("canvas");
     JsBarcode(canvas, text, {format: "CODE128", height: ht, fontOptions: 'bold', fontSize: fSize});
     return canvas.toDataURL("image/png");
