@@ -1,16 +1,16 @@
-<form clrForm clrLayout="vertical" clrLabelSize="4">
+<form clrForm clrLayout="vertical" clrLabelSize="4" [formGroup]="singleShipmentTrackingForm">
     <div class="clr-row">
         <div class="clr-col-lg-auto">
             <clr-input-container>
-                <label for="shipmentNo">AWB OR Alternate Reference No</label>
-                <input type="text" clrInput name="shipmentNo" placeholder="AWB or Alternate Reference Number">
+                <label for="awbNo">AWB OR Alternate Reference No</label>
+                <input type="text" clrInput name="awbNo" >
             </clr-input-container>
 
         </div>
         <div class="clr-col-lg-auto">
             <clr-input-container>
                 <label for="altRefNo">Sender Reference No</label>
-                <input type="text" clrInput name="altRefNo" placeholder="Sender Reference Number">
+                <input type="text" clrInput name="altRefNo" >
             </clr-input-container>
 
         </div>
@@ -18,42 +18,35 @@
             <clr-radio-container clrInline>
                 <label>Last Mile Delivery Service Vendor</label>
                 <clr-radio-wrapper>
-                    <input type="radio" clrRadio name="options" required value="option1"  />
+                    <input type="radio" clrRadio name="vendor" required value="self"  checked (click)="onVendorSelect('self')" />
                     <label>Self</label>
-                  </clr-radio-wrapper>
-                <clr-radio-wrapper>
-                  <input type="radio" clrRadio name="options" required value="option1"  />
-                  <label>Sipsy</label>
                 </clr-radio-wrapper>
                 <clr-radio-wrapper>
-                  <input type="radio" clrRadio name="options" required value="option2"  />
-                  <label>Ajoul</label>
+                    <input type="radio" clrRadio name="vendor" required value="sipsy" (click)="onVendorSelect('sipsy')"/>
+                     <label>Sipsy</label>
                 </clr-radio-wrapper>
                 <clr-radio-wrapper>
-                    <input type="radio" clrRadio name="options" required value="option2"  />
+                    <input type="radio" clrRadio name="vendor" required value="ajoul"  (click)="onVendorSelect('ajoul')" />
+                    <label>Ajoul</label>
+                </clr-radio-wrapper>
+                <clr-radio-wrapper>
+                    <input type="radio" clrRadio name="vendor" required value="dhl"  (click)="onVendorSelect('dhl')" />
                     <label>DHL Express</label>
-                  </clr-radio-wrapper>
-                  <clr-radio-wrapper>
-                    <input type="radio" clrRadio name="options" required value="option2"  />
+                </clr-radio-wrapper>
+                <clr-radio-wrapper>
+                    <input type="radio" clrRadio name="vendor" required value="bluedart" (click)="onVendorSelect('bludart')" />
                     <label>Blue Dart Express</label>
-                  </clr-radio-wrapper>
-                  <clr-radio-wrapper>
-                    <input type="radio" clrRadio name="options" required value="option2"  />
-                    <label>Vendor 1</label>
-                  </clr-radio-wrapper>
-
+                </clr-radio-wrapper>
               </clr-radio-container>
         </div>
     </div>
     <div class="clr-row">
             
-            </div>
-       
-
-
+    </div>
+    
     <div class="clr-row" >
         <div class="clr-col">
-            <button class="btn btn-primary">Submit</button>
+            <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
         </div>
     </div>
 </form>
