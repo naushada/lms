@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Account, Shipment } from 'src/common/app-globals';
 import { HttpsvcService } from 'src/common/httpsvc.service';
@@ -19,7 +19,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, OnDestroy {
 
   shipmentListForm: FormGroup;
   loggedInUser?: Account;
@@ -227,4 +227,7 @@ export class ListComponent implements OnInit {
     pdfMake.createPdf(this.docDefinitionA6).download( "A6" + "-label");
   }
 
+  ngOnDestroy(): void {
+      this.subsink.unsubscribe();
+  }
 }

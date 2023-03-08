@@ -3,14 +3,14 @@
         <div class="clr-col-lg-auto">
             <clr-input-container>
                 <label for="awbNo">AWB OR Alternate Reference No</label>
-                <input type="text" clrInput name="awbNo" >
+                <input type="text" clrInput name="awbNo" formControlName="awbNo">
             </clr-input-container>
 
         </div>
         <div class="clr-col-lg-auto">
             <clr-input-container>
                 <label for="altRefNo">Sender Reference No</label>
-                <input type="text" clrInput name="altRefNo" >
+                <input type="text" clrInput name="altRefNo" formControlName="altRefNo">
             </clr-input-container>
 
         </div>
@@ -18,23 +18,23 @@
             <clr-radio-container clrInline>
                 <label>Last Mile Delivery Service Vendor</label>
                 <clr-radio-wrapper>
-                    <input type="radio" clrRadio name="vendor" required value="self"  checked (click)="onVendorSelect('self')" />
+                    <input type="radio" clrRadio name="vendor" required value="self"  checked (click)="onVendorSelect('self')" formControlName="vendor" />
                     <label>Self</label>
                 </clr-radio-wrapper>
                 <clr-radio-wrapper>
-                    <input type="radio" clrRadio name="vendor" required value="sipsy" (click)="onVendorSelect('sipsy')"/>
+                    <input type="radio" clrRadio name="vendor" required value="sipsy" (click)="onVendorSelect('sipsy')" formControlName="vendor" />
                      <label>Sipsy</label>
                 </clr-radio-wrapper>
                 <clr-radio-wrapper>
-                    <input type="radio" clrRadio name="vendor" required value="ajoul"  (click)="onVendorSelect('ajoul')" />
+                    <input type="radio" clrRadio name="vendor" required value="ajoul"  (click)="onVendorSelect('ajoul')" formControlName="vendor" />
                     <label>Ajoul</label>
                 </clr-radio-wrapper>
                 <clr-radio-wrapper>
-                    <input type="radio" clrRadio name="vendor" required value="dhl"  (click)="onVendorSelect('dhl')" />
+                    <input type="radio" clrRadio name="vendor" required value="dhl"  (click)="onVendorSelect('dhl')" formControlName="vendor" />
                     <label>DHL Express</label>
                 </clr-radio-wrapper>
                 <clr-radio-wrapper>
-                    <input type="radio" clrRadio name="vendor" required value="bluedart" (click)="onVendorSelect('bludart')" />
+                    <input type="radio" clrRadio name="vendor" required value="bluedart" (click)="onVendorSelect('bludart')"  formControlName="vendor" />
                     <label>Blue Dart Express</label>
                 </clr-radio-wrapper>
               </clr-radio-container>
@@ -51,30 +51,30 @@
     </div>
 </form>
 
-<div clrLayout="horizontal" clrLabelSize="4">
+<div clrLayout="horizontal" clrLabelSize="4" *ngIf="shipment?.shipment?.shipmentInformation?.activity?.length">
     <div class="clr-row">
         <div class="clr-col-lg-auto">
             <div class="clr-row">
                 <div class="clr-col-lg-auto">
                     <clr-input-container>
-                        <label for=""><b>Connote#:</b></label>
+                        <label for="awbNo"><b>Connote#:</b></label>
                     </clr-input-container>
                 </div>
                 <div class="clr-col">
                     <clr-input-container>
-                        <label for="">Value</label>
+                        <label for="">{{shipment?.shipment?.awbno}}</label>
                     </clr-input-container>
                 </div>
             </div>
             <div class="clr-row">
                 <div class="clr-col-lg-auto">
                     <clr-input-container>
-                        <label for=""><b>Alternate Reference No:</b></label>
+                        <label for="altRefNo"><b>Alternate Reference No:</b></label>
                     </clr-input-container>
                 </div>
                 <div class="clr-col">
                     <clr-input-container>
-                        <label for="">Value</label>
+                        <label for="">{{shipment?.shipment?.altRefNo}}</label>
                     </clr-input-container>
                 </div>
             </div>
@@ -86,7 +86,7 @@
                 </div>
                 <div class="clr-col">
                     <clr-input-container>
-                        <label for="">Value</label>
+                        <label for="">{{shipment?.shipment?.shipmentInformation?.service}}</label>
                     </clr-input-container>
                 </div>
             </div>
@@ -98,7 +98,7 @@
                 </div>
                 <div class="clr-col">
                     <clr-input-container>
-                        <label for="">Value</label>
+                        <label for="">{{shipment?.shipment?.shipmentInformation?.createdOn}}</label>
                     </clr-input-container>
                 </div>
             </div>
@@ -110,7 +110,7 @@
                 </div>
                 <div class="clr-col">
                     <clr-input-container>
-                        <label for="">Value</label>
+                        <label for="">{{shipment?.shipment?.receiverInformation?.country}}</label>
                     </clr-input-container>
                 </div>
             </div>
@@ -122,7 +122,7 @@
                 </div>
                 <div class="clr-col">
                     <clr-input-container>
-                        <label for="">Value</label>
+                        <label for="">{{status}}</label>
                     </clr-input-container>
                 </div>
             </div>
@@ -142,7 +142,7 @@
         <!--Timeline -->
         <div class="clr-col-lg-auto">
             <ul class="clr-timeline">
-                
+                <!--
                 <li class="clr-timeline-step disabled">
                   <div class="clr-timeline-step-header">11:59 am</div>
                   <clr-icon shape="circle" aria-label="Not started"></clr-icon>
@@ -174,18 +174,36 @@
                   and very long.
                 </span>
                   </div>
+                </li>-->
+                
+                <!--<li class="clr-timeline-step" *ngFor="let idx of len - 1">
+                    <div class="clr-timeline-step-header">{{shipment.shipment.shipmentInformation.activity.at(0).time}}</div>
+                    <clr-icon shape="success-standard" aria-label="spinner"></clr-icon>
+                    <div class="clr-timeline-step-body">
+                      <span class="clr-timeline-step-title">{{shipment.shipment.shipmentInformation.activity.at(0).event}}</span>
+                      <span class="clr-timeline-step-description">{{shipment.shipment.shipmentInformation.activity.at(0).notes}}</span>
+                    </div>
+                </li>-->
+
+                <li class="clr-timeline-step" *ngFor="let act of shipment?.shipment?.shipmentInformation?.activity; index as idx ;last as isLast">
+                    <span *ngIf="isLast">
+                        <div class="clr-timeline-step-header">{{act.time}}</div>
+                        <clr-icon shape="success-standard" aria-label="Inprogress"></clr-icon>
+                        <div class="clr-timeline-step-body">
+                            <span class="clr-timeline-step-title">{{act.event}}</span>
+                            <span class="clr-timeline-step-description">{{act.notes}}</span>
+                        </div>
+                    </span>
+                    <span *ngIf="!isLast">
+                        <div class="clr-timeline-step-header">{{act.time}}</div>
+                        <clr-icon shape="success-standard" aria-label="Completed"></clr-icon>
+                        <div class="clr-timeline-step-body">
+                            <span class="clr-timeline-step-title">{{act.event}}</span>
+                            <span class="clr-timeline-step-description">{{act.notes}}</span>
+                        </div>
+                    </span>
                 </li>
-                <li class="clr-timeline-step">
-                  <div class="clr-timeline-step-header">11:59 am</div>
-                  <clr-icon shape="success-standard" aria-label="Completed"></clr-icon>
-                  <div class="clr-timeline-step-body">
-                    <span class="clr-timeline-step-title">Make KMS trust vCenter</span>
-                    <span class="clr-timeline-step-description">Upload it to the KMS to complete the connection. Third
-                  sentence.
-                  <button class="btn btn-sm btn-link">Action</button>
-                </span>
-                  </div>
-                </li>
+
                 <li class="clr-timeline-step">
                   <div class="clr-timeline-step-header">11:59 am</div>
                   <clr-icon shape="error-standard" aria-label="Error"></clr-icon>
