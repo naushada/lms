@@ -142,53 +142,11 @@
         <!--Timeline -->
         <div class="clr-col-lg-auto">
             <ul class="clr-timeline">
-                <!--
-                <li class="clr-timeline-step disabled">
-                  <div class="clr-timeline-step-header">11:59 am</div>
-                  <clr-icon shape="circle" aria-label="Not started"></clr-icon>
-                  <div class="clr-timeline-step-body">
-                    <span class="clr-timeline-step-title">Add KMS</span>
-                    <span class="clr-timeline-step-description">Root CA certificate requested.</span>
-                  </div>
-                </li>
-                
-                
-                <li class="clr-timeline-step">
-                  <div class="clr-timeline-step-header">11:59 am</div>
-                  <clr-icon shape="dot-circle" aria-current="true" aria-label="Current"></clr-icon>
-                  <div class="clr-timeline-step-body">
-                    <span class="clr-timeline-step-title">Add KMS</span>
-                    <span class="clr-timeline-step-description">
-                  Root CA certificate requested. Upload it to the KMS to complete the connection.
-                  <button class="btn btn-sm">Action</button>
-                </span>
-                  </div>
-                </li>
-                <li class="clr-timeline-step">
-                  <div class="clr-timeline-step-header">11:59 am</div>
-                  <clr-spinner clrMedium aria-label="In progress">Fetching data</clr-spinner>
-                  <div class="clr-timeline-step-body">
-                    <span class="clr-timeline-step-title">Make vCenter trust KMS</span>
-                    <span class="clr-timeline-step-description">
-                  Root CA certificate requested. Upload it to the KMS to complete the connection. Third sentence is very long
-                  and very long.
-                </span>
-                  </div>
-                </li>-->
-                
-                <!--<li class="clr-timeline-step" *ngFor="let idx of len - 1">
-                    <div class="clr-timeline-step-header">{{shipment.shipment.shipmentInformation.activity.at(0).time}}</div>
-                    <clr-icon shape="success-standard" aria-label="spinner"></clr-icon>
-                    <div class="clr-timeline-step-body">
-                      <span class="clr-timeline-step-title">{{shipment.shipment.shipmentInformation.activity.at(0).event}}</span>
-                      <span class="clr-timeline-step-description">{{shipment.shipment.shipmentInformation.activity.at(0).notes}}</span>
-                    </div>
-                </li>-->
-
                 <li class="clr-timeline-step" *ngFor="let act of shipment?.shipment?.shipmentInformation?.activity; index as idx ;last as isLast">
                     <span *ngIf="isLast">
                         <div class="clr-timeline-step-header">{{act.time}}</div>
-                        <clr-icon shape="success-standard" aria-label="Inprogress"></clr-icon>
+                        <cds-icon role="img" shape="dot-circle" aria-label="Completed" *ngIf="act.event === 'Delivered'"></cds-icon>
+                        <cds-icon role="img" shape="dot-circle" aria-label="Current" *ngIf="act.event != 'Delivered'"></cds-icon>
                         <div class="clr-timeline-step-body">
                             <span class="clr-timeline-step-title">{{act.event}}</span>
                             <span class="clr-timeline-step-description">{{act.notes}}</span>
@@ -196,21 +154,12 @@
                     </span>
                     <span *ngIf="!isLast">
                         <div class="clr-timeline-step-header">{{act.time}}</div>
-                        <clr-icon shape="success-standard" aria-label="Completed"></clr-icon>
+                        <cds-icon role="img" shape="dot-circle" aria-label="Completed"></cds-icon>
                         <div class="clr-timeline-step-body">
                             <span class="clr-timeline-step-title">{{act.event}}</span>
                             <span class="clr-timeline-step-description">{{act.notes}}</span>
                         </div>
                     </span>
-                </li>
-
-                <li class="clr-timeline-step">
-                  <div class="clr-timeline-step-header">11:59 am</div>
-                  <clr-icon shape="error-standard" aria-label="Error"></clr-icon>
-                  <div class="clr-timeline-step-body">
-                    <span class="clr-timeline-step-title">Connected</span>
-                    <span class="clr-timeline-step-description">No. It's not connected.</span>
-                  </div>
                 </li>
       </ul>      
         </div>
@@ -228,13 +177,13 @@
     <clr-dg-column>Received (UTC)</clr-dg-column>
     <clr-dg-column>Sent (UTC)</clr-dg-column>
 
-    <clr-dg-row>
-        <clr-dg-cell></clr-dg-cell>
-        <clr-dg-cell></clr-dg-cell>
-        <clr-dg-cell></clr-dg-cell>
-        <clr-dg-cell></clr-dg-cell>
-        <clr-dg-cell></clr-dg-cell>
-        <clr-dg-cell></clr-dg-cell>
+    <clr-dg-row *ngFor="let act of shipment?.shipment?.shipmentInformation?.activity">
+        <clr-dg-cell>{{act.date}}</clr-dg-cell>
+        <clr-dg-cell>{{act.time}}</clr-dg-cell>
+        <clr-dg-cell>{{act.eventLocation}}</clr-dg-cell>
+        <clr-dg-cell>{{act.event}}</clr-dg-cell>
+        <clr-dg-cell>{{act.notes}}</clr-dg-cell>
+        <clr-dg-cell>{{act.updatedBy}}</clr-dg-cell>
         <clr-dg-cell></clr-dg-cell>
         <clr-dg-cell></clr-dg-cell>
     </clr-dg-row>
