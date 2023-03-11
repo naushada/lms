@@ -10,10 +10,10 @@ import { HttpsvcService } from 'src/common/httpsvc.service';
 })
 export class MultipleShipmentComponent implements OnInit {
 
-  multipleShipmentTrackingForm?: FormGroup;
+  multipleShipmentTrackingForm: FormGroup;
   whichVendor: string = "";
   shipments?: Array<Shipment>;
-  
+
   constructor(private http: HttpsvcService, private fb: FormBuilder) { 
     this.multipleShipmentTrackingForm = this.fb.group({
       shipmentNo:'',
