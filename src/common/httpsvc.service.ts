@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
 import { catchError, forkJoin, Observable} from 'rxjs';
-import { Shipment, Account, ShipmentStatus, Inventory, UriMap, Email, SenderInformation } from './app-globals';
+import { Shipment, Account, ShipmentStatus, Inventory, UriMap, Email, SenderInformation, activityOnShipment } from './app-globals';
 
 
 @Injectable({
@@ -321,7 +321,7 @@ export class HttpsvcService {
    * @param data 
    * @returns Observable <any>
    */
-  updateShipmentParallel(awbNo: Array<string>, data: ShipmentStatus) : Observable<any> {
+  updateShipmentParallel(awbNo: Array<string>, data: activityOnShipment) : Observable<any> {
     let start = 0;
     let end = awbNo.length;
     let step = 50;

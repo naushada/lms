@@ -212,7 +212,7 @@ interface ReceiverInformation {
     email: string;
 }
 
-interface activityOnShipment{
+export interface activityOnShipment {
     date: Date;
     event:string;
     time: Time;
