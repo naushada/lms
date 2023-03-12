@@ -4,14 +4,14 @@
         <div class="clr-col-lg-auto">
             <clr-textarea-container>
                 <label for="shipmentNo">AWB OR Alternate Reference No</label>
-                <textarea clrTextarea name="shipmentNo" placeholder="AWB or Alternate Reference Number"></textarea>
+                <textarea clrTextarea name="shipmentNo" placeholder="AWB or Alternate Reference Number" formControlName="shipmentNo"></textarea>
             </clr-textarea-container>
 
         </div>
         <div class="clr-col-lg-auto">
             <clr-textarea-container>
                 <label for="altRefNo">Sender Reference No</label>
-                <textarea clrTextarea name="altRefNo" placeholder="Sender Reference Number"></textarea>
+                <textarea clrTextarea name="altRefNo" placeholder="Sender Reference Number" formControlName="altRefNo"></textarea>
             </clr-textarea-container>
 
         </div>
@@ -46,30 +46,30 @@
 
     <div class="clr-row" >
         <div class="clr-col">
-            <button class="btn btn-primary">Submit</button>
+            <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
         </div>
     </div>
 </form>
 
 <div class="btn-group">
-    <button class="btn">
+    <button class="btn" (click)="onCreateA2Label()">
         <clr-icon shape="printer" aria-label="print"></clr-icon>A2
     </button>
-    <button class="btn">
+    <button class="btn" (click)="onCreateA4Label()">
         <clr-icon shape="printer"></clr-icon>A4
     </button>
-    <button class="btn">
+    <button class="btn" (click)="onCreateA6Label()">
         <clr-icon shape="printer"></clr-icon>A6
     </button>
 </div>
 
-<clr-datagrid>
+<clr-datagrid (clrDgSelectedChange)="onSelectionChanged($event)" [(clrDgSelected)]="rowsSelected">
     <clr-dg-column>Tracking Number</clr-dg-column>
     <clr-dg-column>Status</clr-dg-column>
     <clr-dg-column>Delivery Information</clr-dg-column>
     <clr-dg-column>Details</clr-dg-column>
     
-    <clr-dg-row *ngFor="let sh of shipments">
+    <clr-dg-row *clrDgItems="let sh of shipments" [clrDgItem]="sh">
         <clr-dg-cell>{{sh.shipment.awbno}}</clr-dg-cell>
         <clr-dg-cell>{{sh.shipment.altRefNo}}</clr-dg-cell>
         <clr-dg-cell>{{sh.shipment.shipmentInformation.activity[0].event}}</clr-dg-cell>
