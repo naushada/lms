@@ -24,6 +24,7 @@ export class MultipleShipmentComponent implements OnInit, OnDestroy {
   loggedInUser?: Account;
   subsink:SubSink = new SubSink();
   rowsSelected?:Array<Shipment> = [];
+  isSingleShipmentView: boolean = false;
 
   constructor(private http: HttpsvcService, private fb: FormBuilder, private subject: PubsubsvcService) {
     this.subsink.add(this.subject.onAccount.subscribe(rsp => { this.loggedInUser = rsp;}, (error) => {}, () => {}));
@@ -53,8 +54,12 @@ export class MultipleShipmentComponent implements OnInit, OnDestroy {
     this.whichVendor = what;
   }
 
+  viewSingleShipment() {
+    this.isSingleShipmentView = true;
+  }
 
   onSubmit() {
+    this.shipments = [];
     let awbNo = this.multipleShipmentTrackingForm.get('shipmentNo')?.value;
     let altRefNo = this.multipleShipmentTrackingForm.get('altRefNo')?.value;
     let accCode = this.loggedInUser?.loginCredentials.accountCode;
@@ -70,31 +75,39 @@ export class MultipleShipmentComponent implements OnInit, OnDestroy {
     } else if(altRefNo.length > 0) {
       altRefNo = altRefNo.trim();
       senderRefList = altRefNo.split("\n");
-      
     }
 
-
-    console.log("Value : " + this.multipleShipmentTrackingForm.get('shipmentNo')?.value + " altRefNo: " + this.multipleShipmentTrackingForm.get('altRefNo')?.value +
-    " lms " + this.multipleShipmentTrackingForm.get('vendor')?.value);
-
     if(awbNo != undefined && awbNo.length && this.loggedInUser?.personalInfo.role != "Employee") {
-      this.http.getShipmentsByAwbNo(awbList, accCode).subscribe((rsp: Shipment[]) => {this.shipments = {...rsp};}, (error) => {}, () => {});
+      this.http.getShipmentsByAwbNo(awbList, accCode).subscribe(
+        (rsp: Shipment[]) => {
+          rsp.forEach((elm: Shipment) => {this.shipments.push(elm)});},
+        (error) => {}, 
+        () => {});
+
     } else if(awbNo != undefined && awbNo.length) {
 
       this.http.getShipmentsByAwbNo(awbList).subscribe((rsp:Shipment[]) => {
-        //this.shipments = {...rsp};
+        rsp.forEach((elm: Shipment) => {this.shipments.push(elm)});
+      },
+
+      (error) => {}, 
+      () => {});
+
+    } else if(altRefNo != undefined && altRefNo.length && this.loggedInUser?.personalInfo.role != "Employee") {
+      this.http.getShipmentsByAltRefNo(senderRefList, accCode).subscribe((rsp: Shipment[]) => {
         rsp.forEach((elm: Shipment) => {this.shipments.push(elm)});
       }, 
       (error) => {}, 
       () => {});
 
-    } else if(altRefNo != undefined && altRefNo.length && this.loggedInUser?.personalInfo.role != "Employee") {
-      this.http.getShipmentsByAltRefNo(senderRefList, accCode).subscribe(rsp => {this.shipments = {...rsp};}, (error) => {}, () => {});
     } else {
-      this.http.getShipmentsByAltRefNo(senderRefList).subscribe(rsp => {this.shipments = {...rsp};}, (error) => {}, () => {});
+
+      this.http.getShipmentsByAltRefNo(senderRefList).subscribe(
+        (rsp: Shipment[]) => {rsp.forEach((elm: Shipment) => {this.shipments.push(elm)});}, 
+        (error) => {}, 
+        () => {});
     }
   }
-
     
   /** Label A6 Generation  */
   Info = {

@@ -39,6 +39,7 @@ import { InavBarComponent } from './inventory/inav-bar/inav-bar.component';
 import { InventoryReportComponent } from './inventory-report/inventory-report.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EmailComponent } from './tracking/email/email.component';
+import { SingleShipmentDiaglogComponent } from './tracking/single-shipment-diaglog/single-shipment-diaglog.component';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import { EmailComponent } from './tracking/email/email.component';
     InventoryReportComponent,
     DashboardComponent,
     EmailComponent,
+    SingleShipmentDiaglogComponent,
     
   ],
   imports: [

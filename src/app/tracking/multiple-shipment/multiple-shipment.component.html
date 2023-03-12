@@ -73,7 +73,7 @@
         <clr-dg-cell>{{sh.shipment.awbno}}</clr-dg-cell>
         <clr-dg-cell>{{sh.shipment.altRefNo}}</clr-dg-cell>
         <clr-dg-cell>{{sh.shipment.shipmentInformation.activity[0].event}}</clr-dg-cell>
-        <clr-dg-cell><button class="btn">View</button></clr-dg-cell>
+        <clr-dg-cell><button class="btn" (click)="viewSingleShipment()">View</button></clr-dg-cell>
     
     </clr-dg-row>
     <clr-dg-footer>
@@ -84,4 +84,6 @@
     </clr-dg-pagination>
 </clr-dg-footer>
 </clr-datagrid>
+
+<app-single-shipment-diaglog *ngIf="isSingleShipmentView == true"></app-single-shipment-diaglog>
 
