@@ -66,7 +66,7 @@ export class UpdateShipmentComponent implements OnInit, OnDestroy {
     let awbNoList = new Array<string>();
     awbNo = awbNo.trim();
     awbNoList = awbNo.split("\n");
-    console.log("awbNoList: " + awbNoList);
+    
 
     this.http.updateShipmentParallel(awbNoList, status).subscribe((data) => {
                           alert("Sipment Status is Updated Successfully");
