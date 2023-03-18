@@ -65,7 +65,21 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "styles": [
+                "node_modules/@clr/icons/clr-icons.min.css",
+                "node_modules/@clr/ui/clr-ui.min.css",
+                "src/styles.scss"
+              ],
+              "stylePreprocessorOptions": {
+                "includePaths": ["node_modules"]
+              },
+              "scripts": [ 
+                "node_modules/@clr/icons/clr-icons.min.js",
+                "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
+                "node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js",
+                "node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"
+              ]
             },
             "development": {
               "buildOptimizer": false,
