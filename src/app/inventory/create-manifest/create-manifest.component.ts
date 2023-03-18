@@ -49,20 +49,14 @@ export class CreateManifestComponent implements OnInit {
 
     let sku: string = this.manifestForm.get('sku')?.value;
     let qty: number = this.manifestForm.get('qty')?.value;
-    //alert("sku " + sku + " qty " + qty);
 
     this.A2LabelContentsBody.length = 0;
     for(let idx = 0; idx < qty; ++idx) {
       let ent = [
         {
           table: {
-            //margins: 1,
-            //headerRows: 0,
-            widths: ['100'],
-            //heights: ['auto', 'auto', 'auto', 20, 'auto'],
-            //heights: ['10', '5'],
             body: [
-              [ {image: this.textToBase64Barcode(sku, 70, 10), fontsize: 10, bold: false, alignment: 'left', valign:'top', fit: [100,100]}]
+              [ {image: this.textToBase64Barcode(sku, 70, 10), bold: false, alignment: 'left', valign:'top', width:90, pageOrientation: 'portrait'}]
             ]
           },
           pageBreak: 'after'
@@ -75,14 +69,6 @@ export class CreateManifestComponent implements OnInit {
   docDefinitionA2 = {
     info: this.Info,
     pageSize:'A10',
-    //pageSize: {
-    //  width:192,
-    //  height:144
-    //},
-    pageMargins: 1,
-    // [left, top, right, bottom] or [horizontal, vertical] or just a number for equal margins
-    //pageMargins: [ 1, 1, 10, 10 ],
-    //pageOrientation: 'portrait',
     pageOrientation: 'landscape',
     content: this.A2LabelContentsBody,
     
@@ -95,7 +81,7 @@ export class CreateManifestComponent implements OnInit {
     }
 
     var canvas = document.createElement("canvas");
-    JsBarcode(canvas, text, {format: "CODE128B", height: ht, fontOptions: 'bold', fontSize: fSize});
+    JsBarcode(canvas, text, {format: "CODE128", height: ht, fontOptions: 'bold', fontSize: fSize});
     return canvas.toDataURL("image/png");
   }
 
