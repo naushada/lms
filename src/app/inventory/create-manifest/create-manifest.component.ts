@@ -35,22 +35,22 @@ export class CreateManifestComponent implements OnInit {
   }
 
       
-  /** Label A6 Generation  */
+  /** Label A10 Generation  */
   Info = {
-    title: 'A2 Label',
+    title: 'A10 Label',
     author: 'Mohd Naushad Ahmed',
-    subject: 'A2 Label for Shipment',
-    keywords: 'A2 Label',
+    subject: 'A10 Label for Shipment',
+    keywords: 'A10 Label',
   };
 
-  A2LabelContentsBody:Array<object> = new Array<object>();
+  A10LabelContentsBody:Array<object> = new Array<object>();
 
-  buildA2ContentsBody() {
+  buildA10ContentsBody() {
 
     let sku: string = this.manifestForm.get('sku')?.value;
     let qty: number = this.manifestForm.get('qty')?.value;
 
-    this.A2LabelContentsBody.length = 0;
+    this.A10LabelContentsBody.length = 0;
     for(let idx = 0; idx < qty; ++idx) {
       let ent = [
         {
@@ -62,15 +62,17 @@ export class CreateManifestComponent implements OnInit {
           pageBreak: 'after'
         }
       ];
-      this.A2LabelContentsBody.push(ent);
+      this.A10LabelContentsBody.push(ent);
     }
   }
 
-  docDefinitionA2 = {
+  docDefinitionA10 = {
     info: this.Info,
     pageSize:'A10',
+    // [left, top, right, bottom] or [horizontal, vertical] or just a number for equal margins
+    pageMargins: [ 1, 1, 1, 1],
     pageOrientation: 'landscape',
-    content: this.A2LabelContentsBody,
+    content: this.A10LabelContentsBody,
     
   };
 
@@ -86,7 +88,7 @@ export class CreateManifestComponent implements OnInit {
   }
 
   onCreateA2Label() {
-    this.buildA2ContentsBody();
-    pdfMake.createPdf(this.docDefinitionA2).download( "A10" + "-label");
+    this.buildA10ContentsBody();
+    pdfMake.createPdf(this.docDefinitionA10).download( "A10" + "-label");
   }
 }
