@@ -57,10 +57,11 @@ export class CreateManifestComponent implements OnInit {
         {
           table: {
             //headerRows: 0,
-            widths: ['100'],
-            //heights: ['auto', 20],
+            widths: ['95','*'],
+            //heights: ['auto', 'auto', 'auto', 20, 'auto'],
+            //heights: ['10', '5'],
             body: [
-              [ {image: this.textToBase64Barcode(sku, 70, 10), fontsize: 10, bold: false, justified: 'left', fit: [90,90]}]
+              [ {image: this.textToBase64Barcode(sku, 70, 10), fontsize: 10, bold: false, alignment: 'left', fit: [90,90]},{}]
             ]
           },
           pageBreak: 'after'
@@ -72,10 +73,14 @@ export class CreateManifestComponent implements OnInit {
 
   docDefinitionA2 = {
     info: this.Info,
-    pageSize: 'A10',
-    //pageMargins: 2,
+    pageSize:'A9',
+    //pageSize: {
+    //  width:'',
+    //  height:''
+    //},
+    pageMargins: 2,
     // [left, top, right, bottom] or [horizontal, vertical] or just a number for equal margins
-    pageMargins: [ 1, 1, 10, 10 ],
+    //pageMargins: [ 1, 1, 10, 10 ],
     //pageOrientation: 'portrait',
     content: this.A2LabelContentsBody,
     
@@ -88,7 +93,7 @@ export class CreateManifestComponent implements OnInit {
     }
 
     var canvas = document.createElement("canvas");
-    JsBarcode(canvas, text, {format: "CODE128B", height: ht, fontOptions: 'bold', fontSize: fSize});
+    JsBarcode(canvas, text, {format: "CODE128", height: ht, fontOptions: 'bold', fontSize: fSize});
     return canvas.toDataURL("image/png");
   }
 
