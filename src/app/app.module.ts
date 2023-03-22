@@ -40,6 +40,7 @@ import { InventoryReportComponent } from './inventory-report/inventory-report.co
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EmailComponent } from './tracking/email/email.component';
 import { SingleShipmentDiaglogComponent } from './tracking/single-shipment-diaglog/single-shipment-diaglog.component';
+import { CreateDRSComponent } from './shipping/create-drs/create-drs.component';
 
 
 @NgModule({
@@ -75,6 +76,7 @@ import { SingleShipmentDiaglogComponent } from './tracking/single-shipment-diagl
     DashboardComponent,
     EmailComponent,
     SingleShipmentDiaglogComponent,
+    CreateDRSComponent,
     
   ],
   imports: [
