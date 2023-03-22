@@ -35,14 +35,40 @@ export class DetailedReportComponent implements OnInit {
   }
 
   onSubmit() {
-    this.http.getShipmentsList(this.detailedReportForm.get('startDate')?.value, 
-                                 this.detailedReportForm.get('endDate')?.value,
-                                 this.detailedReportForm.get('accountCode')?.value).subscribe((rsp: Shipment[]) => {
+    this.shipments = [];
+    let sDate:Date = this.detailedReportForm.get('startDate')?.value;
+    let eDate:Date = this.detailedReportForm.get('endDate')?.value;
+    let acc:string = this.detailedReportForm.get('accountCode')?.value;
+    let receiverCountry:string = this.detailedReportForm.get('receiverCountry')?.value
+
+    let accList = new Array<string>();
+    if(acc.length > 0) {
+      acc = acc.trim();
+      accList = acc.split("\n");
+    }
+
+    if(acc.length > 0 && receiverCountry.length > 0) {
+        this.http.getShipments(sDate, eDate, receiverCountry, accList).subscribe((rsp: Shipment[]) => {
                                     rsp.forEach(elm => {this.shipments.push(elm);})
                                  },
                                  error => {this.shipments = [];alert("No Shipments in this Date Range");},
                                  () => {});
 
+    } else if(receiverCountry.length > 0) {
+      this.http.getShipments(sDate, eDate, receiverCountry).subscribe((rsp: Shipment[]) => {
+                                  rsp.forEach(elm => {this.shipments.push(elm);})
+                               },
+                               error => {this.shipments = [];alert("No Shipments in this Date Range");},
+                               () => {});
+
+    } else {
+      this.http.getShipments(sDate, eDate).subscribe((rsp: Shipment[]) => {
+                                rsp.forEach(elm => {this.shipments.push(elm);})
+                             },
+                             error => {this.shipments = [];alert("No Shipments in this Date Range");},
+                             () => {});
+
+    }
   }
 
   onExcelExport() {

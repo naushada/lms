@@ -24,7 +24,7 @@
         <div class="clr-col-lg-auto">
             <clr-select-container>
                 <label>Account Code</label>
-                <select clrSelect name="accountCode" formControlName="accountCode">
+                <select clrSelect name="accountCode" formControlName="accountCode" multiple cols="50">
                   <option *ngFor="let acc of accounts" [value]="acc.loginCredentials.accountCode">{{acc.loginCredentials.accountCode}}</option>
                 </select>
               </clr-select-container>
