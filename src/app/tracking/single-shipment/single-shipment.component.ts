@@ -47,9 +47,6 @@ export class SingleShipmentComponent implements OnInit, OnDestroy {
     let altRefNo = this.singleShipmentTrackingForm.get('altRefNo')?.value;
     let accCode = this.loggedInUser?.loginCredentials.accountCode;
 
-    console.log("Value : " + this.singleShipmentTrackingForm.get('awbNo')?.value + " altRefNo: " + this.singleShipmentTrackingForm.get('altRefNo')?.value +
-    " lms " + this.singleShipmentTrackingForm.get('vendor')?.value);
-
     if(awbNo != undefined && awbNo.length && this.loggedInUser?.personalInfo.role != "Employee") {
       this.http.getShipmentByAwbNo(awbNo, accCode).subscribe((rsp: Shipment) => {this.shipment = {...rsp};}, (error) => {}, () => {});
     } else if(awbNo != undefined && awbNo.length) {
@@ -58,7 +55,6 @@ export class SingleShipmentComponent implements OnInit, OnDestroy {
         this.shipment = {...rsp[0]};
         this.len = this.shipment?.shipment?.shipmentInformation?.activity.length;
         this.status = this.shipment.shipment.shipmentInformation.activity[this.len -1].event;
-        console.log(this.len);
       }, 
       (error) => {}, 
       () => {});

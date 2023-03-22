@@ -142,8 +142,8 @@
         <!--Timeline -->
         <div class="clr-col-lg-auto">
             <ul class="clr-timeline">
-                <li class="clr-timeline-step" *ngFor="let act of shipment?.shipment?.shipmentInformation?.activity; last as isLast">
-                    <span *ngIf="isLast === true">
+                <li class="clr-timeline-step" *ngFor="let act of shipment?.shipment?.shipmentInformation?.activity; let idx = index; last as isLast">
+                    <ng-container *ngIf="(idx + 1) == len">
                         <div class="clr-timeline-step-header">{{act.time}}</div>
                         <cds-icon role="img" shape="dot-circle" aria-label="Completed" *ngIf="act.event === 'Delivered'"></cds-icon>
                         <cds-icon role="img" shape="dot-circle" aria-label="Current" *ngIf="act.event != 'Delivered'"></cds-icon>
@@ -151,17 +151,17 @@
                             <span class="clr-timeline-step-title">{{act.event}}</span>
                             <span class="clr-timeline-step-description">{{act.notes}}</span>
                         </div>
-                    </span>
-                    <span *ngIf="false === isLast">
+                    </ng-container>
+                    <ng-container *ngIf="len != (idx + 1)">
                         <div class="clr-timeline-step-header">{{act.time}}</div>
-                        <cds-icon role="img" shape="dot-circle" aria-label="Completed"></cds-icon>
+                        <cds-icon role="img" shape="success-standard" aria-label="Completed"></cds-icon>
                         <div class="clr-timeline-step-body">
                             <span class="clr-timeline-step-title">{{act.event}}</span>
                             <span class="clr-timeline-step-description">{{act.notes}}</span>
                         </div>
-                    </span>
+                    </ng-container>
                 </li>
-      </ul>      
+            </ul>      
         </div>
     
 </div>
