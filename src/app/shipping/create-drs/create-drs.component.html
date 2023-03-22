@@ -59,3 +59,31 @@
     </div>
 </form>
 
+
+<clr-datagrid>
+    <clr-dg-column>S. No.</clr-dg-column>
+    <clr-dg-column>Sender</clr-dg-column>
+    <clr-dg-column>Receiver</clr-dg-column>
+    <clr-dg-column>Contact No.</clr-dg-column>
+    <clr-dg-column>Awb No.</clr-dg-column>
+    <clr-dg-column>COD</clr-dg-column>
+    <clr-dg-column>Signature</clr-dg-column>
+    
+    <clr-dg-row *clrDgItems="let sh of shipments; let idx = index" [clrDgItem]="sh">
+        <clr-dg-cell>{{idx + 1}}</clr-dg-cell>
+        <clr-dg-cell>{{sh.shipment.senderInformation.name}}</clr-dg-cell>
+        <clr-dg-cell>{{sh.shipment.receiverInformation.address}}</clr-dg-cell>
+        <clr-dg-cell>{{sh.shipment.receiverInformation.contact}}</clr-dg-cell>
+        <clr-dg-cell><img [src]="textToBase64Barcode(sh.shipment.awbno, 60)"></clr-dg-cell>
+        <clr-dg-cell>{{sh.shipment.shipmentInformation.codAmount}}</clr-dg-cell>
+        <clr-dg-cell></clr-dg-cell>
+    
+    </clr-dg-row>
+    <clr-dg-footer>
+		<clr-dg-pagination #pagination [clrDgPageSize]="10">
+			<clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Shipment per page</clr-dg-page-size>
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+        of {{pagination.totalItems}} shipments
+    </clr-dg-pagination>
+</clr-dg-footer>
+</clr-datagrid>
