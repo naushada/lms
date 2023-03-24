@@ -44,8 +44,8 @@ export class HttpsvcService {
 
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + UriMap.get("from_web_shipment");
-    return this.http.get<Shipment>(uri, options);
+    //let uri: string = this.apiURL + UriMap.get("from_web_shipment");
+    return this.http.get<Shipment>("/api/v1/shipment/shipping", options);
   }
 
   /**
@@ -63,8 +63,8 @@ export class HttpsvcService {
     
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + UriMap.get("from_web_shipment");
-    return this.http.get<Shipment>(uri, options);
+    //let uri = this.apiURL + UriMap.get("from_web_shipment");
+    return this.http.get<Shipment>("/api/v1/shipment/shipping", options);
     
   }
 
@@ -83,8 +83,8 @@ export class HttpsvcService {
     
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + UriMap.get("from_web_shipment");
-    return this.http.get<Shipment>(uri, options)
+    //let uri: string = this.apiURL + UriMap.get("from_web_shipment");
+    return this.http.get<Shipment>("/api/v1/shipment/shipping", options)
   }
 
   /**
@@ -109,7 +109,7 @@ export class HttpsvcService {
     const options = {params: new HttpParams({fromString: param})};
 
     let uri: string = this.apiURL + UriMap.get("from_web_shipment");
-    return this.http.get<Shipment[]>(uri, options);
+    return this.http.get<Shipment[]>("/api/v1/shipment/shipping", options);
   }
 
 
@@ -131,7 +131,7 @@ export class HttpsvcService {
     const options = {params: new HttpParams({fromString: param})};
 
     let uri: string = this.apiURL + UriMap.get("from_web_shipment");
-    return this.http.get<Shipment[]>(uri, options)
+    return this.http.get<Shipment[]>("/api/v1/shipment/shipping", options)
   }
 
   /**
@@ -150,7 +150,7 @@ export class HttpsvcService {
     const options = {params: new HttpParams({fromString: param})};
 
     let uri: string = this.apiURL + UriMap.get("from_web_shipment");
-    return this.http.get<Shipment[]>(uri, options)
+    return this.http.get<Shipment[]>("/api/v1/shipment/shipping", options)
   }
 
   /**
@@ -169,7 +169,7 @@ export class HttpsvcService {
     const options = {params: new HttpParams({fromString: param})};
 
     let uri: string = this.apiURL + UriMap.get("from_web_shipment");
-    return this.http.get<Shipment[]>(uri, options)
+    return this.http.get<Shipment[]>("/api/v1/shipment/shipping", options)
   }
 
   /**
@@ -188,7 +188,7 @@ export class HttpsvcService {
     const options = {params: new HttpParams({fromString: param})};
 
     let uri: string = this.apiURL + UriMap.get("from_web_shipment");
-    return this.http.get<Shipment[]>(uri, options)
+    return this.http.get<Shipment[]>("/api/v1/shipment/shipping", options)
   }
 
   /**
@@ -207,7 +207,7 @@ export class HttpsvcService {
     const options = {params: new HttpParams({fromString: param})};
 
     let uri: string = this.apiURL + UriMap.get("from_web_account");
-    return this.http.get<Account>(uri, options);
+    return this.http.get<Account>("/api/v1/account/account", options);
   }
 
 
@@ -225,7 +225,7 @@ export class HttpsvcService {
      } 
 
     let uri: string = this.apiURL + UriMap.get("from_web_account");
-    return this.http.get<Account[]>(uri, options);
+    return this.http.get<Account[]>("/api/v1/account/account", options);
   }
 
   /**
@@ -239,7 +239,7 @@ export class HttpsvcService {
     const options = {params: new HttpParams({fromString: param})};
 
     let uri: string = this.apiURL + UriMap.get("from_web_account");
-    return this.http.get<Account>(uri, options);
+    return this.http.get<Account>("/api/v1/account/account", options);
   }
 
 
@@ -257,7 +257,7 @@ export class HttpsvcService {
     const options = {params: new HttpParams({fromString: param})};
 
     let uri: string = this.apiURL + UriMap.get("from_web_inventory");
-    return this.http.get<Inventory[]>(uri, options);
+    return this.http.get<Inventory[]>("/api/v1/inventory", options);
   }
 
   /** UPDATE Section */
@@ -279,7 +279,7 @@ export class HttpsvcService {
                       })
                     };
     let uri: string = this.apiURL + UriMap.get("from_web_inventory");
-    return this.http.put<any>(uri, JSON.stringify({}), options);
+    return this.http.put<any>("/api/v1/inventory", JSON.stringify({}), options);
   }
 
 
@@ -293,7 +293,7 @@ export class HttpsvcService {
                       })
                     };
     let uri: string = this.apiURL + UriMap.get("from_web_account");
-    return this.http.put<Account>(uri, JSON.stringify(accInfo), options);
+    return this.http.put<Account>("/api/v1/inventory", JSON.stringify(accInfo), options);
   }
 
   /**
@@ -312,7 +312,7 @@ export class HttpsvcService {
                       })
                     };
     let uri: string = this.apiURL + UriMap.get("from_web_shipment");
-    return this.http.put<any>(uri, JSON.stringify(data), options);
+    return this.http.put<any>("/api/v1/shipment/shipping", JSON.stringify(data), options);
   }
 
   /**
@@ -339,7 +339,7 @@ export class HttpsvcService {
                         })
                       };
       let uri: string = this.apiURL + UriMap.get("from_web_shipment");
-      let req = this.http.put<any>(uri, JSON.stringify(data), options);
+      let req = this.http.put<any>("/api/v1/shipment/shipping", JSON.stringify(data), options);
       reqArr.push(req);
     }
     
@@ -366,7 +366,7 @@ export class HttpsvcService {
                         })
                     };
     let uri: string = this.apiURL + UriMap.get("from_web_shipment");
-    return(this.http.put<any>(uri, JSON.stringify(data), options));
+    return(this.http.put<any>("/api/v1/shipment/shipping", JSON.stringify(data), options));
   }
 
   /** CREATE Section */
@@ -376,12 +376,12 @@ export class HttpsvcService {
    * @returns 
    */
   createAccount(newAccount:Account) : Observable<Account> {
-    return this.http.post<Account>(this.apiURL + UriMap.get("from_web_account"), JSON.stringify(newAccount), this.httpOptions);
+    return this.http.post<Account>("/api/v1/account/account", JSON.stringify(newAccount), this.httpOptions);
   }
 
   createInventory(product: Inventory): Observable<any> {
 
-    return this.http.post<Inventory>(this.apiURL + UriMap.get("from_web_inventory"), JSON.stringify(product), this.httpOptions);
+    return this.http.post<Inventory>("/api/v1/inventory", JSON.stringify(product), this.httpOptions);
   }
 
   //3rd Part Shipment Creation 
@@ -408,7 +408,7 @@ export class HttpsvcService {
        };
     }
     //let uri: string = this.apiURL + '/api/manifest';
-    return this.http.post<any>((this.apiURL + uri), JSON.stringify(awbList), this.httpOptions);
+    return this.http.post<any>((uri), JSON.stringify(awbList), this.httpOptions);
   }
 
 
@@ -418,7 +418,7 @@ export class HttpsvcService {
    * @returns 
    */
    createBulkShipment(newShipment:string) : Observable<any> {
-    return this.http.post<Shipment>(this.apiURL + UriMap.get("from_web_bulk_shipment"), 
+    return this.http.post<Shipment>("/api/v1/shipment/bulk/shipping", 
                                     newShipment, 
                                     this.httpOptions);
   }
@@ -429,14 +429,14 @@ export class HttpsvcService {
    * @returns 
    */
    createShipment(newShipment:any) : Observable<any> {
-    return this.http.post<any>(this.apiURL + UriMap.get("from_web_shipment"), 
+    return this.http.post<any>("/api/v1/shipment/shipping", 
                                     newShipment, 
                                     this.httpOptions);
   }
 
 
   initiateEmail(email: Email): Observable<any> {
-    return this.http.post<Email>(this.apiURL + UriMap.get("from_web_email"), JSON.stringify(email), this.httpOptions);
+    return this.http.post<Email>("/api/v1/email", JSON.stringify(email), this.httpOptions);
   }
 
 }
