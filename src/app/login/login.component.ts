@@ -14,6 +14,7 @@ import { __values } from 'tslib';
 })
 export class LoginComponent implements OnInit {
 
+  isPasswordReset:boolean = false;
   loginForm: FormGroup;
   get username() {
     return this.loginForm.value.username;
@@ -80,5 +81,9 @@ export class LoginComponent implements OnInit {
     this.submitBtnState = ClrLoadingState.LOADING;
     //Submit Logic
     this.submitBtnState = ClrLoadingState.DEFAULT;
+  }
+
+  onPasswordReset() {
+    this.isPasswordReset = true;
   }
 }

@@ -41,6 +41,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { EmailComponent } from './tracking/email/email.component';
 import { SingleShipmentDiaglogComponent } from './tracking/single-shipment-diaglog/single-shipment-diaglog.component';
 import { CreateDRSComponent } from './shipping/create-drs/create-drs.component';
+import { PasswordResetComponent } from './login/password-reset/password-reset.component';
 
 
 @NgModule({
@@ -77,6 +78,7 @@ import { CreateDRSComponent } from './shipping/create-drs/create-drs.component';
     EmailComponent,
     SingleShipmentDiaglogComponent,
     CreateDRSComponent,
+    PasswordResetComponent,
     
   ],
   imports: [

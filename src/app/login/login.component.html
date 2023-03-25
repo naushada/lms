@@ -6,15 +6,6 @@
             <h5 class="hint">Use your Company ID to sign in</h5>
         </section>
         <div class="login-group">
-            <!--
-            <clr-select-container>
-                <label>User Role</label>
-                <select clrSelect name="type" forControlName="type">
-                    <option value="local">Local Users</option>
-                    <option value="admin">Administrator</option>
-                </select>
-            </clr-select-container>
-            -->
             <clr-input-container>
                 <label class="clr-sr-only">Corporate name</label>
                 <input type="text" name="corporatename" clrInput placeholder="Corporate name" formControlName="corporatename" />
@@ -33,7 +24,9 @@
             </clr-password-container>
             
             <button [clrLoading]="validateBtnState" type="submit" class="btn btn-primary">Login</button>
-            <!--<a href="javascript://" class="signup">Sign up for a Company ID</a>-->
+            <button [clrLoading]="validateBtnState" (click)="onPasswordReset()" class="btn btn-primary">Reset Password</button>
         </div>
     </form>
 </div>
+
+<app-password-reset ngIf="isPasswordReset == true"></app-password-reset>
