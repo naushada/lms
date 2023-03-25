@@ -17,16 +17,6 @@ export class HttpsvcService {
       'Content-Type': 'application/json'
     })
   } 
-
-  //private apiURL:string = 'https://ajoul.herokuapp.com';
-  //private apiURL:string = 'https://apigw-l7rsmphepa-uc.a.run.app';
-  
-  private apiURL:string = 'http://localhost:8080';
-  //private apiURL:string = 'https://balaagh.herokuapp.com';
-  //private apiURL:string = 'https://gwx.herokuapp.com';
-  //private apiURL:string = 'https://xapp-cpkpi52p2q-uc.a.run.app';
-  //private apiURL: string = 'https://xpmile.herokuapp.com'
-  //apiURL = 'https://xpmile-wphbm7seyq-uc.a.run.app';
   
   /** CREATE Section */
   /**
@@ -44,7 +34,6 @@ export class HttpsvcService {
 
     const options = {params: new HttpParams({fromString: param})};
 
-    //let uri: string = this.apiURL + UriMap.get("from_web_shipment");
     return this.http.get<Shipment>("/api/v1/shipment/shipping", options);
   }
 
@@ -63,7 +52,6 @@ export class HttpsvcService {
     
     const options = {params: new HttpParams({fromString: param})};
 
-    //let uri = this.apiURL + UriMap.get("from_web_shipment");
     return this.http.get<Shipment>("/api/v1/shipment/shipping", options);
     
   }
@@ -83,7 +71,6 @@ export class HttpsvcService {
     
     const options = {params: new HttpParams({fromString: param})};
 
-    //let uri: string = this.apiURL + UriMap.get("from_web_shipment");
     return this.http.get<Shipment>("/api/v1/shipment/shipping", options)
   }
 
@@ -108,7 +95,6 @@ export class HttpsvcService {
 
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + UriMap.get("from_web_shipment");
     return this.http.get<Shipment[]>("/api/v1/shipment/shipping", options);
   }
 
@@ -130,7 +116,6 @@ export class HttpsvcService {
 
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + UriMap.get("from_web_shipment");
     return this.http.get<Shipment[]>("/api/v1/shipment/shipping", options)
   }
 
@@ -149,7 +134,6 @@ export class HttpsvcService {
 
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + UriMap.get("from_web_shipment");
     return this.http.get<Shipment[]>("/api/v1/shipment/shipping", options)
   }
 
@@ -168,7 +152,6 @@ export class HttpsvcService {
     
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + UriMap.get("from_web_shipment");
     return this.http.get<Shipment[]>("/api/v1/shipment/shipping", options)
   }
 
@@ -187,7 +170,6 @@ export class HttpsvcService {
     
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + UriMap.get("from_web_shipment");
     return this.http.get<Shipment[]>("/api/v1/shipment/shipping", options)
   }
 
@@ -206,7 +188,6 @@ export class HttpsvcService {
 
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + UriMap.get("from_web_account");
     return this.http.get<Account>("/api/v1/account/account", options);
   }
 
@@ -224,7 +205,6 @@ export class HttpsvcService {
       })
      } 
 
-    let uri: string = this.apiURL + UriMap.get("from_web_account");
     return this.http.get<Account[]>("/api/v1/account/account", options);
   }
 
@@ -238,7 +218,6 @@ export class HttpsvcService {
 
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + UriMap.get("from_web_account");
     return this.http.get<Account>("/api/v1/account/account", options);
   }
 
@@ -256,7 +235,6 @@ export class HttpsvcService {
 
     const options = {params: new HttpParams({fromString: param})};
 
-    let uri: string = this.apiURL + UriMap.get("from_web_inventory");
     return this.http.get<Inventory[]>("/api/v1/inventory", options);
   }
 
@@ -278,7 +256,6 @@ export class HttpsvcService {
                               'Content-Type': 'application/json'
                       })
                     };
-    let uri: string = this.apiURL + UriMap.get("from_web_inventory");
     return this.http.put<any>("/api/v1/inventory", JSON.stringify({}), options);
   }
 
@@ -292,7 +269,6 @@ export class HttpsvcService {
                               'Content-Type': 'application/json'
                       })
                     };
-    let uri: string = this.apiURL + UriMap.get("from_web_account");
     return this.http.put<Account>("/api/v1/inventory", JSON.stringify(accInfo), options);
   }
 
@@ -311,7 +287,6 @@ export class HttpsvcService {
                               'Content-Type': 'application/json'
                       })
                     };
-    let uri: string = this.apiURL + UriMap.get("from_web_shipment");
     return this.http.put<any>("/api/v1/shipment/shipping", JSON.stringify(data), options);
   }
 
@@ -338,7 +313,6 @@ export class HttpsvcService {
                                 'Content-Type': 'application/json'
                         })
                       };
-      let uri: string = this.apiURL + UriMap.get("from_web_shipment");
       let req = this.http.put<any>("/api/v1/shipment/shipping", JSON.stringify(data), options);
       reqArr.push(req);
     }
@@ -365,7 +339,6 @@ export class HttpsvcService {
                                 'Content-Type': 'application/json'
                         })
                     };
-    let uri: string = this.apiURL + UriMap.get("from_web_shipment");
     return(this.http.put<any>("/api/v1/shipment/shipping", JSON.stringify(data), options));
   }
 
@@ -407,7 +380,6 @@ export class HttpsvcService {
          })
        };
     }
-    //let uri: string = this.apiURL + '/api/manifest';
     return this.http.post<any>((uri), JSON.stringify(awbList), this.httpOptions);
   }
 
