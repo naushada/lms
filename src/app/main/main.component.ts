@@ -19,8 +19,8 @@ export class MainComponent implements OnInit, OnDestroy {
   constructor(private pubsub: PubsubsvcService) {
     this.subsink.sink = this.pubsub.onAccount.subscribe(
       rsp => {
-        let acc: Account = rsp as Account;
-        this.loggedInUser = acc;
+       // let acc: Account = rsp as Account;
+        this.loggedInUser = {...rsp as Account};
       },
       (error: any) => {},
       () => {});
