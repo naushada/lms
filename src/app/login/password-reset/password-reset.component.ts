@@ -28,6 +28,12 @@ export class PasswordResetComponent implements OnInit {
     let usrname:string = this.passwordResetForm.get('userName')?.value;
     let cpassword:string = this.passwordResetForm.get('currentPassword')?.value;
     let npassword: string = this.passwordResetForm.get('newPassword')?.value;
-
+    
+    if(usrname.length && cpassword.length && npassword.length) {
+      this.http.resetAccountPassword(usrname, cpassword, npassword).subscribe(
+        rsp => {},
+        error => {alert("Password reset Failed");},
+        () => {alert("Password is reset successfully");});
+    }
   }
 }

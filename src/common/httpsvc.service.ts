@@ -203,7 +203,19 @@ export class HttpsvcService {
     return this.http.get<Account>(this.getUri("from_web_account"), options);
   }
 
-
+  /**
+   * 
+   * @param id 
+   * @param pwd 
+   * @returns 
+   */
+    resetAccountPassword(id:string, currentPwd: string, newPassword: string): Observable<Account> {
+      let param = `userId=${id}&password=${currentPwd}&newPassword=${newPassword}`;
+      const options = {params: new HttpParams({fromString: param})};
+  
+      return this.http.get<Account>(this.getUri("from_web_account"), options);
+    }
+  
   /**
    * 
    * @returns 
