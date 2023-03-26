@@ -13,8 +13,8 @@ export class HttpsvcService {
   private apiURL:string = "";
   constructor(private http: HttpClient) {
 
-    if(environment.production) {
-      this.apiURL = "http://localhots:8080"; 
+    if(!environment.production) {
+      this.apiURL = "http://localhost:8080"; 
     }
    }
   

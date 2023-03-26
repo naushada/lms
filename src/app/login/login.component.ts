@@ -50,22 +50,22 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    //alert("I am clicked login " + this.username + " password " + this.password);
+    let cName = this.loginForm.get('corporatename')?.value;
     let passwd = this.loginForm.get('password')?.value;
     let id = this.loginForm.get('username')?.value;
-    this.loginForm.get('password')?.setValue(this.getHash32(passwd));
+    //this.loginForm.get('password')?.setValue(this.getHash32(passwd));
 
-    this.http.getAccountInfo(id, passwd).subscribe(
-      (rsp:Account) => {
-        // Publish the Account Info of logged in user to subscribed widget
-        this.on.emit_accountInfo(rsp);
-      }, 
-      error => {alert("Login Failed");}, 
-      () => {this.rt.navigateByUrl('/main');});
-
-    //this.validateDemo() ;
-    //this.submitDemo();
-    //this.rt.navigateByUrl('/main');
+    if(id.length && passwd.length) {
+      this.http.getAccountInfo(id, passwd).subscribe(
+        (rsp:Account) => {
+          // Publish the Account Info of logged in user to subscribed widget
+          this.on.emit_accountInfo(rsp);
+        }, 
+        error => {alert("Login Failed");}, 
+        () => {this.rt.navigateByUrl('/main');});
+    } else{
+      alert("Please provide Username And Password");
+    }
   }
 
   validateBtnState: ClrLoadingState = ClrLoadingState.DEFAULT;

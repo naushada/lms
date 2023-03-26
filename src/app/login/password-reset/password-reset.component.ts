@@ -13,8 +13,8 @@ export class PasswordResetComponent implements OnInit {
   passwordResetForm: FormGroup;
   constructor(private http: HttpsvcService, private fb:FormBuilder) { 
     this.passwordResetForm = this.fb.group({
-      corporatename:'',
-      username: '',
+      corporateName:'',
+      userName: '',
       currentPassword:'',
       newPassword:''
     });
