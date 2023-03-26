@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
 import { catchError, forkJoin, Observable} from 'rxjs';
 import { Shipment, Account, ShipmentStatus, Inventory, UriMap, Email, SenderInformation, activityOnShipment } from './app-globals';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -9,7 +10,13 @@ import { Shipment, Account, ShipmentStatus, Inventory, UriMap, Email, SenderInfo
 })
 export class HttpsvcService {
 
-  constructor(private http: HttpClient) { }
+  private apiURL:string = "";
+  constructor(private http: HttpClient) {
+
+    if(environment.production) {
+      this.apiURL = "http://localhots:8080"; 
+    }
+   }
   
 
   httpOptions = {
@@ -18,6 +25,18 @@ export class HttpsvcService {
     })
   } 
   
+  getUri(key:string) : string {
+
+    let uri:string;
+
+    if(this.apiURL.length > 0) {
+      uri = this.apiURL + UriMap.get(key);
+      return(uri);
+    }
+      uri = UriMap.get(key) as string;
+      return(uri);
+  }
+
   /** CREATE Section */
   /**
    * @brief This function retrieves the waybill details based on waybill number.
@@ -33,8 +52,7 @@ export class HttpsvcService {
     }
 
     const options = {params: new HttpParams({fromString: param})};
-
-    return this.http.get<Shipment>("/api/v1/shipment/shipping", options);
+    return this.http.get<Shipment>(this.getUri("from_web_shipment"), options);
   }
 
   /**
@@ -52,7 +70,7 @@ export class HttpsvcService {
     
     const options = {params: new HttpParams({fromString: param})};
 
-    return this.http.get<Shipment>("/api/v1/shipment/shipping", options);
+    return this.http.get<Shipment>(this.getUri("from_web_shipment"), options);
     
   }
 
@@ -70,8 +88,7 @@ export class HttpsvcService {
     }
     
     const options = {params: new HttpParams({fromString: param})};
-
-    return this.http.get<Shipment>("/api/v1/shipment/shipping", options)
+    return this.http.get<Shipment>(this.getUri("from_web_shipment"), options)
   }
 
   /**
@@ -94,8 +111,7 @@ export class HttpsvcService {
     }
 
     const options = {params: new HttpParams({fromString: param})};
-
-    return this.http.get<Shipment[]>("/api/v1/shipment/shipping", options);
+    return this.http.get<Shipment[]>(this.getUri("from_web_shipment"), options);
   }
 
 
@@ -115,8 +131,7 @@ export class HttpsvcService {
     }
 
     const options = {params: new HttpParams({fromString: param})};
-
-    return this.http.get<Shipment[]>("/api/v1/shipment/shipping", options)
+    return this.http.get<Shipment[]>(this.getUri("from_web_shipment"), options)
   }
 
   /**
@@ -133,8 +148,7 @@ export class HttpsvcService {
     }
 
     const options = {params: new HttpParams({fromString: param})};
-
-    return this.http.get<Shipment[]>("/api/v1/shipment/shipping", options)
+    return this.http.get<Shipment[]>(this.getUri("from_web_shipment"), options)
   }
 
   /**
@@ -151,8 +165,7 @@ export class HttpsvcService {
     }
     
     const options = {params: new HttpParams({fromString: param})};
-
-    return this.http.get<Shipment[]>("/api/v1/shipment/shipping", options)
+    return this.http.get<Shipment[]>(this.getUri("from_web_shipment"), options)
   }
 
   /**
@@ -169,8 +182,7 @@ export class HttpsvcService {
     }
     
     const options = {params: new HttpParams({fromString: param})};
-
-    return this.http.get<Shipment[]>("/api/v1/shipment/shipping", options)
+    return this.http.get<Shipment[]>(this.getUri("from_web_shipment"), options)
   }
 
   /**
@@ -188,7 +200,7 @@ export class HttpsvcService {
 
     const options = {params: new HttpParams({fromString: param})};
 
-    return this.http.get<Account>("/api/v1/account/account", options);
+    return this.http.get<Account>(this.getUri("from_web_account"), options);
   }
 
 
@@ -205,7 +217,7 @@ export class HttpsvcService {
       })
      } 
 
-    return this.http.get<Account[]>("/api/v1/account/account", options);
+    return this.http.get<Account[]>(this.getUri("from_web_account"), options);
   }
 
   /**
@@ -217,8 +229,7 @@ export class HttpsvcService {
     let param = `accountCode=${accountCode}`;
 
     const options = {params: new HttpParams({fromString: param})};
-
-    return this.http.get<Account>("/api/v1/account/account", options);
+    return this.http.get<Account>(this.getUri("from_web_account"), options);
   }
 
 
@@ -235,7 +246,7 @@ export class HttpsvcService {
 
     const options = {params: new HttpParams({fromString: param})};
 
-    return this.http.get<Inventory[]>("/api/v1/inventory", options);
+    return this.http.get<Inventory[]>(this.getUri("from_web_inventory"), options);
   }
 
   /** UPDATE Section */
@@ -256,7 +267,7 @@ export class HttpsvcService {
                               'Content-Type': 'application/json'
                       })
                     };
-    return this.http.put<any>("/api/v1/inventory", JSON.stringify({}), options);
+    return this.http.put<any>(this.getUri("from_web_inventory"), JSON.stringify({}), options);
   }
 
 
@@ -269,7 +280,7 @@ export class HttpsvcService {
                               'Content-Type': 'application/json'
                       })
                     };
-    return this.http.put<Account>("/api/v1/inventory", JSON.stringify(accInfo), options);
+    return this.http.put<Account>(this.getUri("from_web_inventory"), JSON.stringify(accInfo), options);
   }
 
   /**
@@ -287,7 +298,7 @@ export class HttpsvcService {
                               'Content-Type': 'application/json'
                       })
                     };
-    return this.http.put<any>("/api/v1/shipment/shipping", JSON.stringify(data), options);
+    return this.http.put<any>(this.getUri("from_web_shipment"), JSON.stringify(data), options);
   }
 
   /**
@@ -313,7 +324,7 @@ export class HttpsvcService {
                                 'Content-Type': 'application/json'
                         })
                       };
-      let req = this.http.put<any>("/api/v1/shipment/shipping", JSON.stringify(data), options);
+      let req = this.http.put<any>(this.getUri("from_web_shipment"), JSON.stringify(data), options);
       reqArr.push(req);
     }
     
@@ -339,7 +350,7 @@ export class HttpsvcService {
                                 'Content-Type': 'application/json'
                         })
                     };
-    return(this.http.put<any>("/api/v1/shipment/shipping", JSON.stringify(data), options));
+    return(this.http.put<any>(this.getUri("from_web_shipment"), JSON.stringify(data), options));
   }
 
   /** CREATE Section */
@@ -349,12 +360,12 @@ export class HttpsvcService {
    * @returns 
    */
   createAccount(newAccount:Account) : Observable<Account> {
-    return this.http.post<Account>("/api/v1/account/account", JSON.stringify(newAccount), this.httpOptions);
+    return this.http.post<Account>(this.getUri("from_web_account"), JSON.stringify(newAccount), this.httpOptions);
   }
 
   createInventory(product: Inventory): Observable<any> {
 
-    return this.http.post<Inventory>("/api/v1/inventory", JSON.stringify(product), this.httpOptions);
+    return this.http.post<Inventory>(this.getUri("from_web_inventory"), JSON.stringify(product), this.httpOptions);
   }
 
   //3rd Part Shipment Creation 
@@ -390,7 +401,7 @@ export class HttpsvcService {
    * @returns 
    */
    createBulkShipment(newShipment:string) : Observable<any> {
-    return this.http.post<Shipment>("/api/v1/shipment/bulk/shipping", 
+    return this.http.post<Shipment>(this.getUri("from_web_bulk_shipment"), 
                                     newShipment, 
                                     this.httpOptions);
   }
@@ -401,14 +412,14 @@ export class HttpsvcService {
    * @returns 
    */
    createShipment(newShipment:any) : Observable<any> {
-    return this.http.post<any>("/api/v1/shipment/shipping", 
+    return this.http.post<any>(this.getUri("from_web_shipment"), 
                                     newShipment, 
                                     this.httpOptions);
   }
 
 
   initiateEmail(email: Email): Observable<any> {
-    return this.http.post<Email>("/api/v1/email", JSON.stringify(email), this.httpOptions);
+    return this.http.post<Email>(this.getUri("from_web_email"), JSON.stringify(email), this.httpOptions);
   }
 
 }

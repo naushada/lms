@@ -22,11 +22,12 @@
                 <input type="password" name="password" clrPassword placeholder="Password" formControlName="password"/>
                 <clr-control-error>Password is required!</clr-control-error>
             </clr-password-container>
-            
-            <button [clrLoading]="validateBtnState" type="submit" class="btn btn-primary">Login</button>
-            <button [clrLoading]="validateBtnState" (click)="onPasswordReset()" class="btn btn-primary">Reset Password</button>
+            <div class="btn-group btn-primary">
+                <button  type="submit" class="btn btn-primary"><clr-icon shape="login"></clr-icon>Login</button>
+                <button  (click)="onPasswordReset()" class="btn btn-primary"><clr-icon shape="administrator"></clr-icon>Reset Password</button>
+            </div>
         </div>
     </form>
 </div>
 
-<app-password-reset ngIf="isPasswordReset == true"></app-password-reset>
+<app-password-reset *ngIf="isPasswordReset == true"></app-password-reset>
