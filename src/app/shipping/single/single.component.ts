@@ -60,7 +60,7 @@ export class SingleComponent implements OnInit, OnDestroy {
       }),
 
       shipmentInformation : this.fb.group({
-        activity: this.fb.array([{date: formatDate(new Date(), 'dd/MM/yyyy', 'en'), event: "Document Created", 
+        activity: this.fb.array([{date: formatDate(new Date(), 'dd/MM/yyyy', 'en-GB'), event: "Document Created", 
                                   time:new Date().getHours() + ':' + new Date().getMinutes(), notes:'Document Created', driver:'', 
                                   updatedBy: this.loggedInUser?.personalInfo.name, eventLocation:'Riyadh'}]),
         skuNo:'',
