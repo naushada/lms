@@ -73,7 +73,7 @@ export class ExcelsvcService {
     workbook.xlsx.readFile(fileName).then((data) => {
       console.log("data " + data);
       workbook.eachSheet((sheetName:any, id:any) => {
-        let sheet = workbook.getWorksheet(sheetName);
+        const sheet = workbook.getWorksheet(sheetName);
         for(var i = 1; i <= sheet.actualRowCount; i++) {
           rows.push(JSON.stringify(sheet.getRow(i)));
           console.log(rows.at(i));
